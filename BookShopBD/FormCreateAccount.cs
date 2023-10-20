@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace BookShopBD
 {
-    public partial class FormAuthorization : Form
+    public partial class FormCreateAccount : Form
     {
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HTCAPTION = 0x2;
@@ -16,20 +16,9 @@ namespace BookShopBD
         [DllImport("User32.dll")]
         public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
 
-        public FormAuthorization()
+        public FormCreateAccount()
         {
             InitializeComponent();
-            passwordTB.UseSystemPasswordChar = true;
-        }
-
-        private void createAccountLabel_MouseEnter(object sender, System.EventArgs e)
-        {
-            createAccountLabel.ForeColor = Color.Blue;
-        }
-
-        private void createAccountLabel_MouseLeave(object sender, System.EventArgs e)
-        {
-            createAccountLabel.ForeColor = Color.FromArgb(47, 60, 69);
         }
 
         private void closeButton_Click(object sender, System.EventArgs e)
@@ -51,10 +40,19 @@ namespace BookShopBD
             this.WindowState = FormWindowState.Minimized;
         }
 
-        private void createAccountLabel_Click(object sender, EventArgs e)
+        private void cancelButton_Click(object sender, EventArgs e)
         {
-            Form newForm = new FormCreateAccount();
-            newForm.ShowDialog();
+            this.Hide();
+        }
+
+        private void createAccountLabel_MouseEnter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void createAccountLabel_MouseLeave(object sender, EventArgs e)
+        {
+
         }
     }
 }

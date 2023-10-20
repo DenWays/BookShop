@@ -119,6 +119,7 @@
             this.createAccountLabel.Size = new System.Drawing.Size(141, 23);
             this.createAccountLabel.TabIndex = 5;
             this.createAccountLabel.Text = "Создать аккаунт?";
+            this.createAccountLabel.Click += new System.EventHandler(this.createAccountLabel_Click);
             this.createAccountLabel.MouseEnter += new System.EventHandler(this.createAccountLabel_MouseEnter);
             this.createAccountLabel.MouseLeave += new System.EventHandler(this.createAccountLabel_MouseLeave);
             // 
