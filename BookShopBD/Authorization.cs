@@ -5,7 +5,8 @@ namespace BookShopBD
 {
     internal class Authorization
     {
-		static string role, FirstName, LastName;
+        static string role, firstName, lastName, middleName;
+
         static public void AuthorizationMethod(string login, string password)
         {
 			try
@@ -19,7 +20,7 @@ namespace BookShopBD
 				}
 				else
 				{
-					role = FirstName = LastName = null;
+					role = firstName = lastName = null;
 				}
 			}
 			catch (Exception)
@@ -37,22 +38,22 @@ namespace BookShopBD
                 {
                     DBConnection.msCommand.CommandText = $"SELECT LastName FROM Customer JOIN account USING(id_account) " +
                         $"WHERE Login = '{login}';";
-                    LastName = DBConnection.msCommand.ExecuteScalar().ToString();
-                    return LastName;
+                    lastName = DBConnection.msCommand.ExecuteScalar().ToString();
+                    return lastName;
                 }
                 else if (role == "Продавец")
                 {
                     DBConnection.msCommand.CommandText = $"SELECT LastName FROM Employee JOIN account USING(id_account) " +
                         $"WHERE Login = '{login}';";
-                    LastName = DBConnection.msCommand.ExecuteScalar().ToString();
-                    return LastName;
+                    lastName = DBConnection.msCommand.ExecuteScalar().ToString();
+                    return lastName;
                 }
                 else
                 {
                     DBConnection.msCommand.CommandText = $"SELECT LastName FROM Admin JOIN account USING(id_account) " +
                         $"WHERE Login = '{login}';";
-                    LastName = DBConnection.msCommand.ExecuteScalar().ToString();
-                    return LastName;
+                    lastName = DBConnection.msCommand.ExecuteScalar().ToString();
+                    return lastName;
                 }
             }
             catch (Exception)
@@ -69,28 +70,65 @@ namespace BookShopBD
                 {
                     DBConnection.msCommand.CommandText = $"SELECT FirstName FROM Customer JOIN account USING(id_account) " +
                         $"WHERE Login = '{login}';";
-                    FirstName = DBConnection.msCommand.ExecuteScalar().ToString();
-                    return FirstName;
+                    firstName = DBConnection.msCommand.ExecuteScalar().ToString();
+                    return firstName;
                 }
                 else if (role == "Продавец")
                 {
                     DBConnection.msCommand.CommandText = $"SELECT FirstName FROM Employee JOIN account USING(id_account) " +
                         $"WHERE Login = '{login}';";
-                    FirstName = DBConnection.msCommand.ExecuteScalar().ToString();
-                    return LastName;
+                    firstName = DBConnection.msCommand.ExecuteScalar().ToString();
+                    return lastName;
                 }
                 else
                 {
                     DBConnection.msCommand.CommandText = $"SELECT FirstName FROM Admin JOIN account USING(id_account) " +
                         $"WHERE Login = '{login}';";
-                    FirstName = DBConnection.msCommand.ExecuteScalar().ToString();
-                    return LastName;
+                    firstName = DBConnection.msCommand.ExecuteScalar().ToString();
+                    return lastName;
                 }
             }
 			catch (Exception)
 			{
                 return null;
 			}
+        }
+
+        static public string GetMiddleName(string login)
+        {
+            try
+            {
+                if (role == "Покупатель")
+                {
+                    DBConnection.msCommand.CommandText = $"SELECT MiddleName FROM Customer JOIN account USING(id_account) " +
+                        $"WHERE Login = '{login}';";
+                    middleName = DBConnection.msCommand.ExecuteScalar().ToString();
+                    return middleName;
+                }
+                else if (role == "Продавец")
+                {
+                    DBConnection.msCommand.CommandText = $"SELECT MiddleName FROM Employee JOIN account USING(id_account) " +
+                        $"WHERE Login = '{login}';";
+                    middleName = DBConnection.msCommand.ExecuteScalar().ToString();
+                    return middleName;
+                }
+                else
+                {
+                    DBConnection.msCommand.CommandText = $"SELECT MiddleName FROM Admin JOIN account USING(id_account) " +
+                        $"WHERE Login = '{login}';";
+                    middleName = DBConnection.msCommand.ExecuteScalar().ToString();
+                    return middleName;
+                }
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        public static string GetRole()
+        {
+            return role;
         }
     }
 }

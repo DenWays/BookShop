@@ -50,7 +50,6 @@
             this.addressLabel = new System.Windows.Forms.Label();
             this.addressTB = new System.Windows.Forms.TextBox();
             this.phoneLabel = new System.Windows.Forms.Label();
-            this.phoneTB = new System.Windows.Forms.TextBox();
             this.typeAcLabel = new System.Windows.Forms.Label();
             this.mailTB = new System.Windows.Forms.TextBox();
             this.createAcButton = new System.Windows.Forms.Button();
@@ -59,6 +58,8 @@
             this.mailLabel = new System.Windows.Forms.Label();
             this.bookPB = new System.Windows.Forms.PictureBox();
             this.createAcLabel = new System.Windows.Forms.Label();
+            this.phoneTB = new System.Windows.Forms.MaskedTextBox();
+            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
             this.panelCA.SuspendLayout();
             this.panelTools.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.icon)).BeginInit();
@@ -68,6 +69,8 @@
             // panelCA
             // 
             this.panelCA.BackColor = System.Drawing.Color.White;
+            this.panelCA.Controls.Add(this.maskedTextBox1);
+            this.panelCA.Controls.Add(this.phoneTB);
             this.panelCA.Controls.Add(this.bookPB);
             this.panelCA.Controls.Add(this.createAcLabel);
             this.panelCA.Controls.Add(this.mailLabel);
@@ -77,7 +80,6 @@
             this.panelCA.Controls.Add(this.typeAcLabel);
             this.panelCA.Controls.Add(this.mailTB);
             this.panelCA.Controls.Add(this.phoneLabel);
-            this.panelCA.Controls.Add(this.phoneTB);
             this.panelCA.Controls.Add(this.addressLabel);
             this.panelCA.Controls.Add(this.addressTB);
             this.panelCA.Controls.Add(this.middleNLabel);
@@ -164,29 +166,32 @@
             // 
             // loginTB
             // 
-            this.loginTB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.loginTB.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.loginTB.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
             this.loginTB.Location = new System.Drawing.Point(10, 115);
+            this.loginTB.MaxLength = 15;
             this.loginTB.Name = "loginTB";
-            this.loginTB.Size = new System.Drawing.Size(180, 26);
+            this.loginTB.Size = new System.Drawing.Size(180, 30);
             this.loginTB.TabIndex = 0;
             // 
             // passwordTB
             // 
-            this.passwordTB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.passwordTB.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.passwordTB.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
             this.passwordTB.Location = new System.Drawing.Point(210, 115);
+            this.passwordTB.MaxLength = 15;
             this.passwordTB.Name = "passwordTB";
-            this.passwordTB.Size = new System.Drawing.Size(180, 26);
+            this.passwordTB.Size = new System.Drawing.Size(180, 30);
             this.passwordTB.TabIndex = 1;
             // 
             // retypePassTB
             // 
-            this.retypePassTB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.retypePassTB.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.retypePassTB.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
             this.retypePassTB.Location = new System.Drawing.Point(410, 115);
+            this.retypePassTB.MaxLength = 15;
             this.retypePassTB.Name = "retypePassTB";
-            this.retypePassTB.Size = new System.Drawing.Size(180, 26);
+            this.retypePassTB.Size = new System.Drawing.Size(180, 30);
             this.retypePassTB.TabIndex = 2;
             // 
             // loginLabel
@@ -239,11 +244,12 @@
             // 
             // lastNTB
             // 
-            this.lastNTB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lastNTB.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lastNTB.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
             this.lastNTB.Location = new System.Drawing.Point(10, 185);
+            this.lastNTB.MaxLength = 20;
             this.lastNTB.Name = "lastNTB";
-            this.lastNTB.Size = new System.Drawing.Size(180, 26);
+            this.lastNTB.Size = new System.Drawing.Size(180, 30);
             this.lastNTB.TabIndex = 6;
             // 
             // firstNLabel
@@ -260,11 +266,12 @@
             // 
             // firstNTB
             // 
-            this.firstNTB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.firstNTB.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.firstNTB.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
             this.firstNTB.Location = new System.Drawing.Point(210, 185);
+            this.firstNTB.MaxLength = 20;
             this.firstNTB.Name = "firstNTB";
-            this.firstNTB.Size = new System.Drawing.Size(180, 26);
+            this.firstNTB.Size = new System.Drawing.Size(180, 30);
             this.firstNTB.TabIndex = 8;
             // 
             // middleNLabel
@@ -281,11 +288,12 @@
             // 
             // middleNTB
             // 
-            this.middleNTB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.middleNTB.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.middleNTB.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
             this.middleNTB.Location = new System.Drawing.Point(410, 185);
+            this.middleNTB.MaxLength = 20;
             this.middleNTB.Name = "middleNTB";
-            this.middleNTB.Size = new System.Drawing.Size(180, 26);
+            this.middleNTB.Size = new System.Drawing.Size(180, 30);
             this.middleNTB.TabIndex = 10;
             // 
             // addressLabel
@@ -302,11 +310,12 @@
             // 
             // addressTB
             // 
-            this.addressTB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.addressTB.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.addressTB.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
             this.addressTB.Location = new System.Drawing.Point(10, 255);
+            this.addressTB.MaxLength = 30;
             this.addressTB.Name = "addressTB";
-            this.addressTB.Size = new System.Drawing.Size(180, 26);
+            this.addressTB.Size = new System.Drawing.Size(180, 30);
             this.addressTB.TabIndex = 12;
             // 
             // phoneLabel
@@ -320,15 +329,6 @@
             this.phoneLabel.Size = new System.Drawing.Size(78, 23);
             this.phoneLabel.TabIndex = 15;
             this.phoneLabel.Text = "Телефон";
-            // 
-            // phoneTB
-            // 
-            this.phoneTB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.phoneTB.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
-            this.phoneTB.Location = new System.Drawing.Point(210, 255);
-            this.phoneTB.Name = "phoneTB";
-            this.phoneTB.Size = new System.Drawing.Size(180, 26);
-            this.phoneTB.TabIndex = 14;
             // 
             // typeAcLabel
             // 
@@ -344,11 +344,12 @@
             // 
             // mailTB
             // 
-            this.mailTB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.mailTB.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.mailTB.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
             this.mailTB.Location = new System.Drawing.Point(410, 255);
+            this.mailTB.MaxLength = 30;
             this.mailTB.Name = "mailTB";
-            this.mailTB.Size = new System.Drawing.Size(180, 26);
+            this.mailTB.Size = new System.Drawing.Size(180, 30);
             this.mailTB.TabIndex = 16;
             // 
             // createAcButton
@@ -430,6 +431,24 @@
             this.createAcLabel.Text = "Создание аккаунта";
             this.createAcLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
+            // phoneTB
+            // 
+            this.phoneTB.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.phoneTB.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
+            this.phoneTB.Location = new System.Drawing.Point(210, 255);
+            this.phoneTB.Mask = "+0-000-000-00-00";
+            this.phoneTB.Name = "phoneTB";
+            this.phoneTB.Size = new System.Drawing.Size(180, 30);
+            this.phoneTB.TabIndex = 24;
+            // 
+            // maskedTextBox1
+            // 
+            this.maskedTextBox1.Location = new System.Drawing.Point(390, 23);
+            this.maskedTextBox1.Mask = "a@a";
+            this.maskedTextBox1.Name = "maskedTextBox1";
+            this.maskedTextBox1.Size = new System.Drawing.Size(100, 20);
+            this.maskedTextBox1.TabIndex = 25;
+            // 
             // FormCreateAccount
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -477,7 +496,6 @@
         private System.Windows.Forms.Label typeAcLabel;
         private System.Windows.Forms.TextBox mailTB;
         private System.Windows.Forms.Label phoneLabel;
-        private System.Windows.Forms.TextBox phoneTB;
         private System.Windows.Forms.Label addressLabel;
         private System.Windows.Forms.TextBox addressTB;
         private System.Windows.Forms.ComboBox typeAcCB;
@@ -485,6 +503,8 @@
         private System.Windows.Forms.Label mailLabel;
         private System.Windows.Forms.PictureBox bookPB;
         private System.Windows.Forms.Label createAcLabel;
+        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
+        private System.Windows.Forms.MaskedTextBox phoneTB;
     }
 }
 

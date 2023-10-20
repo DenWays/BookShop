@@ -19,6 +19,8 @@ namespace BookShopBD
         public FormCreateAccount()
         {
             InitializeComponent();
+            passwordTB.UseSystemPasswordChar = true;
+            retypePassTB.UseSystemPasswordChar = true;
         }
 
         private void closeButton_Click(object sender, System.EventArgs e)

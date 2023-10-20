@@ -37,15 +37,15 @@
             this.createAccountLabel = new System.Windows.Forms.Label();
             this.authorizationButton = new System.Windows.Forms.Button();
             this.panelAuthorization = new System.Windows.Forms.Panel();
-            this.bookPB = new System.Windows.Forms.PictureBox();
             this.panelTools = new System.Windows.Forms.Panel();
             this.closeButton = new System.Windows.Forms.Button();
             this.minimizedButton = new System.Windows.Forms.Button();
             this.nameLabel = new System.Windows.Forms.Label();
+            this.bookPB = new System.Windows.Forms.PictureBox();
             this.icon = new System.Windows.Forms.PictureBox();
             this.panelAuthorization.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bookPB)).BeginInit();
             this.panelTools.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bookPB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.icon)).BeginInit();
             this.SuspendLayout();
             // 
@@ -69,6 +69,7 @@
             this.loginTB.Font = new System.Drawing.Font("Comic Sans MS", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.loginTB.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
             this.loginTB.Location = new System.Drawing.Point(100, 142);
+            this.loginTB.MaxLength = 15;
             this.loginTB.Name = "loginTB";
             this.loginTB.Size = new System.Drawing.Size(200, 45);
             this.loginTB.TabIndex = 1;
@@ -91,6 +92,7 @@
             this.passwordTB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.passwordTB.Font = new System.Drawing.Font("Comic Sans MS", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.passwordTB.Location = new System.Drawing.Point(100, 228);
+            this.passwordTB.MaxLength = 15;
             this.passwordTB.Name = "passwordTB";
             this.passwordTB.Size = new System.Drawing.Size(200, 45);
             this.passwordTB.TabIndex = 3;
@@ -139,6 +141,7 @@
             this.authorizationButton.TabIndex = 6;
             this.authorizationButton.Text = "Авторизоваться";
             this.authorizationButton.UseVisualStyleBackColor = false;
+            this.authorizationButton.Click += new System.EventHandler(this.authorizationButton_Click);
             // 
             // panelAuthorization
             // 
@@ -155,17 +158,6 @@
             this.panelAuthorization.Name = "panelAuthorization";
             this.panelAuthorization.Size = new System.Drawing.Size(400, 370);
             this.panelAuthorization.TabIndex = 0;
-            // 
-            // bookPB
-            // 
-            this.bookPB.BackColor = System.Drawing.Color.Transparent;
-            this.bookPB.Image = global::BookShopBD.Properties.Resources.bookGray;
-            this.bookPB.Location = new System.Drawing.Point(160, 14);
-            this.bookPB.Name = "bookPB";
-            this.bookPB.Size = new System.Drawing.Size(80, 50);
-            this.bookPB.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.bookPB.TabIndex = 7;
-            this.bookPB.TabStop = false;
             // 
             // panelTools
             // 
@@ -222,6 +214,17 @@
             this.nameLabel.TabIndex = 2;
             this.nameLabel.Text = "BookShop";
             // 
+            // bookPB
+            // 
+            this.bookPB.BackColor = System.Drawing.Color.Transparent;
+            this.bookPB.Image = global::BookShopBD.Properties.Resources.bookGray;
+            this.bookPB.Location = new System.Drawing.Point(160, 14);
+            this.bookPB.Name = "bookPB";
+            this.bookPB.Size = new System.Drawing.Size(80, 50);
+            this.bookPB.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.bookPB.TabIndex = 7;
+            this.bookPB.TabStop = false;
+            // 
             // icon
             // 
             this.icon.Image = global::BookShopBD.Properties.Resources.bookWhite;
@@ -248,9 +251,9 @@
             this.Text = "Book Shop";
             this.panelAuthorization.ResumeLayout(false);
             this.panelAuthorization.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bookPB)).EndInit();
             this.panelTools.ResumeLayout(false);
             this.panelTools.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bookPB)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.icon)).EndInit();
             this.ResumeLayout(false);
 
