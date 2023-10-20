@@ -41,6 +41,7 @@
             this.closeButton = new System.Windows.Forms.Button();
             this.minimizedButton = new System.Windows.Forms.Button();
             this.nameLabel = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.bookPB = new System.Windows.Forms.PictureBox();
             this.icon = new System.Windows.Forms.PictureBox();
             this.panelAuthorization.SuspendLayout();
@@ -146,6 +147,7 @@
             // panelAuthorization
             // 
             this.panelAuthorization.BackColor = System.Drawing.Color.White;
+            this.panelAuthorization.Controls.Add(this.button1);
             this.panelAuthorization.Controls.Add(this.bookPB);
             this.panelAuthorization.Controls.Add(this.authorizationButton);
             this.panelAuthorization.Controls.Add(this.createAccountLabel);
@@ -194,9 +196,9 @@
             this.minimizedButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.minimizedButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.minimizedButton.ForeColor = System.Drawing.Color.White;
-            this.minimizedButton.Location = new System.Drawing.Point(336, -5);
+            this.minimizedButton.Location = new System.Drawing.Point(334, -5);
             this.minimizedButton.Name = "minimizedButton";
-            this.minimizedButton.Size = new System.Drawing.Size(34, 38);
+            this.minimizedButton.Size = new System.Drawing.Size(36, 38);
             this.minimizedButton.TabIndex = 3;
             this.minimizedButton.Text = "—";
             this.minimizedButton.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -213,6 +215,16 @@
             this.nameLabel.Size = new System.Drawing.Size(67, 18);
             this.nameLabel.TabIndex = 2;
             this.nameLabel.Text = "BookShop";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(313, 14);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // bookPB
             // 
@@ -275,6 +287,7 @@
         private System.Windows.Forms.Label nameLabel;
         private System.Windows.Forms.PictureBox icon;
         private System.Windows.Forms.Button minimizedButton;
+        private System.Windows.Forms.Button button1;
     }
 }
 

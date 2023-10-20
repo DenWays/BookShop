@@ -112,6 +112,12 @@
     <Compile Include="FormAuthorizathion.Designer.cs">
       <DependentUpon>FormAuthorizathion.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCustomer.Designer.cs">
+      <DependentUpon>FormCustomer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormCreateAccount.resx">
@@ -119,6 +125,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormAuthorizathion.resx">
       <DependentUpon>FormAuthorizathion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormCustomer.resx">
+      <DependentUpon>FormCustomer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

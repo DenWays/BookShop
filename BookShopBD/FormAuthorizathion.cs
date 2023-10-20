@@ -90,5 +90,12 @@ namespace BookShopBD
                 MessageBox.Show("Заполните все поля.", "Ошибка авторизации", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Form newForm = new FormCustomer();
+            this.Hide();
+            newForm.Show();
+        }
     }
 }

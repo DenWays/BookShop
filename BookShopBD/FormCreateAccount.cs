@@ -2,7 +2,9 @@
 using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Net.Mail;
 using System.Runtime.InteropServices;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace BookShopBD
@@ -47,14 +49,57 @@ namespace BookShopBD
             this.Hide();
         }
 
-        private void createAccountLabel_MouseEnter(object sender, EventArgs e)
+        public static bool IsValidEmail(string mail)
         {
-
+            return Regex.IsMatch(mail,
+                   @"^(?("")("".+?""@)|(([0-9a-zA-Z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-zA-Z])@))" +
+                   @"(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,6}))$");
         }
 
-        private void createAccountLabel_MouseLeave(object sender, EventArgs e)
+        private void createAcButton_Click(object sender, EventArgs e)
         {
+            if(loginTB.Text != null && passwordTB.Text != null && retypePassTB.Text != null && firstNTB.Text != null &&
+                lastNTB.Text != null && middleNTB.Text != null && addressTB.Text != null && phoneTB.Text != null &&
+                mailTB.Text != null)
+            {
+                if(passwordTB.Text != retypePassTB.Text) { MessageBox.Show("Пароли должны совпадать.", "Пароли не соспадают", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+                if(!IsValidEmail(mailTB.Text)) { MessageBox.Show("Почта введена неправильно.", "Ошибка ввода почты", MessageBoxButtons.OK, MessageBoxIcon.Error); }
 
+            }
+            else
+            {
+                MessageBox.Show("Заполните все поля.", "Ошибка создания аккаунта", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void lastNTB_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            string Symbol = e.KeyChar.ToString();
+
+            if (!Regex.Match(Symbol, @"[а-яА-Я]|[a-zA-Z]").Success)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void firstNTB_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            string Symbol = e.KeyChar.ToString();
+
+            if (!Regex.Match(Symbol, @"[а-яА-Я]|[a-zA-Z]").Success)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void middleNTB_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            string Symbol = e.KeyChar.ToString();
+
+            if (!Regex.Match(Symbol, @"[а-яА-Я]|[a-zA-Z]").Success)
+            {
+                e.Handled = true;
+            }
         }
     }
 }
