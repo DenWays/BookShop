@@ -63,9 +63,39 @@ namespace BookShopBD.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap bookGray {
+            get {
+                object obj = ResourceManager.GetObject("bookGray", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap bookWhite {
             get {
                 object obj = ResourceManager.GetObject("bookWhite", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap closeImg {
+            get {
+                object obj = ResourceManager.GetObject("closeImg", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap crossImg {
+            get {
+                object obj = ResourceManager.GetObject("crossImg", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

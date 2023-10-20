@@ -16,7 +16,7 @@ namespace BookShopBD
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormAuthorizathion());
+            Application.Run(new FormAuthorization());
         }
     }
 }
