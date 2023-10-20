@@ -120,6 +120,18 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UCCart.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCCart.Designer.cs">
+      <DependentUpon>UCCart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCCatalog.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCCatalog.Designer.cs">
+      <DependentUpon>UCCatalog.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="FormCreateAccount.resx">
       <DependentUpon>FormCreateAccount.cs</DependentUpon>
     </EmbeddedResource>
@@ -139,6 +151,12 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="UCCart.resx">
+      <DependentUpon>UCCart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCCatalog.resx">
+      <DependentUpon>UCCatalog.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -164,6 +182,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\closeImg.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\catalog.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\catalogBtn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cartBtn.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
