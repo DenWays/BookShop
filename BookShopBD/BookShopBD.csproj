@@ -98,7 +98,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConnectionDB.cs" />
+    <Compile Include="Authorization.cs" />
+    <Compile Include="DBConnection.cs" />
     <Compile Include="FormAuthorizathion.cs">
       <SubType>Form</SubType>
     </Compile>

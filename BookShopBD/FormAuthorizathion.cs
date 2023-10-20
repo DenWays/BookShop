@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using MySqlX.XDevAPI.Common;
+using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 
@@ -9,6 +10,7 @@ namespace BookShopBD
         public FormAuthorizathion()
         {
             InitializeComponent();
+            passwordTB.UseSystemPasswordChar = true;
         }
 
         private void panelAuthorization_Paint(object sender, PaintEventArgs e)
@@ -24,7 +26,7 @@ namespace BookShopBD
 
         private void createAccountLabel_MouseEnter(object sender, System.EventArgs e)
         {
-            createAccountLabel.ForeColor = Color.Blue;         
+            createAccountLabel.ForeColor = Color.Blue;
         }
 
         private void createAccountLabel_MouseLeave(object sender, System.EventArgs e)

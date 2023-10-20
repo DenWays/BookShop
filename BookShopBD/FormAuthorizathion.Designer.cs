@@ -38,8 +38,10 @@
             this.authorizationButton = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panelAuthorization = new System.Windows.Forms.Panel();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panelAuthorization.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // authorizationLabel
@@ -138,6 +140,7 @@
             // 
             // panelAuthorization
             // 
+            this.panelAuthorization.Controls.Add(this.pictureBox2);
             this.panelAuthorization.Controls.Add(this.pictureBox1);
             this.panelAuthorization.Controls.Add(this.authorizationButton);
             this.panelAuthorization.Controls.Add(this.createAccountLabel);
@@ -152,6 +155,14 @@
             this.panelAuthorization.Size = new System.Drawing.Size(384, 361);
             this.panelAuthorization.TabIndex = 0;
             this.panelAuthorization.Paint += new System.Windows.Forms.PaintEventHandler(this.panelAuthorization_Paint);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Location = new System.Drawing.Point(35, 40);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(150, 180);
+            this.pictureBox2.TabIndex = 8;
+            this.pictureBox2.TabStop = false;
             // 
             // FormAuthorizathion
             // 
@@ -169,6 +180,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panelAuthorization.ResumeLayout(false);
             this.panelAuthorization.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -184,6 +196,7 @@
         private System.Windows.Forms.Button authorizationButton;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panelAuthorization;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }
 
