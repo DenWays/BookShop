@@ -32,13 +32,10 @@
             this.panelTools = new System.Windows.Forms.Panel();
             this.closeButton = new System.Windows.Forms.Button();
             this.nameLabel = new System.Windows.Forms.Label();
-            this.icon = new System.Windows.Forms.PictureBox();
             this.maximazeButton = new System.Windows.Forms.Button();
             this.minimizedButton = new System.Windows.Forms.Button();
             this.panelMenu = new System.Windows.Forms.Panel();
-            this.cart = new System.Windows.Forms.Button();
             this.panelChoise = new System.Windows.Forms.Panel();
-            this.catalog = new System.Windows.Forms.Button();
             this.panelInfo = new System.Windows.Forms.Panel();
             this.exitButton = new System.Windows.Forms.Button();
             this.lastNLabel = new System.Windows.Forms.Label();
@@ -46,9 +43,18 @@
             this.middleNLabel = new System.Windows.Forms.Label();
             this.roleLabel = new System.Windows.Forms.Label();
             this.panelInfoUser = new System.Windows.Forms.Panel();
+            this.history = new System.Windows.Forms.Button();
+            this.cart = new System.Windows.Forms.Button();
+            this.catalog = new System.Windows.Forms.Button();
+            this.icon = new System.Windows.Forms.PictureBox();
+            this.border = new System.Windows.Forms.Panel();
+            this.tabPanel = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.panelTools.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.icon)).BeginInit();
             this.panelMenu.SuspendLayout();
+            this.panelInfoUser.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.icon)).BeginInit();
+            this.tabPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelTools
@@ -95,16 +101,6 @@
             this.nameLabel.TabIndex = 2;
             this.nameLabel.Text = "BookShop";
             // 
-            // icon
-            // 
-            this.icon.Image = global::BookShopBD.Properties.Resources.bookWhite;
-            this.icon.Location = new System.Drawing.Point(3, 0);
-            this.icon.Name = "icon";
-            this.icon.Size = new System.Drawing.Size(32, 30);
-            this.icon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.icon.TabIndex = 1;
-            this.icon.TabStop = false;
-            // 
             // maximazeButton
             // 
             this.maximazeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -140,64 +136,22 @@
             // panelMenu
             // 
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
-            this.panelMenu.Controls.Add(this.roleLabel);
-            this.panelMenu.Controls.Add(this.middleNLabel);
-            this.panelMenu.Controls.Add(this.firstNLabel);
-            this.panelMenu.Controls.Add(this.lastNLabel);
-            this.panelMenu.Controls.Add(this.exitButton);
-            this.panelMenu.Controls.Add(this.cart);
-            this.panelMenu.Controls.Add(this.panelChoise);
-            this.panelMenu.Controls.Add(this.catalog);
             this.panelMenu.Controls.Add(this.panelInfoUser);
+            this.panelMenu.Controls.Add(this.border);
+            this.panelMenu.Controls.Add(this.tabPanel);
             this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelMenu.Location = new System.Drawing.Point(0, 30);
             this.panelMenu.Name = "panelMenu";
             this.panelMenu.Size = new System.Drawing.Size(158, 570);
             this.panelMenu.TabIndex = 3;
             // 
-            // cart
-            // 
-            this.cart.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
-            this.cart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cart.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.cart.ForeColor = System.Drawing.Color.White;
-            this.cart.Image = global::BookShopBD.Properties.Resources.cartBtn;
-            this.cart.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.cart.Location = new System.Drawing.Point(12, 160);
-            this.cart.Name = "cart";
-            this.cart.Size = new System.Drawing.Size(146, 50);
-            this.cart.TabIndex = 2;
-            this.cart.Text = "Корзина";
-            this.cart.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.cart.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.cart.UseVisualStyleBackColor = true;
-            this.cart.Click += new System.EventHandler(this.cart_Click);
-            // 
             // panelChoise
             // 
             this.panelChoise.BackColor = System.Drawing.Color.White;
-            this.panelChoise.Location = new System.Drawing.Point(0, 104);
+            this.panelChoise.Location = new System.Drawing.Point(0, 4);
             this.panelChoise.Name = "panelChoise";
             this.panelChoise.Size = new System.Drawing.Size(12, 50);
             this.panelChoise.TabIndex = 1;
-            // 
-            // catalog
-            // 
-            this.catalog.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
-            this.catalog.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.catalog.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.catalog.ForeColor = System.Drawing.Color.White;
-            this.catalog.Image = global::BookShopBD.Properties.Resources.catalogBtn;
-            this.catalog.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.catalog.Location = new System.Drawing.Point(12, 104);
-            this.catalog.Name = "catalog";
-            this.catalog.Size = new System.Drawing.Size(146, 50);
-            this.catalog.TabIndex = 0;
-            this.catalog.Text = "Каталог";
-            this.catalog.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.catalog.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.catalog.UseVisualStyleBackColor = true;
-            this.catalog.Click += new System.EventHandler(this.catalog_Click);
             // 
             // panelInfo
             // 
@@ -209,13 +163,13 @@
             // 
             // exitButton
             // 
-            this.exitButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.exitButton.BackColor = System.Drawing.Color.White;
+            this.exitButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.exitButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.exitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.exitButton.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.exitButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
-            this.exitButton.Location = new System.Drawing.Point(4, 516);
+            this.exitButton.Location = new System.Drawing.Point(5, 178);
             this.exitButton.Name = "exitButton";
             this.exitButton.Size = new System.Drawing.Size(150, 50);
             this.exitButton.TabIndex = 3;
@@ -269,10 +223,112 @@
             // 
             // panelInfoUser
             // 
+            this.panelInfoUser.Controls.Add(this.lastNLabel);
+            this.panelInfoUser.Controls.Add(this.roleLabel);
+            this.panelInfoUser.Controls.Add(this.firstNLabel);
+            this.panelInfoUser.Controls.Add(this.middleNLabel);
             this.panelInfoUser.Location = new System.Drawing.Point(0, 0);
             this.panelInfoUser.Name = "panelInfoUser";
-            this.panelInfoUser.Size = new System.Drawing.Size(158, 104);
+            this.panelInfoUser.Size = new System.Drawing.Size(158, 106);
             this.panelInfoUser.TabIndex = 8;
+            // 
+            // history
+            // 
+            this.history.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
+            this.history.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.history.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.history.ForeColor = System.Drawing.Color.White;
+            this.history.Image = global::BookShopBD.Properties.Resources.historyBtn;
+            this.history.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.history.Location = new System.Drawing.Point(12, 104);
+            this.history.Name = "history";
+            this.history.Size = new System.Drawing.Size(146, 50);
+            this.history.TabIndex = 9;
+            this.history.Text = "Заказы";
+            this.history.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.history.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.history.UseVisualStyleBackColor = true;
+            this.history.Click += new System.EventHandler(this.history_Click);
+            // 
+            // cart
+            // 
+            this.cart.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
+            this.cart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cart.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cart.ForeColor = System.Drawing.Color.White;
+            this.cart.Image = global::BookShopBD.Properties.Resources.cartBtn;
+            this.cart.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.cart.Location = new System.Drawing.Point(12, 54);
+            this.cart.Name = "cart";
+            this.cart.Size = new System.Drawing.Size(146, 50);
+            this.cart.TabIndex = 2;
+            this.cart.Text = "Корзина";
+            this.cart.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.cart.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.cart.UseVisualStyleBackColor = true;
+            this.cart.Click += new System.EventHandler(this.cart_Click);
+            // 
+            // catalog
+            // 
+            this.catalog.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
+            this.catalog.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.catalog.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.catalog.ForeColor = System.Drawing.Color.White;
+            this.catalog.Image = global::BookShopBD.Properties.Resources.catalogBtn;
+            this.catalog.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.catalog.Location = new System.Drawing.Point(12, 4);
+            this.catalog.Name = "catalog";
+            this.catalog.Size = new System.Drawing.Size(146, 50);
+            this.catalog.TabIndex = 0;
+            this.catalog.Text = "Каталог";
+            this.catalog.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.catalog.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.catalog.UseVisualStyleBackColor = true;
+            this.catalog.Click += new System.EventHandler(this.catalog_Click);
+            // 
+            // icon
+            // 
+            this.icon.Image = global::BookShopBD.Properties.Resources.bookWhite;
+            this.icon.Location = new System.Drawing.Point(3, 0);
+            this.icon.Name = "icon";
+            this.icon.Size = new System.Drawing.Size(32, 30);
+            this.icon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.icon.TabIndex = 1;
+            this.icon.TabStop = false;
+            // 
+            // border
+            // 
+            this.border.BackColor = System.Drawing.Color.White;
+            this.border.Location = new System.Drawing.Point(0, 0);
+            this.border.Name = "border";
+            this.border.Size = new System.Drawing.Size(158, 112);
+            this.border.TabIndex = 10;
+            // 
+            // tabPanel
+            // 
+            this.tabPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabPanel.Controls.Add(this.button1);
+            this.tabPanel.Controls.Add(this.exitButton);
+            this.tabPanel.Controls.Add(this.history);
+            this.tabPanel.Controls.Add(this.panelChoise);
+            this.tabPanel.Controls.Add(this.catalog);
+            this.tabPanel.Controls.Add(this.cart);
+            this.tabPanel.Location = new System.Drawing.Point(0, 116);
+            this.tabPanel.Name = "tabPanel";
+            this.tabPanel.Size = new System.Drawing.Size(158, 454);
+            this.tabPanel.TabIndex = 11;
+            // 
+            // button1
+            // 
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.button1.Location = new System.Drawing.Point(33, 419);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 10;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // FormCustomer
             // 
@@ -292,9 +348,11 @@
             this.Load += new System.EventHandler(this.FormCustomer_Load);
             this.panelTools.ResumeLayout(false);
             this.panelTools.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.icon)).EndInit();
             this.panelMenu.ResumeLayout(false);
-            this.panelMenu.PerformLayout();
+            this.panelInfoUser.ResumeLayout(false);
+            this.panelInfoUser.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.icon)).EndInit();
+            this.tabPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -318,5 +376,9 @@
         private System.Windows.Forms.Label firstNLabel;
         private System.Windows.Forms.Label lastNLabel;
         private System.Windows.Forms.Panel panelInfoUser;
+        private System.Windows.Forms.Button history;
+        private System.Windows.Forms.Panel border;
+        private System.Windows.Forms.Panel tabPanel;
+        private System.Windows.Forms.Button button1;
     }
 }

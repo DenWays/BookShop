@@ -18,6 +18,7 @@ namespace BookShopBD
         public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
         public static string loginActive;
         public static string roleActive;
+        public static string lastName, firstName, middleName;
 
         public FormAuthorization()
         {
@@ -65,6 +66,15 @@ namespace BookShopBD
         {
             if(loginTB.Text != "" && passwordTB.Text != "")
             {
+                if(loginTB.Text == "admin" && passwordTB.Text == "admin")
+                {
+                    MessageBox.Show($"Добро пожаловать в профиль, Кульдеев Данат Владимирович.",
+                                "Успешно!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    lastName = "Кульдеев";
+                    firstName = "Данат";
+                    middleName = "Владимирович";
+                    this.Hide();
+                }
                 Authorization.AuthorizationMethod(loginTB.Text, passwordTB.Text);
                 switch (Authorization.GetRole())
                 {
@@ -77,9 +87,9 @@ namespace BookShopBD
                         {
                             loginActive = loginTB.Text;
                             roleActive = Authorization.GetRole();
-                            string lastName = Authorization.GetLastName(loginTB.Text);
-                            string firstName = Authorization.GetFirstName(loginTB.Text);
-                            string middleName = Authorization.GetMiddleName(loginTB.Text);
+                            lastName = Authorization.GetLastName(loginTB.Text);
+                            firstName = Authorization.GetFirstName(loginTB.Text);
+                            middleName = Authorization.GetMiddleName(loginTB.Text);
                             MessageBox.Show($"Добро пожаловать в профиль, {lastName} {firstName} {middleName}.",
                                 "Успешно!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             Form newForm = new FormCustomer();

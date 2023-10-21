@@ -121,6 +121,9 @@
   <data name="crossImg" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\crossImg.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="cartBtn" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cartBtn.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="closeImg" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\closeImg.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -136,7 +139,7 @@
   <data name="catalog" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\catalog.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="cartBtn" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\cartBtn.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="historyBtn" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\historyBtn.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

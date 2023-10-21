@@ -97,6 +97,12 @@ namespace BookShopBD
             lastNLabel.Text = FormAuthorization.lastName;
             firstNLabel.Text = FormAuthorization.firstName;
             middleNLabel.Text = FormAuthorization.middleName;
+            roleLabel.Text = FormAuthorization.roleActive;
+        }
+
+        private void history_Click(object sender, EventArgs e)
+        {
+            panelChoise.Location = new Point(0, history.Location.Y);
         }
     }
 }

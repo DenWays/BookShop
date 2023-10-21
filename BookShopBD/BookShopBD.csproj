@@ -193,5 +193,8 @@
   <ItemGroup>
     <None Include="Resources\cartBtn.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\historyBtn.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
