@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormCreateAccount));
             this.panelCA = new System.Windows.Forms.Panel();
             this.phoneTB = new System.Windows.Forms.MaskedTextBox();
+            this.bookPB = new System.Windows.Forms.PictureBox();
             this.createAcLabel = new System.Windows.Forms.Label();
             this.mailLabel = new System.Windows.Forms.Label();
             this.typeAcCB = new System.Windows.Forms.ComboBox();
@@ -57,11 +58,11 @@
             this.closeButton = new System.Windows.Forms.Button();
             this.minimizedButton = new System.Windows.Forms.Button();
             this.nameLabel = new System.Windows.Forms.Label();
-            this.bookPB = new System.Windows.Forms.PictureBox();
             this.icon = new System.Windows.Forms.PictureBox();
+            this.border = new System.Windows.Forms.Panel();
             this.panelCA.SuspendLayout();
-            this.panelTools.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bookPB)).BeginInit();
+            this.panelTools.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.icon)).BeginInit();
             this.SuspendLayout();
             // 
@@ -92,6 +93,7 @@
             this.panelCA.Controls.Add(this.retypePassTB);
             this.panelCA.Controls.Add(this.passwordTB);
             this.panelCA.Controls.Add(this.loginTB);
+            this.panelCA.Controls.Add(this.border);
             this.panelCA.Location = new System.Drawing.Point(0, 30);
             this.panelCA.Name = "panelCA";
             this.panelCA.Size = new System.Drawing.Size(600, 370);
@@ -106,6 +108,17 @@
             this.phoneTB.Name = "phoneTB";
             this.phoneTB.Size = new System.Drawing.Size(180, 30);
             this.phoneTB.TabIndex = 24;
+            // 
+            // bookPB
+            // 
+            this.bookPB.BackColor = System.Drawing.Color.Transparent;
+            this.bookPB.Image = global::BookShopBD.Properties.Resources.bookGray;
+            this.bookPB.Location = new System.Drawing.Point(260, 6);
+            this.bookPB.Name = "bookPB";
+            this.bookPB.Size = new System.Drawing.Size(80, 50);
+            this.bookPB.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.bookPB.TabIndex = 23;
+            this.bookPB.TabStop = false;
             // 
             // createAcLabel
             // 
@@ -135,6 +148,8 @@
             // typeAcCB
             // 
             this.typeAcCB.BackColor = System.Drawing.Color.White;
+            this.typeAcCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.typeAcCB.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.typeAcCB.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.typeAcCB.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
             this.typeAcCB.FormattingEnabled = true;
@@ -197,6 +212,7 @@
             this.mailTB.Name = "mailTB";
             this.mailTB.Size = new System.Drawing.Size(180, 30);
             this.mailTB.TabIndex = 16;
+            this.mailTB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.mailTB_KeyPress);
             // 
             // phoneLabel
             // 
@@ -346,6 +362,7 @@
             this.retypePassTB.Name = "retypePassTB";
             this.retypePassTB.Size = new System.Drawing.Size(180, 30);
             this.retypePassTB.TabIndex = 2;
+            this.retypePassTB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.retypePassTB_KeyPress);
             // 
             // passwordTB
             // 
@@ -356,6 +373,7 @@
             this.passwordTB.Name = "passwordTB";
             this.passwordTB.Size = new System.Drawing.Size(180, 30);
             this.passwordTB.TabIndex = 1;
+            this.passwordTB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.passwordTB_KeyPress);
             // 
             // loginTB
             // 
@@ -366,6 +384,7 @@
             this.loginTB.Name = "loginTB";
             this.loginTB.Size = new System.Drawing.Size(180, 30);
             this.loginTB.TabIndex = 0;
+            this.loginTB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.loginTB_KeyPress);
             // 
             // panelTools
             // 
@@ -422,17 +441,6 @@
             this.nameLabel.TabIndex = 2;
             this.nameLabel.Text = "BookShop";
             // 
-            // bookPB
-            // 
-            this.bookPB.BackColor = System.Drawing.Color.Transparent;
-            this.bookPB.Image = global::BookShopBD.Properties.Resources.bookGray;
-            this.bookPB.Location = new System.Drawing.Point(260, 6);
-            this.bookPB.Name = "bookPB";
-            this.bookPB.Size = new System.Drawing.Size(80, 50);
-            this.bookPB.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.bookPB.TabIndex = 23;
-            this.bookPB.TabStop = false;
-            // 
             // icon
             // 
             this.icon.Image = global::BookShopBD.Properties.Resources.bookWhite;
@@ -442,6 +450,14 @@
             this.icon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.icon.TabIndex = 1;
             this.icon.TabStop = false;
+            // 
+            // border
+            // 
+            this.border.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
+            this.border.Location = new System.Drawing.Point(209, 324);
+            this.border.Name = "border";
+            this.border.Size = new System.Drawing.Size(182, 33);
+            this.border.TabIndex = 25;
             // 
             // FormCreateAccount
             // 
@@ -459,9 +475,9 @@
             this.Text = "Book Shop";
             this.panelCA.ResumeLayout(false);
             this.panelCA.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bookPB)).EndInit();
             this.panelTools.ResumeLayout(false);
             this.panelTools.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bookPB)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.icon)).EndInit();
             this.ResumeLayout(false);
 
@@ -498,6 +514,7 @@
         private System.Windows.Forms.PictureBox bookPB;
         private System.Windows.Forms.Label createAcLabel;
         private System.Windows.Forms.MaskedTextBox phoneTB;
+        private System.Windows.Forms.Panel border;
     }
 }
 

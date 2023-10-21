@@ -21,6 +21,7 @@ namespace BookShopBD
         public FormCreateAccount()
         {
             InitializeComponent();
+            DBConnection.ConnectionDB();
             passwordTB.UseSystemPasswordChar = true;
             retypePassTB.UseSystemPasswordChar = true;
         }
@@ -60,11 +61,14 @@ namespace BookShopBD
         {
             if(loginTB.Text != null && passwordTB.Text != null && retypePassTB.Text != null && firstNTB.Text != null &&
                 lastNTB.Text != null && middleNTB.Text != null && addressTB.Text != null && phoneTB.Text != null &&
-                mailTB.Text != null)
+                mailTB.Text != null && typeAcCB.Text != null)
             {
                 if(passwordTB.Text != retypePassTB.Text) { MessageBox.Show("Пароли должны совпадать.", "Пароли не соспадают", MessageBoxButtons.OK, MessageBoxIcon.Error); }
                 if(!IsValidEmail(mailTB.Text)) { MessageBox.Show("Почта введена неправильно.", "Ошибка ввода почты", MessageBoxButtons.OK, MessageBoxIcon.Error); }
 
+                CreateAccount.CreateAccountMethod(loginTB.Text, passwordTB.Text, firstNTB.Text, lastNTB.Text,
+                    middleNTB.Text, addressTB.Text, phoneTB.Text, mailTB.Text, typeAcCB.Text);
+                MessageBox.Show("Аккаунт успешно создан!", "Успешно", MessageBoxButtons.OK);
             }
             else
             {
@@ -76,7 +80,7 @@ namespace BookShopBD
         {
             string Symbol = e.KeyChar.ToString();
 
-            if (!Regex.Match(Symbol, @"[а-яА-Я]|[a-zA-Z]").Success)
+            if (!Regex.Match(Symbol, @"[а-яА-Я]|[a-zA-Z]").Success && Symbol[0] != 8)
             {
                 e.Handled = true;
             }
@@ -86,7 +90,7 @@ namespace BookShopBD
         {
             string Symbol = e.KeyChar.ToString();
 
-            if (!Regex.Match(Symbol, @"[а-яА-Я]|[a-zA-Z]").Success)
+            if (!Regex.Match(Symbol, @"[а-яА-Я]|[a-zA-Z]").Success && Symbol[0] != 8)
             {
                 e.Handled = true;
             }
@@ -96,7 +100,63 @@ namespace BookShopBD
         {
             string Symbol = e.KeyChar.ToString();
 
-            if (!Regex.Match(Symbol, @"[а-яА-Я]|[a-zA-Z]").Success)
+            if (!Regex.Match(Symbol, @"[а-яА-Я]|[a-zA-Z]").Success && Symbol[0] != 8)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void mailTB_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            string Symbol = e.KeyChar.ToString();
+
+            if (!Regex.Match(Symbol, @"[a-zA-Z]").Success && Symbol[0] != 8 && Symbol[0] != '@' && Symbol[0] != '.')
+            {
+                e.Handled = true;
+            }
+            else
+            {
+                return;
+            }
+        }
+
+        private void loginTB_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            string Symbol = e.KeyChar.ToString();
+
+            if (!Regex.Match(Symbol, @"[а-яА-Я]").Success)
+            {
+                return;
+            }
+            else
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void passwordTB_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            string Symbol = e.KeyChar.ToString();
+
+            if (!Regex.Match(Symbol, @"[а-яА-Я]").Success)
+            {
+                return;
+            }
+            else
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void retypePassTB_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            string Symbol = e.KeyChar.ToString();
+
+            if (!Regex.Match(Symbol, @"[а-яА-Я]").Success)
+            {
+                return;
+            }
+            else
             {
                 e.Handled = true;
             }

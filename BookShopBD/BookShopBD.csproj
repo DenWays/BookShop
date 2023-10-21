@@ -99,6 +99,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Authorization.cs" />
+    <Compile Include="CreateAccount.cs" />
     <Compile Include="DBConnection.cs" />
     <Compile Include="FormCreateAccount.cs">
       <SubType>Form</SubType>
