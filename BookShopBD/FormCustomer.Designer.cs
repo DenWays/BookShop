@@ -40,7 +40,12 @@
             this.panelChoise = new System.Windows.Forms.Panel();
             this.catalog = new System.Windows.Forms.Button();
             this.panelInfo = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.exitButton = new System.Windows.Forms.Button();
+            this.lastNLabel = new System.Windows.Forms.Label();
+            this.firstNLabel = new System.Windows.Forms.Label();
+            this.middleNLabel = new System.Windows.Forms.Label();
+            this.roleLabel = new System.Windows.Forms.Label();
+            this.panelInfoUser = new System.Windows.Forms.Panel();
             this.panelTools.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.icon)).BeginInit();
             this.panelMenu.SuspendLayout();
@@ -135,10 +140,15 @@
             // panelMenu
             // 
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
-            this.panelMenu.Controls.Add(this.button1);
+            this.panelMenu.Controls.Add(this.roleLabel);
+            this.panelMenu.Controls.Add(this.middleNLabel);
+            this.panelMenu.Controls.Add(this.firstNLabel);
+            this.panelMenu.Controls.Add(this.lastNLabel);
+            this.panelMenu.Controls.Add(this.exitButton);
             this.panelMenu.Controls.Add(this.cart);
             this.panelMenu.Controls.Add(this.panelChoise);
             this.panelMenu.Controls.Add(this.catalog);
+            this.panelMenu.Controls.Add(this.panelInfoUser);
             this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelMenu.Location = new System.Drawing.Point(0, 30);
             this.panelMenu.Name = "panelMenu";
@@ -153,7 +163,7 @@
             this.cart.ForeColor = System.Drawing.Color.White;
             this.cart.Image = global::BookShopBD.Properties.Resources.cartBtn;
             this.cart.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.cart.Location = new System.Drawing.Point(12, 167);
+            this.cart.Location = new System.Drawing.Point(12, 160);
             this.cart.Name = "cart";
             this.cart.Size = new System.Drawing.Size(146, 50);
             this.cart.TabIndex = 2;
@@ -166,7 +176,7 @@
             // panelChoise
             // 
             this.panelChoise.BackColor = System.Drawing.Color.White;
-            this.panelChoise.Location = new System.Drawing.Point(0, 111);
+            this.panelChoise.Location = new System.Drawing.Point(0, 104);
             this.panelChoise.Name = "panelChoise";
             this.panelChoise.Size = new System.Drawing.Size(12, 50);
             this.panelChoise.TabIndex = 1;
@@ -179,7 +189,7 @@
             this.catalog.ForeColor = System.Drawing.Color.White;
             this.catalog.Image = global::BookShopBD.Properties.Resources.catalogBtn;
             this.catalog.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.catalog.Location = new System.Drawing.Point(12, 111);
+            this.catalog.Location = new System.Drawing.Point(12, 104);
             this.catalog.Name = "catalog";
             this.catalog.Size = new System.Drawing.Size(146, 50);
             this.catalog.TabIndex = 0;
@@ -197,14 +207,72 @@
             this.panelInfo.Size = new System.Drawing.Size(842, 570);
             this.panelInfo.TabIndex = 4;
             // 
-            // button1
+            // exitButton
             // 
-            this.button1.Location = new System.Drawing.Point(44, 508);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.exitButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.exitButton.BackColor = System.Drawing.Color.White;
+            this.exitButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.exitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.exitButton.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.exitButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
+            this.exitButton.Location = new System.Drawing.Point(4, 516);
+            this.exitButton.Name = "exitButton";
+            this.exitButton.Size = new System.Drawing.Size(150, 50);
+            this.exitButton.TabIndex = 3;
+            this.exitButton.Text = "Выйти";
+            this.exitButton.UseVisualStyleBackColor = false;
+            this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
+            // 
+            // lastNLabel
+            // 
+            this.lastNLabel.AutoSize = true;
+            this.lastNLabel.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lastNLabel.ForeColor = System.Drawing.Color.White;
+            this.lastNLabel.Location = new System.Drawing.Point(0, 0);
+            this.lastNLabel.Name = "lastNLabel";
+            this.lastNLabel.Size = new System.Drawing.Size(94, 26);
+            this.lastNLabel.TabIndex = 4;
+            this.lastNLabel.Text = "Фамилия";
+            // 
+            // firstNLabel
+            // 
+            this.firstNLabel.AutoSize = true;
+            this.firstNLabel.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.firstNLabel.ForeColor = System.Drawing.Color.White;
+            this.firstNLabel.Location = new System.Drawing.Point(0, 26);
+            this.firstNLabel.Name = "firstNLabel";
+            this.firstNLabel.Size = new System.Drawing.Size(50, 26);
+            this.firstNLabel.TabIndex = 5;
+            this.firstNLabel.Text = "Имя";
+            // 
+            // middleNLabel
+            // 
+            this.middleNLabel.AutoSize = true;
+            this.middleNLabel.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.middleNLabel.ForeColor = System.Drawing.Color.White;
+            this.middleNLabel.Location = new System.Drawing.Point(0, 52);
+            this.middleNLabel.Name = "middleNLabel";
+            this.middleNLabel.Size = new System.Drawing.Size(96, 26);
+            this.middleNLabel.TabIndex = 6;
+            this.middleNLabel.Text = "Отчество";
+            // 
+            // roleLabel
+            // 
+            this.roleLabel.AutoSize = true;
+            this.roleLabel.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.roleLabel.ForeColor = System.Drawing.Color.White;
+            this.roleLabel.Location = new System.Drawing.Point(0, 78);
+            this.roleLabel.Name = "roleLabel";
+            this.roleLabel.Size = new System.Drawing.Size(54, 26);
+            this.roleLabel.TabIndex = 7;
+            this.roleLabel.Text = "Роль";
+            // 
+            // panelInfoUser
+            // 
+            this.panelInfoUser.Location = new System.Drawing.Point(0, 0);
+            this.panelInfoUser.Name = "panelInfoUser";
+            this.panelInfoUser.Size = new System.Drawing.Size(158, 104);
+            this.panelInfoUser.TabIndex = 8;
             // 
             // FormCustomer
             // 
@@ -221,10 +289,12 @@
             this.Name = "FormCustomer";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormCustomer";
+            this.Load += new System.EventHandler(this.FormCustomer_Load);
             this.panelTools.ResumeLayout(false);
             this.panelTools.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.icon)).EndInit();
             this.panelMenu.ResumeLayout(false);
+            this.panelMenu.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -242,6 +312,11 @@
         private System.Windows.Forms.Panel panelChoise;
         private System.Windows.Forms.Button cart;
         private System.Windows.Forms.Panel panelInfo;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button exitButton;
+        private System.Windows.Forms.Label roleLabel;
+        private System.Windows.Forms.Label middleNLabel;
+        private System.Windows.Forms.Label firstNLabel;
+        private System.Windows.Forms.Label lastNLabel;
+        private System.Windows.Forms.Panel panelInfoUser;
     }
 }

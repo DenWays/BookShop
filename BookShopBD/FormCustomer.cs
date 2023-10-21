@@ -84,5 +84,19 @@ namespace BookShopBD
                 SendMessage(Handle, WM_NCLBUTTONDOWN, HTCAPTION, 0);
             }
         }
+
+        private void exitButton_Click(object sender, EventArgs e)
+        {
+            Form newForm = new FormAuthorization();
+            this.Hide();
+            newForm.Show();
+        }
+
+        private void FormCustomer_Load(object sender, EventArgs e)
+        {
+            lastNLabel.Text = FormAuthorization.lastName;
+            firstNLabel.Text = FormAuthorization.firstName;
+            middleNLabel.Text = FormAuthorization.middleName;
+        }
     }
 }
