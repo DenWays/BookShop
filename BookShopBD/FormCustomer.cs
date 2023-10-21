@@ -101,8 +101,10 @@ namespace BookShopBD
         }
 
         private void history_Click(object sender, EventArgs e)
-        {
+        {          
             panelChoise.Location = new Point(0, history.Location.Y);
+            UCHistory uCHistory = new UCHistory();
+            AddControlsToPanel(uCHistory);
         }
     }
 }
