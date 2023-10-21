@@ -32,17 +32,18 @@
             this.panelTools = new System.Windows.Forms.Panel();
             this.closeButton = new System.Windows.Forms.Button();
             this.nameLabel = new System.Windows.Forms.Label();
+            this.icon = new System.Windows.Forms.PictureBox();
             this.maximazeButton = new System.Windows.Forms.Button();
             this.minimizedButton = new System.Windows.Forms.Button();
             this.panelMenu = new System.Windows.Forms.Panel();
-            this.panelChoise = new System.Windows.Forms.Panel();
-            this.panelInfo = new System.Windows.Forms.Panel();
             this.cart = new System.Windows.Forms.Button();
+            this.panelChoise = new System.Windows.Forms.Panel();
             this.catalog = new System.Windows.Forms.Button();
-            this.icon = new System.Windows.Forms.PictureBox();
+            this.panelInfo = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.panelTools.SuspendLayout();
-            this.panelMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.icon)).BeginInit();
+            this.panelMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelTools
@@ -89,6 +90,16 @@
             this.nameLabel.TabIndex = 2;
             this.nameLabel.Text = "BookShop";
             // 
+            // icon
+            // 
+            this.icon.Image = global::BookShopBD.Properties.Resources.bookWhite;
+            this.icon.Location = new System.Drawing.Point(3, 0);
+            this.icon.Name = "icon";
+            this.icon.Size = new System.Drawing.Size(32, 30);
+            this.icon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.icon.TabIndex = 1;
+            this.icon.TabStop = false;
+            // 
             // maximazeButton
             // 
             this.maximazeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -124,6 +135,7 @@
             // panelMenu
             // 
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
+            this.panelMenu.Controls.Add(this.button1);
             this.panelMenu.Controls.Add(this.cart);
             this.panelMenu.Controls.Add(this.panelChoise);
             this.panelMenu.Controls.Add(this.catalog);
@@ -132,22 +144,6 @@
             this.panelMenu.Name = "panelMenu";
             this.panelMenu.Size = new System.Drawing.Size(158, 570);
             this.panelMenu.TabIndex = 3;
-            // 
-            // panelChoise
-            // 
-            this.panelChoise.BackColor = System.Drawing.Color.White;
-            this.panelChoise.Location = new System.Drawing.Point(0, 111);
-            this.panelChoise.Name = "panelChoise";
-            this.panelChoise.Size = new System.Drawing.Size(12, 50);
-            this.panelChoise.TabIndex = 1;
-            // 
-            // panelInfo
-            // 
-            this.panelInfo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelInfo.Location = new System.Drawing.Point(158, 30);
-            this.panelInfo.Name = "panelInfo";
-            this.panelInfo.Size = new System.Drawing.Size(842, 570);
-            this.panelInfo.TabIndex = 4;
             // 
             // cart
             // 
@@ -167,6 +163,14 @@
             this.cart.UseVisualStyleBackColor = true;
             this.cart.Click += new System.EventHandler(this.cart_Click);
             // 
+            // panelChoise
+            // 
+            this.panelChoise.BackColor = System.Drawing.Color.White;
+            this.panelChoise.Location = new System.Drawing.Point(0, 111);
+            this.panelChoise.Name = "panelChoise";
+            this.panelChoise.Size = new System.Drawing.Size(12, 50);
+            this.panelChoise.TabIndex = 1;
+            // 
             // catalog
             // 
             this.catalog.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
@@ -185,15 +189,22 @@
             this.catalog.UseVisualStyleBackColor = true;
             this.catalog.Click += new System.EventHandler(this.catalog_Click);
             // 
-            // icon
+            // panelInfo
             // 
-            this.icon.Image = global::BookShopBD.Properties.Resources.bookWhite;
-            this.icon.Location = new System.Drawing.Point(3, 0);
-            this.icon.Name = "icon";
-            this.icon.Size = new System.Drawing.Size(32, 30);
-            this.icon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.icon.TabIndex = 1;
-            this.icon.TabStop = false;
+            this.panelInfo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelInfo.Location = new System.Drawing.Point(158, 30);
+            this.panelInfo.Name = "panelInfo";
+            this.panelInfo.Size = new System.Drawing.Size(842, 570);
+            this.panelInfo.TabIndex = 4;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(44, 508);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 3;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // FormCustomer
             // 
@@ -212,8 +223,8 @@
             this.Text = "FormCustomer";
             this.panelTools.ResumeLayout(false);
             this.panelTools.PerformLayout();
-            this.panelMenu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.icon)).EndInit();
+            this.panelMenu.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -231,5 +242,6 @@
         private System.Windows.Forms.Panel panelChoise;
         private System.Windows.Forms.Button cart;
         private System.Windows.Forms.Panel panelInfo;
+        private System.Windows.Forms.Button button1;
     }
 }

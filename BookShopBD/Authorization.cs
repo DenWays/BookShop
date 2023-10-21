@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Data;
+using System.Security.Principal;
 using System.Windows.Forms;
 
 namespace BookShopBD
@@ -9,11 +11,11 @@ namespace BookShopBD
 
         static public void AuthorizationMethod(string login, string password)
         {
-			try
-			{
-				DBConnection.msCommand.CommandText = $"SELECT Role_name FROM role JOIN account USING(id_role) " +
-					$"WHERE Login = '{login}' AND Password = '{password}';";
-				object result = DBConnection.msCommand.ExecuteScalar();
+            try
+            {
+                DBConnection.msCommand.CommandText = $"SELECT Role_name FROM role JOIN account USING(id_role) " +
+                    $"WHERE Login = '{login}' AND Password = MD5('{password}')";
+                object result = DBConnection.msCommand.ExecuteScalar();
 				if (result != null) 
 				{
 					role = result.ToString();

@@ -1,8 +1,9 @@
 ﻿using MySqlX.XDevAPI.Common;
 using System;
 using System.Drawing;
-using System.Drawing.Drawing2D;
+using System.Security.Cryptography;
 using System.Runtime.InteropServices;
+using System.Text;
 using System.Windows.Forms;
 
 namespace BookShopBD
@@ -21,6 +22,7 @@ namespace BookShopBD
         public FormAuthorization()
         {
             InitializeComponent();
+            DBConnection.ConnectionDB();
             passwordTB.UseSystemPasswordChar = true;
         }
 
@@ -59,9 +61,9 @@ namespace BookShopBD
             newForm.ShowDialog();
         }
 
-        private void authorizationButton_Click(object sender, EventArgs e)
+    private void authorizationButton_Click(object sender, EventArgs e)
         {
-            if(loginTB != null && passwordTB != null)
+            if(loginTB.Text != "" && passwordTB.Text != "")
             {
                 Authorization.AuthorizationMethod(loginTB.Text, passwordTB.Text);
                 switch (Authorization.GetRole())
@@ -80,7 +82,9 @@ namespace BookShopBD
                             string middleName = Authorization.GetMiddleName(loginTB.Text);
                             MessageBox.Show($"Добро пожаловать в профиль, {lastName} {firstName} {middleName}.",
                                 "Успешно!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            Form newForm = new FormCustomer();
                             this.Hide();
+                            newForm.Show();
                             break;
                         }
                 }
