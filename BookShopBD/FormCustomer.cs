@@ -20,6 +20,7 @@ namespace BookShopBD
         [DllImport("User32.dll")]
         public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
         bool fullScreenFlag = false;
+        public static int id_account;
         public FormCustomer()
         {
             InitializeComponent();
@@ -98,6 +99,7 @@ namespace BookShopBD
             firstNLabel.Text = FormAuthorization.firstName;
             middleNLabel.Text = FormAuthorization.middleName;
             roleLabel.Text = FormAuthorization.roleActive;
+            id_account = Authorization.GetAccountID();
         }
 
         private void history_Click(object sender, EventArgs e)

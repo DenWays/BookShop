@@ -8,6 +8,7 @@ namespace BookShopBD
     internal class Authorization
     {
         static string role, firstName, lastName, middleName;
+        static int id_account;
 
         static public void AuthorizationMethod(string login, string password)
         {
@@ -16,9 +17,12 @@ namespace BookShopBD
                 DBConnection.msCommand.CommandText = $"SELECT Role_name FROM role JOIN account USING(id_role) " +
                     $"WHERE Login = '{login}' AND Password = MD5('{password}')";
                 object result = DBConnection.msCommand.ExecuteScalar();
-				if (result != null) 
+                DBConnection.msCommand.CommandText = $"SELECT id_account FROM account WHERE Login = '{login}' AND Password = MD5('{password}')";
+                object resID = DBConnection.msCommand.ExecuteScalar();
+                if (result != null) 
 				{
 					role = result.ToString();
+                    id_account = (int)resID;
 				}
 				else
 				{
@@ -131,6 +135,11 @@ namespace BookShopBD
         public static string GetRole()
         {
             return role;
+        }
+
+        public static int GetAccountID()
+        {
+            return id_account;
         }
     }
 }
