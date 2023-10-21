@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
 
 namespace BookShopBD
 {
@@ -9,14 +10,12 @@ namespace BookShopBD
         {
             try
             {
-                DBConnection.msCommand.CommandText = $"SELECT Login FROM account WHERE Login = '{login}'";
-                if (DBConnection.msCommand.ExecuteScalar() == null)
-                {
-                    DBConnection.msCommand.CommandText = $"CALL CreateAccount('{login}', '{password}'," +
-                        $"'{typeAc}', '{firstN}', '{lastN}', '{middleN}', '{address}'," +
-                        $"'{phone}', '{mail}')";
-                    DBConnection.msCommand.ExecuteNonQuery();
-                }
+                phone = phone.Replace("+", "");
+                phone = phone.Replace("-", "");
+                DBConnection.msCommand.CommandText = $"CALL CreateAccount('{login}', '{password}'," +
+                    $"'{typeAc}', '{firstN}', '{lastN}', '{middleN}', '{address}'," +
+                    $"'{phone}', '{mail}')";
+                DBConnection.msCommand.ExecuteNonQuery();
             }
             catch (System.Exception)
             {

@@ -59,16 +59,33 @@ namespace BookShopBD
 
         private void createAcButton_Click(object sender, EventArgs e)
         {
-            if(loginTB.Text != null && passwordTB.Text != null && retypePassTB.Text != null && firstNTB.Text != null &&
-                lastNTB.Text != null && middleNTB.Text != null && addressTB.Text != null && phoneTB.Text != null &&
-                mailTB.Text != null && typeAcCB.Text != null)
+            if(loginTB.Text != "" && passwordTB.Text != "" && retypePassTB.Text != "" && firstNTB.Text != "" &&
+                lastNTB.Text != "" && middleNTB.Text != "" && addressTB.Text != "" && phoneTB.Text != "" &&
+                mailTB.Text != "" && typeAcCB.Text != "")
             {
-                if(passwordTB.Text != retypePassTB.Text) { MessageBox.Show("Пароли должны совпадать.", "Пароли не соспадают", MessageBoxButtons.OK, MessageBoxIcon.Error); }
-                if(!IsValidEmail(mailTB.Text)) { MessageBox.Show("Почта введена неправильно.", "Ошибка ввода почты", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+                if(passwordTB.Text != retypePassTB.Text) 
+                { 
+                    MessageBox.Show("Пароли должны совпадать.", "Пароли не соспадают", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                if(!IsValidEmail(mailTB.Text)) 
+                { 
+                    MessageBox.Show("Почта введена неправильно.", "Ошибка ввода почты", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
 
-                CreateAccount.CreateAccountMethod(loginTB.Text, passwordTB.Text, firstNTB.Text, lastNTB.Text,
-                    middleNTB.Text, addressTB.Text, phoneTB.Text, mailTB.Text, typeAcCB.Text);
-                MessageBox.Show("Аккаунт успешно создан!", "Успешно", MessageBoxButtons.OK);
+                DBConnection.msCommand.CommandText = $"SELECT Login FROM account WHERE Login = '{loginTB.Text}'";
+                if (DBConnection.msCommand.ExecuteScalar() == null)
+                {
+                    CreateAccount.CreateAccountMethod(loginTB.Text, passwordTB.Text, typeAcCB.Text, firstNTB.Text,
+                    lastNTB.Text, middleNTB.Text, addressTB.Text, phoneTB.Text, mailTB.Text);
+                    MessageBox.Show("Аккаунт успешно создан!", "Успешно", MessageBoxButtons.OK);
+                }
+                else
+                {
+                    MessageBox.Show("Аккаунт с таким логином уже есть.", "Логин занят", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
             }
             else
             {
