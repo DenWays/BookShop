@@ -39,8 +39,18 @@
             this.searchCB = new System.Windows.Forms.ComboBox();
             this.searchLabel = new System.Windows.Forms.Label();
             this.booksDGV = new System.Windows.Forms.DataGridView();
+            this.borderGrid = new System.Windows.Forms.Panel();
+            this.panelBookInfo = new System.Windows.Forms.Panel();
+            this.panelDescr = new System.Windows.Forms.Panel();
+            this.bookDescr = new System.Windows.Forms.Label();
+            this.bookName = new System.Windows.Forms.Label();
+            this.bookImage = new System.Windows.Forms.PictureBox();
             this.panelSearch.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.booksDGV)).BeginInit();
+            this.borderGrid.SuspendLayout();
+            this.panelBookInfo.SuspendLayout();
+            this.panelDescr.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bookImage)).BeginInit();
             this.SuspendLayout();
             // 
             // panelSearch
@@ -136,14 +146,14 @@
             this.booksDGV.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.booksDGV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.booksDGV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.booksDGV.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
             this.booksDGV.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.booksDGV.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.booksDGV.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -151,14 +161,16 @@
             this.booksDGV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.booksDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.booksDGV.DefaultCellStyle = dataGridViewCellStyle3;
-            this.booksDGV.Location = new System.Drawing.Point(6, 46);
+            this.booksDGV.GridColor = System.Drawing.Color.White;
+            this.booksDGV.Location = new System.Drawing.Point(0, 0);
+            this.booksDGV.MultiSelect = false;
             this.booksDGV.Name = "booksDGV";
             this.booksDGV.ReadOnly = true;
             this.booksDGV.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -171,21 +183,98 @@
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.booksDGV.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.booksDGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.booksDGV.Size = new System.Drawing.Size(830, 518);
+            this.booksDGV.Size = new System.Drawing.Size(842, 230);
             this.booksDGV.TabIndex = 1;
+            this.booksDGV.SelectionChanged += new System.EventHandler(this.booksDGV_SelectionChanged);
+            // 
+            // borderGrid
+            // 
+            this.borderGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.borderGrid.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
+            this.borderGrid.Controls.Add(this.booksDGV);
+            this.borderGrid.Location = new System.Drawing.Point(0, 40);
+            this.borderGrid.Name = "borderGrid";
+            this.borderGrid.Size = new System.Drawing.Size(843, 231);
+            this.borderGrid.TabIndex = 2;
+            // 
+            // panelBookInfo
+            // 
+            this.panelBookInfo.BackColor = System.Drawing.Color.White;
+            this.panelBookInfo.Controls.Add(this.panelDescr);
+            this.panelBookInfo.Controls.Add(this.bookName);
+            this.panelBookInfo.Controls.Add(this.bookImage);
+            this.panelBookInfo.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelBookInfo.Location = new System.Drawing.Point(0, 271);
+            this.panelBookInfo.Name = "panelBookInfo";
+            this.panelBookInfo.Size = new System.Drawing.Size(842, 299);
+            this.panelBookInfo.TabIndex = 3;
+            // 
+            // panelDescr
+            // 
+            this.panelDescr.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelDescr.AutoScroll = true;
+            this.panelDescr.Controls.Add(this.bookDescr);
+            this.panelDescr.Location = new System.Drawing.Point(212, 30);
+            this.panelDescr.Name = "panelDescr";
+            this.panelDescr.Size = new System.Drawing.Size(625, 262);
+            this.panelDescr.TabIndex = 3;
+            // 
+            // bookDescr
+            // 
+            this.bookDescr.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.bookDescr.BackColor = System.Drawing.Color.White;
+            this.bookDescr.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.bookDescr.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
+            this.bookDescr.Location = new System.Drawing.Point(3, 0);
+            this.bookDescr.Name = "bookDescr";
+            this.bookDescr.Size = new System.Drawing.Size(607, 262);
+            this.bookDescr.TabIndex = 2;
+            this.bookDescr.Text = "Описание";
+            // 
+            // bookName
+            // 
+            this.bookName.AutoSize = true;
+            this.bookName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.bookName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
+            this.bookName.Location = new System.Drawing.Point(212, 3);
+            this.bookName.Name = "bookName";
+            this.bookName.Size = new System.Drawing.Size(97, 24);
+            this.bookName.TabIndex = 1;
+            this.bookName.Text = "Название";
+            // 
+            // bookImage
+            // 
+            this.bookImage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.bookImage.Location = new System.Drawing.Point(3, 3);
+            this.bookImage.Name = "bookImage";
+            this.bookImage.Size = new System.Drawing.Size(202, 290);
+            this.bookImage.TabIndex = 0;
+            this.bookImage.TabStop = false;
             // 
             // UCCatalog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.booksDGV);
+            this.Controls.Add(this.panelBookInfo);
             this.Controls.Add(this.panelSearch);
+            this.Controls.Add(this.borderGrid);
             this.Name = "UCCatalog";
             this.Size = new System.Drawing.Size(842, 570);
             this.Load += new System.EventHandler(this.UCCatalog_Load);
+            this.SizeChanged += new System.EventHandler(this.UCCatalog_SizeChanged);
             this.panelSearch.ResumeLayout(false);
             this.panelSearch.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.booksDGV)).EndInit();
+            this.borderGrid.ResumeLayout(false);
+            this.panelBookInfo.ResumeLayout(false);
+            this.panelBookInfo.PerformLayout();
+            this.panelDescr.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.bookImage)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -199,5 +288,11 @@
         private System.Windows.Forms.ComboBox searchCB;
         private System.Windows.Forms.Button addToCartButton;
         public System.Windows.Forms.DataGridView booksDGV;
+        private System.Windows.Forms.Panel borderGrid;
+        private System.Windows.Forms.Panel panelBookInfo;
+        private System.Windows.Forms.Label bookName;
+        private System.Windows.Forms.PictureBox bookImage;
+        private System.Windows.Forms.Panel panelDescr;
+        public System.Windows.Forms.Label bookDescr;
     }
 }

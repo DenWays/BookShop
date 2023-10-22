@@ -37,6 +37,18 @@ namespace BookShopBD
 
         private void addButton_Click(object sender, EventArgs e)
         {
+            if(choiseEmpCB.Text == "" && choiseAmountTB.Text == "")
+            {
+                MessageBox.Show("Все поля должны быть заполнены!", "Ошибка при заполнении полей", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if(int.Parse(choiseAmountTB.Text) > int.Parse(UCCatalog.books.SelectedRows[0].Cells[6].Value.ToString()))
+            {
+                MessageBox.Show($"На складе сейчас {int.Parse(UCCatalog.books.SelectedRows[0].Cells[6].Value.ToString())} книг.", "Ошибка при выборе колличества", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             DBConnection.ConnectionDB();
 
             DBConnection.msCommand.CommandText = $"CALL GetUserId({CurrentUser.Id_account}, 'Покупатель');";
