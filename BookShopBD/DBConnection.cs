@@ -10,6 +10,7 @@ namespace BookShopBD
         static public MySqlDataAdapter msDataAddapter;
         static MySqlConnection myConnect;
         static public MySqlCommand msCommand;
+        static public MySqlDataReader dataReader;
 
         static public void ConnectionDB()
         {

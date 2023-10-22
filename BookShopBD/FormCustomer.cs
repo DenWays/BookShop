@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace BookShopBD
@@ -95,11 +89,11 @@ namespace BookShopBD
 
         private void FormCustomer_Load(object sender, EventArgs e)
         {
-            lastNLabel.Text = FormAuthorization.lastName;
-            firstNLabel.Text = FormAuthorization.firstName;
-            middleNLabel.Text = FormAuthorization.middleName;
-            roleLabel.Text = FormAuthorization.roleActive;
-            id_account = Authorization.GetAccountID();
+            lastNLabel.Text = CurrentUser.LastName;
+            firstNLabel.Text = CurrentUser.FirstName;
+            middleNLabel.Text = CurrentUser.MiddleName;
+            roleLabel.Text = CurrentUser.Role;
+            id_account = CurrentUser.Id_account;
         }
 
         private void history_Click(object sender, EventArgs e)

@@ -101,6 +101,7 @@
   <ItemGroup>
     <Compile Include="Authorization.cs" />
     <Compile Include="CreateAccount.cs" />
+    <Compile Include="CurrentUser.cs" />
     <Compile Include="DBConnection.cs" />
     <Compile Include="FormAddToCart.cs">
       <SubType>Form</SubType>

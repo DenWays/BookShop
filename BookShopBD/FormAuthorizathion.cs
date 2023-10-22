@@ -16,9 +16,6 @@ namespace BookShopBD
         public static extern bool ReleaseCapture();
         [DllImport("User32.dll")]
         public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
-        public static string loginActive;
-        public static string roleActive;
-        public static string lastName, firstName, middleName;
 
         public FormAuthorization()
         {
@@ -70,13 +67,14 @@ namespace BookShopBD
                 {
                     MessageBox.Show($"Добро пожаловать в профиль, Кульдеев Данат Владимирович.",
                                 "Успешно!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    lastName = "Кульдеев";
-                    firstName = "Данат";
-                    middleName = "Владимирович";
+                    CurrentUser.LastName = "Кульдеев";
+                    CurrentUser.FirstName = "Данат";
+                    CurrentUser.MiddleName = "Владимирович";
                     this.Hide();
                 }
                 Authorization.AuthorizationMethod(loginTB.Text, passwordTB.Text);
-                switch (Authorization.GetRole())
+                CurrentUser.Role = Authorization.GetRole();
+                switch (CurrentUser.Role)
                 {
                     case null:
                         {
@@ -85,12 +83,12 @@ namespace BookShopBD
                         }
                     default:
                         {
-                            loginActive = loginTB.Text;
-                            roleActive = Authorization.GetRole();
-                            lastName = Authorization.GetLastName(loginTB.Text);
-                            firstName = Authorization.GetFirstName(loginTB.Text);
-                            middleName = Authorization.GetMiddleName(loginTB.Text);
-                            MessageBox.Show($"Добро пожаловать в профиль, {lastName} {firstName} {middleName}.",
+                            CurrentUser.Login = loginTB.Text;
+                            CurrentUser.LastName = Authorization.GetLastName(loginTB.Text);
+                            CurrentUser.FirstName = Authorization.GetFirstName(loginTB.Text);
+                            CurrentUser.MiddleName = Authorization.GetMiddleName(loginTB.Text);
+                            CurrentUser.Id_account = Authorization.GetAccountID();
+                            MessageBox.Show($"Добро пожаловать в профиль, {CurrentUser.LastName} {CurrentUser.FirstName} {CurrentUser.MiddleName}.",
                                 "Успешно!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             Form newForm = new FormCustomer();
                             this.Hide();

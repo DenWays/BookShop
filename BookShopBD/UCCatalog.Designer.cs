@@ -33,12 +33,12 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelSearch = new System.Windows.Forms.Panel();
+            this.addToCartButton = new System.Windows.Forms.Button();
             this.refreshButton = new System.Windows.Forms.Button();
             this.searchTB = new System.Windows.Forms.TextBox();
             this.searchCB = new System.Windows.Forms.ComboBox();
             this.searchLabel = new System.Windows.Forms.Label();
             this.booksDGV = new System.Windows.Forms.DataGridView();
-            this.addToCartButton = new System.Windows.Forms.Button();
             this.panelSearch.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.booksDGV)).BeginInit();
             this.SuspendLayout();
@@ -56,6 +56,24 @@
             this.panelSearch.Name = "panelSearch";
             this.panelSearch.Size = new System.Drawing.Size(842, 40);
             this.panelSearch.TabIndex = 0;
+            // 
+            // addToCartButton
+            // 
+            this.addToCartButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.addToCartButton.BackColor = System.Drawing.Color.White;
+            this.addToCartButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.addToCartButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.addToCartButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.addToCartButton.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.addToCartButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
+            this.addToCartButton.Location = new System.Drawing.Point(614, 4);
+            this.addToCartButton.Name = "addToCartButton";
+            this.addToCartButton.Size = new System.Drawing.Size(182, 33);
+            this.addToCartButton.TabIndex = 8;
+            this.addToCartButton.Text = "Добавить в корзину";
+            this.addToCartButton.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.addToCartButton.UseVisualStyleBackColor = false;
+            this.addToCartButton.Click += new System.EventHandler(this.addToCartButton_Click);
             // 
             // refreshButton
             // 
@@ -142,6 +160,7 @@
             this.booksDGV.DefaultCellStyle = dataGridViewCellStyle3;
             this.booksDGV.Location = new System.Drawing.Point(6, 46);
             this.booksDGV.Name = "booksDGV";
+            this.booksDGV.ReadOnly = true;
             this.booksDGV.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
@@ -154,24 +173,6 @@
             this.booksDGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.booksDGV.Size = new System.Drawing.Size(830, 518);
             this.booksDGV.TabIndex = 1;
-            // 
-            // addToCartButton
-            // 
-            this.addToCartButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.addToCartButton.BackColor = System.Drawing.Color.White;
-            this.addToCartButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.addToCartButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.addToCartButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addToCartButton.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.addToCartButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
-            this.addToCartButton.Location = new System.Drawing.Point(614, 4);
-            this.addToCartButton.Name = "addToCartButton";
-            this.addToCartButton.Size = new System.Drawing.Size(182, 33);
-            this.addToCartButton.TabIndex = 8;
-            this.addToCartButton.Text = "Добавить в корзину";
-            this.addToCartButton.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.addToCartButton.UseVisualStyleBackColor = false;
-            this.addToCartButton.Click += new System.EventHandler(this.addToCartButton_Click);
             // 
             // UCCatalog
             // 

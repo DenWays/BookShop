@@ -64,7 +64,7 @@
             this.closeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.closeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.closeButton.ForeColor = System.Drawing.Color.White;
-            this.closeButton.Location = new System.Drawing.Point(267, -8);
+            this.closeButton.Location = new System.Drawing.Point(317, -8);
             this.closeButton.Name = "closeButton";
             this.closeButton.Size = new System.Drawing.Size(36, 39);
             this.closeButton.TabIndex = 0;
@@ -77,7 +77,7 @@
             this.minimizedButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.minimizedButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.minimizedButton.ForeColor = System.Drawing.Color.White;
-            this.minimizedButton.Location = new System.Drawing.Point(234, -5);
+            this.minimizedButton.Location = new System.Drawing.Point(284, -5);
             this.minimizedButton.Name = "minimizedButton";
             this.minimizedButton.Size = new System.Drawing.Size(36, 38);
             this.minimizedButton.TabIndex = 3;
@@ -119,13 +119,14 @@
             // 
             // choiseEmpCB
             // 
+            this.choiseEmpCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.choiseEmpCB.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.choiseEmpCB.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.choiseEmpCB.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
             this.choiseEmpCB.FormattingEnabled = true;
             this.choiseEmpCB.Location = new System.Drawing.Point(20, 72);
             this.choiseEmpCB.Name = "choiseEmpCB";
-            this.choiseEmpCB.Size = new System.Drawing.Size(260, 34);
+            this.choiseEmpCB.Size = new System.Drawing.Size(310, 34);
             this.choiseEmpCB.TabIndex = 4;
             // 
             // amountLabel
@@ -156,7 +157,7 @@
             this.addButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addButton.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.addButton.ForeColor = System.Drawing.Color.White;
-            this.addButton.Location = new System.Drawing.Point(171, 198);
+            this.addButton.Location = new System.Drawing.Point(220, 200);
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(110, 40);
             this.addButton.TabIndex = 8;
@@ -170,7 +171,7 @@
             this.border.ForeColor = System.Drawing.SystemColors.ControlText;
             this.border.Location = new System.Drawing.Point(19, 71);
             this.border.Name = "border";
-            this.border.Size = new System.Drawing.Size(262, 36);
+            this.border.Size = new System.Drawing.Size(312, 36);
             this.border.TabIndex = 9;
             // 
             // backButton
@@ -181,7 +182,7 @@
             this.backButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.backButton.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.backButton.ForeColor = System.Drawing.Color.White;
-            this.backButton.Location = new System.Drawing.Point(20, 198);
+            this.backButton.Location = new System.Drawing.Point(20, 200);
             this.backButton.Name = "backButton";
             this.backButton.Size = new System.Drawing.Size(110, 40);
             this.backButton.TabIndex = 10;
@@ -194,7 +195,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(300, 250);
+            this.ClientSize = new System.Drawing.Size(350, 250);
             this.Controls.Add(this.backButton);
             this.Controls.Add(this.addButton);
             this.Controls.Add(this.choiseAmountTB);
