@@ -5,6 +5,7 @@ using System.Security.Cryptography;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
 
 namespace BookShopBD
 {
@@ -108,6 +109,34 @@ namespace BookShopBD
             Form newForm = new FormCustomer();
             this.Hide();
             newForm.Show();
+        }
+
+        private void loginTB_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            string Symbol = e.KeyChar.ToString();
+
+            if (!Regex.Match(Symbol, @"[а-яА-Я]").Success)
+            {
+                return;
+            }
+            else
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void passwordTB_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            string Symbol = e.KeyChar.ToString();
+
+            if (!Regex.Match(Symbol, @"[а-яА-Я]").Success)
+            {
+                return;
+            }
+            else
+            {
+                e.Handled = true;
+            }
         }
     }
 }

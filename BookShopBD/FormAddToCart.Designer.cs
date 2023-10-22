@@ -30,7 +30,6 @@
         {
             this.panelTools = new System.Windows.Forms.Panel();
             this.closeButton = new System.Windows.Forms.Button();
-            this.minimizedButton = new System.Windows.Forms.Button();
             this.nameLabel = new System.Windows.Forms.Label();
             this.icon = new System.Windows.Forms.PictureBox();
             this.choiseEmpLabel = new System.Windows.Forms.Label();
@@ -48,13 +47,13 @@
             // 
             this.panelTools.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
             this.panelTools.Controls.Add(this.closeButton);
-            this.panelTools.Controls.Add(this.minimizedButton);
             this.panelTools.Controls.Add(this.nameLabel);
             this.panelTools.Controls.Add(this.icon);
             this.panelTools.Location = new System.Drawing.Point(0, 0);
             this.panelTools.Name = "panelTools";
-            this.panelTools.Size = new System.Drawing.Size(400, 30);
+            this.panelTools.Size = new System.Drawing.Size(350, 30);
             this.panelTools.TabIndex = 2;
+            this.panelTools.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelTools_MouseDown);
             // 
             // closeButton
             // 
@@ -70,20 +69,7 @@
             this.closeButton.TabIndex = 0;
             this.closeButton.Text = "×";
             this.closeButton.UseVisualStyleBackColor = false;
-            // 
-            // minimizedButton
-            // 
-            this.minimizedButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
-            this.minimizedButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.minimizedButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.minimizedButton.ForeColor = System.Drawing.Color.White;
-            this.minimizedButton.Location = new System.Drawing.Point(284, -5);
-            this.minimizedButton.Name = "minimizedButton";
-            this.minimizedButton.Size = new System.Drawing.Size(36, 38);
-            this.minimizedButton.TabIndex = 3;
-            this.minimizedButton.Text = "—";
-            this.minimizedButton.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.minimizedButton.UseVisualStyleBackColor = true;
+            this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
             // 
             // nameLabel
             // 
@@ -148,6 +134,7 @@
             this.choiseAmountTB.Name = "choiseAmountTB";
             this.choiseAmountTB.Size = new System.Drawing.Size(187, 34);
             this.choiseAmountTB.TabIndex = 7;
+            this.choiseAmountTB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.choiseAmountTB_KeyPress);
             // 
             // addButton
             // 
@@ -221,7 +208,6 @@
 
         private System.Windows.Forms.Panel panelTools;
         private System.Windows.Forms.Button closeButton;
-        private System.Windows.Forms.Button minimizedButton;
         private System.Windows.Forms.Label nameLabel;
         private System.Windows.Forms.PictureBox icon;
         private System.Windows.Forms.Label choiseEmpLabel;

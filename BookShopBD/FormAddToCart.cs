@@ -8,6 +8,7 @@ using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
@@ -61,6 +62,30 @@ namespace BookShopBD
                 ids_employee.Add(int.Parse(DBConnection.dataReader[3].ToString()));
             }
             DBConnection.CloseDB();
+        }
+
+        private void panelTools_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                ReleaseCapture();
+                SendMessage(Handle, WM_NCLBUTTONDOWN, HTCAPTION, 0);
+            }
+        }
+
+        private void choiseAmountTB_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char Symbol = e.KeyChar;
+
+            if (!char.IsDigit(Symbol) && Symbol != 8)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void closeButton_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

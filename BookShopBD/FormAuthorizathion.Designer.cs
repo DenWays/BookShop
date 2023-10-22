@@ -37,16 +37,16 @@
             this.createAccountLabel = new System.Windows.Forms.Label();
             this.authorizationButton = new System.Windows.Forms.Button();
             this.panelAuthorization = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.bookPB = new System.Windows.Forms.PictureBox();
             this.panelTools = new System.Windows.Forms.Panel();
             this.closeButton = new System.Windows.Forms.Button();
             this.minimizedButton = new System.Windows.Forms.Button();
             this.nameLabel = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.bookPB = new System.Windows.Forms.PictureBox();
             this.icon = new System.Windows.Forms.PictureBox();
             this.panelAuthorization.SuspendLayout();
-            this.panelTools.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bookPB)).BeginInit();
+            this.panelTools.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.icon)).BeginInit();
             this.SuspendLayout();
             // 
@@ -74,6 +74,7 @@
             this.loginTB.Name = "loginTB";
             this.loginTB.Size = new System.Drawing.Size(200, 45);
             this.loginTB.TabIndex = 1;
+            this.loginTB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.loginTB_KeyPress);
             // 
             // loginLabel
             // 
@@ -97,6 +98,7 @@
             this.passwordTB.Name = "passwordTB";
             this.passwordTB.Size = new System.Drawing.Size(200, 45);
             this.passwordTB.TabIndex = 3;
+            this.passwordTB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.passwordTB_KeyPress);
             // 
             // passwordLabel
             // 
@@ -161,6 +163,27 @@
             this.panelAuthorization.Size = new System.Drawing.Size(400, 370);
             this.panelAuthorization.TabIndex = 0;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(313, 14);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // bookPB
+            // 
+            this.bookPB.BackColor = System.Drawing.Color.Transparent;
+            this.bookPB.Image = global::BookShopBD.Properties.Resources.bookGray;
+            this.bookPB.Location = new System.Drawing.Point(160, 14);
+            this.bookPB.Name = "bookPB";
+            this.bookPB.Size = new System.Drawing.Size(80, 50);
+            this.bookPB.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.bookPB.TabIndex = 7;
+            this.bookPB.TabStop = false;
+            // 
             // panelTools
             // 
             this.panelTools.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
@@ -216,27 +239,6 @@
             this.nameLabel.TabIndex = 2;
             this.nameLabel.Text = "BookShop";
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(313, 14);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // bookPB
-            // 
-            this.bookPB.BackColor = System.Drawing.Color.Transparent;
-            this.bookPB.Image = global::BookShopBD.Properties.Resources.bookGray;
-            this.bookPB.Location = new System.Drawing.Point(160, 14);
-            this.bookPB.Name = "bookPB";
-            this.bookPB.Size = new System.Drawing.Size(80, 50);
-            this.bookPB.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.bookPB.TabIndex = 7;
-            this.bookPB.TabStop = false;
-            // 
             // icon
             // 
             this.icon.Image = global::BookShopBD.Properties.Resources.bookWhite;
@@ -263,9 +265,9 @@
             this.Text = "Book Shop";
             this.panelAuthorization.ResumeLayout(false);
             this.panelAuthorization.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bookPB)).EndInit();
             this.panelTools.ResumeLayout(false);
             this.panelTools.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bookPB)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.icon)).EndInit();
             this.ResumeLayout(false);
 
