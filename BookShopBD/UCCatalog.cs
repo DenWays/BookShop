@@ -122,19 +122,19 @@ namespace BookShopBD
         {
             if (searchCB.Text == "Название")
             {
-                searchMethod($"SELECT * FROM catalog WHERE Название = '{searchTB.Text}'");
+                searchMethod($"SELECT * FROM catalog WHERE Название LIKE '%{searchTB.Text}%'");
             }
             else if (searchCB.Text == "Автор")
             {
-                searchMethod($"SELECT * FROM catalog WHERE Автор = '{searchTB.Text}'");
+                searchMethod($"SELECT * FROM catalog WHERE Автор LIKE '%{searchTB.Text}%'");
             }
             else if(searchCB.Text == "Жанр")
             {
-                searchMethod($"SELECT * FROM catalog WHERE Жанр = '{searchTB.Text}'");
+                searchMethod($"SELECT * FROM catalog WHERE Жанр LIKE '%{searchTB.Text}%'");
             }
             else if(searchCB.Text == "Издательство")
             {
-                searchMethod($"SELECT * FROM catalog WHERE Издательство = '{searchTB.Text}'");
+                searchMethod($"SELECT * FROM catalog WHERE Издательство LIKE '%{searchTB.Text}%'");
             }
             else if (searchCB.Text == "Год")
             {
