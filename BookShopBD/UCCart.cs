@@ -12,6 +12,8 @@ namespace BookShopBD
 {
     public partial class UCCart : UserControl
     {
+        static double sumSelected_ = 0.00;
+        static double sumAll_ = 0.00;
         public UCCart()
         {
             InitializeComponent();
@@ -33,6 +35,22 @@ namespace BookShopBD
             DBConnection.msDataAddapter.SelectCommand = DBConnection.msCommand;
             DBConnection.msDataAddapter.Fill(dataTable);
             cartDGV.DataSource = dataTable;
+
+            for (int i = 0; i < cartDGV.RowCount; i++)
+            {
+                sumAll_ += double.Parse(cartDGV.Rows[i].Cells[2].Value.ToString());
+            }
+            sumAll.Text = sumAll_.ToString();
+        }
+
+        private void cartDGV_SelectionChanged(object sender, EventArgs e)
+        {
+            sumSelected_ = 0;
+            for (int i = 0; i < cartDGV.SelectedRows.Count ; i++)
+            {
+                sumSelected_ += double.Parse(cartDGV.SelectedRows[i].Cells[2].Value.ToString());
+            }
+            sumSelected.Text = sumSelected_.ToString();
         }
     }
 }

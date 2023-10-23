@@ -28,41 +28,41 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelSearch = new System.Windows.Forms.Panel();
-            this.searchButton = new System.Windows.Forms.Button();
+            this.deleteBtn = new System.Windows.Forms.Button();
             this.refreshButton = new System.Windows.Forms.Button();
             this.borderDGV = new System.Windows.Forms.Panel();
             this.cartDGV = new System.Windows.Forms.DataGridView();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.panelOrderAll = new System.Windows.Forms.Panel();
             this.sumOrderAllLabel = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.panelOrderSelected = new System.Windows.Forms.Panel();
             this.sumOrderSelectedLabel = new System.Windows.Forms.Label();
             this.orderSelectedLabel = new System.Windows.Forms.Label();
             this.orderAllLabel = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.orderSelectedBtn = new System.Windows.Forms.Button();
             this.sumSelected = new System.Windows.Forms.Label();
             this.sumAll = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.deleteAllBtn = new System.Windows.Forms.Button();
+            this.orderAllBtn = new System.Windows.Forms.Button();
             this.panelOrder = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
+            this.orderBtwnOrders = new System.Windows.Forms.Panel();
             this.panelSearch.SuspendLayout();
             this.borderDGV.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cartDGV)).BeginInit();
-            this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
+            this.panelOrderAll.SuspendLayout();
+            this.panelOrderSelected.SuspendLayout();
             this.panelOrder.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelSearch
             // 
             this.panelSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
-            this.panelSearch.Controls.Add(this.button2);
-            this.panelSearch.Controls.Add(this.searchButton);
+            this.panelSearch.Controls.Add(this.deleteAllBtn);
+            this.panelSearch.Controls.Add(this.deleteBtn);
             this.panelSearch.Controls.Add(this.refreshButton);
             this.panelSearch.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelSearch.Location = new System.Drawing.Point(0, 0);
@@ -70,21 +70,21 @@
             this.panelSearch.Size = new System.Drawing.Size(842, 40);
             this.panelSearch.TabIndex = 0;
             // 
-            // searchButton
+            // deleteBtn
             // 
-            this.searchButton.BackColor = System.Drawing.Color.White;
-            this.searchButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.searchButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.searchButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.searchButton.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.searchButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
-            this.searchButton.Location = new System.Drawing.Point(0, 4);
-            this.searchButton.Name = "searchButton";
-            this.searchButton.Size = new System.Drawing.Size(90, 33);
-            this.searchButton.TabIndex = 10;
-            this.searchButton.Text = "Удалить";
-            this.searchButton.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.searchButton.UseVisualStyleBackColor = false;
+            this.deleteBtn.BackColor = System.Drawing.Color.White;
+            this.deleteBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.deleteBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.deleteBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.deleteBtn.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.deleteBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
+            this.deleteBtn.Location = new System.Drawing.Point(0, 4);
+            this.deleteBtn.Name = "deleteBtn";
+            this.deleteBtn.Size = new System.Drawing.Size(90, 33);
+            this.deleteBtn.TabIndex = 10;
+            this.deleteBtn.Text = "Удалить";
+            this.deleteBtn.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.deleteBtn.UseVisualStyleBackColor = false;
             // 
             // refreshButton
             // 
@@ -120,9 +120,9 @@
             this.cartDGV.AllowUserToDeleteRows = false;
             this.cartDGV.AllowUserToResizeColumns = false;
             this.cartDGV.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
-            this.cartDGV.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
+            this.cartDGV.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             this.cartDGV.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -131,52 +131,52 @@
             this.cartDGV.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.cartDGV.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.cartDGV.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.cartDGV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.cartDGV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.cartDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.cartDGV.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.cartDGV.DefaultCellStyle = dataGridViewCellStyle7;
             this.cartDGV.GridColor = System.Drawing.Color.White;
             this.cartDGV.Location = new System.Drawing.Point(0, 0);
-            this.cartDGV.MultiSelect = false;
             this.cartDGV.Name = "cartDGV";
             this.cartDGV.ReadOnly = true;
             this.cartDGV.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.cartDGV.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.cartDGV.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.cartDGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.cartDGV.Size = new System.Drawing.Size(842, 350);
             this.cartDGV.TabIndex = 2;
+            this.cartDGV.SelectionChanged += new System.EventHandler(this.cartDGV_SelectionChanged);
             // 
-            // panel1
+            // panelOrderAll
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.panel1.Controls.Add(this.button3);
-            this.panel1.Controls.Add(this.sumAll);
-            this.panel1.Controls.Add(this.orderAllLabel);
-            this.panel1.Controls.Add(this.sumOrderAllLabel);
-            this.panel1.Location = new System.Drawing.Point(422, 120);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(416, 180);
-            this.panel1.TabIndex = 4;
+            this.panelOrderAll.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.panelOrderAll.Controls.Add(this.orderAllBtn);
+            this.panelOrderAll.Controls.Add(this.sumAll);
+            this.panelOrderAll.Controls.Add(this.orderAllLabel);
+            this.panelOrderAll.Controls.Add(this.sumOrderAllLabel);
+            this.panelOrderAll.Location = new System.Drawing.Point(422, 120);
+            this.panelOrderAll.Name = "panelOrderAll";
+            this.panelOrderAll.Size = new System.Drawing.Size(416, 180);
+            this.panelOrderAll.TabIndex = 4;
             // 
             // sumOrderAllLabel
             // 
@@ -189,18 +189,18 @@
             this.sumOrderAllLabel.TabIndex = 0;
             this.sumOrderAllLabel.Text = "Сумма заказа";
             // 
-            // panel2
+            // panelOrderSelected
             // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.panelOrderSelected.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.panel2.Controls.Add(this.sumSelected);
-            this.panel2.Controls.Add(this.button1);
-            this.panel2.Controls.Add(this.orderSelectedLabel);
-            this.panel2.Controls.Add(this.sumOrderSelectedLabel);
-            this.panel2.Location = new System.Drawing.Point(0, 120);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(412, 180);
-            this.panel2.TabIndex = 5;
+            this.panelOrderSelected.Controls.Add(this.sumSelected);
+            this.panelOrderSelected.Controls.Add(this.orderSelectedBtn);
+            this.panelOrderSelected.Controls.Add(this.orderSelectedLabel);
+            this.panelOrderSelected.Controls.Add(this.sumOrderSelectedLabel);
+            this.panelOrderSelected.Location = new System.Drawing.Point(0, 120);
+            this.panelOrderSelected.Name = "panelOrderSelected";
+            this.panelOrderSelected.Size = new System.Drawing.Size(412, 180);
+            this.panelOrderSelected.TabIndex = 5;
             // 
             // sumOrderSelectedLabel
             // 
@@ -241,20 +241,20 @@
             this.orderAllLabel.TabIndex = 1;
             this.orderAllLabel.Text = "Заказать всё";
             // 
-            // button1
+            // orderSelectedBtn
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(3, 137);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(200, 40);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Заказать";
-            this.button1.UseVisualStyleBackColor = false;
+            this.orderSelectedBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.orderSelectedBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
+            this.orderSelectedBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
+            this.orderSelectedBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.orderSelectedBtn.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.orderSelectedBtn.ForeColor = System.Drawing.Color.White;
+            this.orderSelectedBtn.Location = new System.Drawing.Point(3, 137);
+            this.orderSelectedBtn.Name = "orderSelectedBtn";
+            this.orderSelectedBtn.Size = new System.Drawing.Size(200, 40);
+            this.orderSelectedBtn.TabIndex = 2;
+            this.orderSelectedBtn.Text = "Заказать";
+            this.orderSelectedBtn.UseVisualStyleBackColor = false;
             // 
             // sumSelected
             // 
@@ -281,56 +281,56 @@
             this.sumAll.TabIndex = 2;
             this.sumAll.Text = "0. 00";
             // 
-            // button2
+            // deleteAllBtn
             // 
-            this.button2.BackColor = System.Drawing.Color.White;
-            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
-            this.button2.Location = new System.Drawing.Point(96, 4);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(120, 33);
-            this.button2.TabIndex = 11;
-            this.button2.Text = "Удалить всё";
-            this.button2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button2.UseVisualStyleBackColor = false;
+            this.deleteAllBtn.BackColor = System.Drawing.Color.White;
+            this.deleteAllBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.deleteAllBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.deleteAllBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.deleteAllBtn.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.deleteAllBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
+            this.deleteAllBtn.Location = new System.Drawing.Point(96, 4);
+            this.deleteAllBtn.Name = "deleteAllBtn";
+            this.deleteAllBtn.Size = new System.Drawing.Size(120, 33);
+            this.deleteAllBtn.TabIndex = 11;
+            this.deleteAllBtn.Text = "Удалить всё";
+            this.deleteAllBtn.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.deleteAllBtn.UseVisualStyleBackColor = false;
             // 
-            // button3
+            // orderAllBtn
             // 
-            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
-            this.button3.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(3, 137);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(200, 40);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "Заказать";
-            this.button3.UseVisualStyleBackColor = false;
+            this.orderAllBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.orderAllBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
+            this.orderAllBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
+            this.orderAllBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.orderAllBtn.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.orderAllBtn.ForeColor = System.Drawing.Color.White;
+            this.orderAllBtn.Location = new System.Drawing.Point(3, 137);
+            this.orderAllBtn.Name = "orderAllBtn";
+            this.orderAllBtn.Size = new System.Drawing.Size(200, 40);
+            this.orderAllBtn.TabIndex = 3;
+            this.orderAllBtn.Text = "Заказать";
+            this.orderAllBtn.UseVisualStyleBackColor = false;
             // 
             // panelOrder
             // 
-            this.panelOrder.Controls.Add(this.panel3);
-            this.panelOrder.Controls.Add(this.panel1);
-            this.panelOrder.Controls.Add(this.panel2);
+            this.panelOrder.Controls.Add(this.orderBtwnOrders);
+            this.panelOrder.Controls.Add(this.panelOrderAll);
+            this.panelOrder.Controls.Add(this.panelOrderSelected);
             this.panelOrder.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelOrder.Location = new System.Drawing.Point(0, 270);
             this.panelOrder.Name = "panelOrder";
             this.panelOrder.Size = new System.Drawing.Size(842, 300);
             this.panelOrder.TabIndex = 6;
             // 
-            // panel3
+            // orderBtwnOrders
             // 
-            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
-            this.panel3.Location = new System.Drawing.Point(418, 120);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(4, 180);
-            this.panel3.TabIndex = 6;
+            this.orderBtwnOrders.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.orderBtwnOrders.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
+            this.orderBtwnOrders.Location = new System.Drawing.Point(418, 120);
+            this.orderBtwnOrders.Name = "orderBtwnOrders";
+            this.orderBtwnOrders.Size = new System.Drawing.Size(4, 180);
+            this.orderBtwnOrders.TabIndex = 6;
             // 
             // UCCart
             // 
@@ -345,10 +345,10 @@
             this.panelSearch.ResumeLayout(false);
             this.borderDGV.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.cartDGV)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
+            this.panelOrderAll.ResumeLayout(false);
+            this.panelOrderAll.PerformLayout();
+            this.panelOrderSelected.ResumeLayout(false);
+            this.panelOrderSelected.PerformLayout();
             this.panelOrder.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -360,19 +360,19 @@
         private System.Windows.Forms.Button refreshButton;
         private System.Windows.Forms.Panel borderDGV;
         public System.Windows.Forms.DataGridView cartDGV;
-        private System.Windows.Forms.Button searchButton;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button deleteBtn;
+        private System.Windows.Forms.Panel panelOrderAll;
         private System.Windows.Forms.Label sumOrderAllLabel;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button deleteAllBtn;
+        private System.Windows.Forms.Button orderAllBtn;
         private System.Windows.Forms.Label sumAll;
         private System.Windows.Forms.Label orderAllLabel;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panelOrderSelected;
         private System.Windows.Forms.Label sumSelected;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button orderSelectedBtn;
         private System.Windows.Forms.Label orderSelectedLabel;
         private System.Windows.Forms.Label sumOrderSelectedLabel;
         private System.Windows.Forms.Panel panelOrder;
-        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel orderBtwnOrders;
     }
 }
