@@ -57,8 +57,20 @@ namespace BookShopBD
             DBConnection.msCommand.CommandText = $"CALL GetUserId({ids_employee[choiseEmpCB.SelectedIndex]}, 'Продавец');";
             object id_employee = DBConnection.msCommand.ExecuteScalar();
 
+            DBConnection.msCommand.CommandText = $"SELECT id_order FROM order_ WHERE id_customer = {(int)id_customer} AND id_employee = {(int)id_employee} AND Date_order = CURDATE() LIMIT 1;";
+            object id_order_ = DBConnection.msCommand.ExecuteScalar();
+
+            if(id_order_ == null)
+            {
+                DBConnection.msCommand.CommandText = $"INSERT order_(id_customer, id_employee, Date_order) VALUES({(int)id_customer}, {(int)id_employee}, CURDATE());";
+                DBConnection.msCommand.ExecuteNonQuery();
+
+                DBConnection.msCommand.CommandText = $"SELECT id_order FROM order_ WHERE id_customer = {(int)id_customer} AND id_employee = {(int)id_employee} AND Date_order = CURDATE() LIMIT 1;";
+                id_order_ = DBConnection.msCommand.ExecuteScalar();
+            }
+
             DBConnection.msCommand.CommandText = $"CALL AddToCart({(int)id_customer}, {(int)id_employee}, " +
-                $"'{UCCatalog.books.SelectedRows[0].Cells[0].Value}', '{UCCatalog.books.SelectedRows[0].Cells[1].Value}', {double.Parse(UCCatalog.books.SelectedRows[0].Cells[5].Value.ToString())}, {int.Parse(choiseAmountTB.Text)});";
+                $"'{UCCatalog.books.SelectedRows[0].Cells[0].Value}', '{UCCatalog.books.SelectedRows[0].Cells[1].Value}', {double.Parse(UCCatalog.books.SelectedRows[0].Cells[5].Value.ToString())}, {int.Parse(choiseAmountTB.Text)}, {(int)id_order_});";
             DBConnection.msCommand.ExecuteNonQuery();
             MessageBox.Show("Успешно");
         }
