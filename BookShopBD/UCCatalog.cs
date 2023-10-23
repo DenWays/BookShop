@@ -6,6 +6,7 @@ using System.Data.Common;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -26,13 +27,7 @@ namespace BookShopBD
         {
             DBConnection.ConnectionDB();
 
-            DataTable dataTable = new DataTable();
-            dataTable.Clear();
-            DBConnection.msCommand.CommandText = "SELECT * FROM catalog";
-            DBConnection.msDataAddapter.SelectCommand = DBConnection.msCommand;
-            DBConnection.msDataAddapter.Fill(dataTable);
-            booksDGV.DataSource = dataTable;
-            books = booksDGV;
+            searchMethod("SELECT * FROM catalog;");
 
             DBConnection.msCommand.CommandText = $"SELECT id_author FROM book JOIN author USING(id_author) WHERE Book_name = '{booksDGV.SelectedRows[0].Cells[0].Value}';";
             object id_author = DBConnection.msCommand.ExecuteScalar();
@@ -68,6 +63,91 @@ namespace BookShopBD
             catch (Exception)
             {
             }           
+        }
+
+        private void refreshButton_Click(object sender, EventArgs e)
+        {
+            DataTable dataTable = new DataTable();
+            dataTable.Clear();
+            DBConnection.msCommand.CommandText = "SELECT * FROM catalog";
+            DBConnection.msDataAddapter.SelectCommand = DBConnection.msCommand;
+            DBConnection.msDataAddapter.Fill(dataTable);
+            booksDGV.DataSource = dataTable;
+            books = booksDGV;
+        }
+
+        private void searchTB_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (searchCB.Text == "Название" || searchCB.Text == "Жанр" || searchCB.Text == "Издательство" || searchCB.Text == "Автор")
+            {
+                string Symbol = e.KeyChar.ToString();
+
+                if (!Regex.Match(Symbol, @"[а-яА-Я]|[a-zA-Z]").Success && Symbol[0] != 8 && Symbol[0] != ' ')
+                {
+                    e.Handled = true;
+                }
+            }
+            else if(searchCB.Text == "Год" && searchCB.Text == "Количество")
+            {
+                char Symbol = e.KeyChar;
+
+                if (!char.IsDigit(Symbol) && Symbol != 8)
+                {
+                    e.Handled = true;
+                }
+            }
+            else if(searchCB.Text == "Цена")
+            {
+                char Symbol = e.KeyChar;
+
+                if (!char.IsDigit(Symbol) && Symbol != 8 && Symbol != '.' && Symbol != ',')
+                {
+                    e.Handled = true;
+                }
+            }
+        }
+
+        private void searchMethod(string command)
+        {
+            DataTable dataTable = new DataTable();
+            dataTable.Clear();
+            DBConnection.msCommand.CommandText = command;
+            DBConnection.msDataAddapter.SelectCommand = DBConnection.msCommand;
+            DBConnection.msDataAddapter.Fill(dataTable);
+            booksDGV.DataSource = dataTable;
+            books = booksDGV;
+        }
+
+        private void searchButton_Click(object sender, EventArgs e)
+        {
+            if (searchCB.Text == "Название")
+            {
+                searchMethod($"SELECT * FROM catalog WHERE Название = '{searchTB.Text}'");
+            }
+            else if (searchCB.Text == "Автор")
+            {
+                searchMethod($"SELECT * FROM catalog WHERE Автор = '{searchTB.Text}'");
+            }
+            else if(searchCB.Text == "Жанр")
+            {
+                searchMethod($"SELECT * FROM catalog WHERE Жанр = '{searchTB.Text}'");
+            }
+            else if(searchCB.Text == "Издательство")
+            {
+                searchMethod($"SELECT * FROM catalog WHERE Издательство = '{searchTB.Text}'");
+            }
+            else if (searchCB.Text == "Год")
+            {
+                searchMethod($"SELECT * FROM catalog WHERE Год = {int.Parse(searchTB.Text)}");
+            }
+            else if(searchCB.Text == "Цена")
+            {
+                searchMethod($"SELECT * FROM catalog WHERE Цена = {double.Parse(searchTB.Text)}");
+            }    
+            else if(searchCB.Text == "Количество")
+            {
+                searchMethod($"SELECT * FROM catalog WHERE Количество = {int.Parse(searchTB.Text)}");
+            }
         }
     }
 }
