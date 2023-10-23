@@ -72,7 +72,7 @@ namespace BookShopBD
             DBConnection.msCommand.CommandText = $"CALL AddToCart({(int)id_customer}, {(int)id_employee}, " +
                 $"'{UCCatalog.books.SelectedRows[0].Cells[0].Value}', '{UCCatalog.books.SelectedRows[0].Cells[1].Value}', {double.Parse(UCCatalog.books.SelectedRows[0].Cells[5].Value.ToString())}, {int.Parse(choiseAmountTB.Text)}, {(int)id_order_});";
             DBConnection.msCommand.ExecuteNonQuery();
-            MessageBox.Show("Успешно");
+            MessageBox.Show("Книга успешно добавлена в корзину.", "Успешно");
         }
 
         private void FormAddToCart_Load(object sender, EventArgs e)
