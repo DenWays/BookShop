@@ -16,6 +16,7 @@ namespace BookShopBD
     {
         public static DataGridView books;
         static bool selectFlag = false;
+        static int id_order = -1;
         public UCCatalog()
         {
             InitializeComponent();

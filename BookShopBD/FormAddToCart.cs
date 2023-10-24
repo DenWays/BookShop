@@ -24,6 +24,8 @@ namespace BookShopBD
         [DllImport("User32.dll")]
         public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
         List<int> ids_employee = new List<int>();
+        public static object id_order;
+        public static int prev_id_order;
         public FormAddToCart()
         {
             InitializeComponent();
@@ -57,20 +59,24 @@ namespace BookShopBD
             DBConnection.msCommand.CommandText = $"CALL GetUserId({ids_employee[choiseEmpCB.SelectedIndex]}, 'Продавец');";
             object id_employee = DBConnection.msCommand.ExecuteScalar();
 
-            DBConnection.msCommand.CommandText = $"SELECT id_order FROM order_ WHERE id_customer = {(int)id_customer} AND id_employee = {(int)id_employee} AND Date_order = CURDATE() LIMIT 1;";
-            object id_order_ = DBConnection.msCommand.ExecuteScalar();
-
-            if(id_order_ == null)
-            {
+            DBConnection.msCommand.CommandText = $"SELECT id_order FROM order_ JOIN order_book USING(id_order) WHERE Status = 'Ожидает оплаты' AND id_customer = {(int)id_customer} AND id_employee = {(int)id_employee} ORDER BY id_order DESC LIMIT 1;";
+            
+            if (DBConnection.msCommand.ExecuteScalar() == null)
+            {             
                 DBConnection.msCommand.CommandText = $"INSERT order_(id_customer, id_employee, Date_order) VALUES({(int)id_customer}, {(int)id_employee}, CURDATE());";
                 DBConnection.msCommand.ExecuteNonQuery();
 
-                DBConnection.msCommand.CommandText = $"SELECT id_order FROM order_ WHERE id_customer = {(int)id_customer} AND id_employee = {(int)id_employee} AND Date_order = CURDATE() LIMIT 1;";
-                id_order_ = DBConnection.msCommand.ExecuteScalar();
+                DBConnection.msCommand.CommandText = $"SELECT id_order FROM order_ WHERE id_customer = {(int)id_customer} AND id_employee = {(int)id_employee} ORDER BY id_order DESC LIMIT 1;";
+                id_order = DBConnection.msCommand.ExecuteScalar(); 
+            }
+            else
+            {
+                DBConnection.msCommand.CommandText = $"SELECT id_order FROM order_ JOIN order_book USING(id_order) WHERE Status = 'Ожидает оплаты' AND id_customer = {(int)id_customer} AND id_employee = {(int)id_employee} ORDER BY id_order DESC LIMIT 1;";
+                id_order = DBConnection.msCommand.ExecuteScalar();
             }
 
             DBConnection.msCommand.CommandText = $"CALL AddToCart({(int)id_customer}, {(int)id_employee}, " +
-                $"'{UCCatalog.books.SelectedRows[0].Cells[0].Value}', '{UCCatalog.books.SelectedRows[0].Cells[1].Value}', {double.Parse(UCCatalog.books.SelectedRows[0].Cells[5].Value.ToString())}, {int.Parse(choiseAmountTB.Text)}, {(int)id_order_});";
+                $"'{UCCatalog.books.SelectedRows[0].Cells[0].Value}', '{UCCatalog.books.SelectedRows[0].Cells[1].Value}', {double.Parse(UCCatalog.books.SelectedRows[0].Cells[5].Value.ToString())}, {int.Parse(choiseAmountTB.Text)}, {(int)id_order});";
             DBConnection.msCommand.ExecuteNonQuery();
             MessageBox.Show("Книга успешно добавлена в корзину.", "Успешно");
         }
