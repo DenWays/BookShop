@@ -25,7 +25,6 @@ namespace BookShopBD
         public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
         List<int> ids_employee = new List<int>();
         public static object id_order;
-        public static int prev_id_order;
         public FormAddToCart()
         {
             InitializeComponent();

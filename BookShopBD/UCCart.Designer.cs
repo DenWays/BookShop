@@ -28,26 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelSearch = new System.Windows.Forms.Panel();
+            this.deleteAllBtn = new System.Windows.Forms.Button();
             this.deleteBtn = new System.Windows.Forms.Button();
             this.refreshButton = new System.Windows.Forms.Button();
             this.borderDGV = new System.Windows.Forms.Panel();
             this.cartDGV = new System.Windows.Forms.DataGridView();
             this.panelOrderAll = new System.Windows.Forms.Panel();
+            this.orderAllBtn = new System.Windows.Forms.Button();
+            this.sumAll = new System.Windows.Forms.Label();
+            this.orderAllLabel = new System.Windows.Forms.Label();
             this.sumOrderAllLabel = new System.Windows.Forms.Label();
             this.panelOrderSelected = new System.Windows.Forms.Panel();
-            this.sumOrderSelectedLabel = new System.Windows.Forms.Label();
-            this.orderSelectedLabel = new System.Windows.Forms.Label();
-            this.orderAllLabel = new System.Windows.Forms.Label();
-            this.orderSelectedBtn = new System.Windows.Forms.Button();
             this.sumSelected = new System.Windows.Forms.Label();
-            this.sumAll = new System.Windows.Forms.Label();
-            this.deleteAllBtn = new System.Windows.Forms.Button();
-            this.orderAllBtn = new System.Windows.Forms.Button();
+            this.orderSelectedBtn = new System.Windows.Forms.Button();
+            this.orderSelectedLabel = new System.Windows.Forms.Label();
+            this.sumOrderSelectedLabel = new System.Windows.Forms.Label();
             this.panelOrder = new System.Windows.Forms.Panel();
             this.orderBtwnOrders = new System.Windows.Forms.Panel();
             this.panelSearch.SuspendLayout();
@@ -69,6 +69,22 @@
             this.panelSearch.Name = "panelSearch";
             this.panelSearch.Size = new System.Drawing.Size(842, 40);
             this.panelSearch.TabIndex = 0;
+            // 
+            // deleteAllBtn
+            // 
+            this.deleteAllBtn.BackColor = System.Drawing.Color.White;
+            this.deleteAllBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.deleteAllBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.deleteAllBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.deleteAllBtn.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.deleteAllBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
+            this.deleteAllBtn.Location = new System.Drawing.Point(96, 4);
+            this.deleteAllBtn.Name = "deleteAllBtn";
+            this.deleteAllBtn.Size = new System.Drawing.Size(120, 33);
+            this.deleteAllBtn.TabIndex = 11;
+            this.deleteAllBtn.Text = "Удалить всё";
+            this.deleteAllBtn.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.deleteAllBtn.UseVisualStyleBackColor = false;
             // 
             // deleteBtn
             // 
@@ -121,9 +137,9 @@
             this.cartDGV.AllowUserToDeleteRows = false;
             this.cartDGV.AllowUserToResizeColumns = false;
             this.cartDGV.AllowUserToResizeRows = false;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
-            this.cartDGV.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
+            this.cartDGV.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.cartDGV.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -132,36 +148,36 @@
             this.cartDGV.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.cartDGV.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.cartDGV.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.cartDGV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.cartDGV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.cartDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.cartDGV.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.cartDGV.DefaultCellStyle = dataGridViewCellStyle3;
             this.cartDGV.GridColor = System.Drawing.Color.White;
             this.cartDGV.Location = new System.Drawing.Point(0, 0);
             this.cartDGV.Name = "cartDGV";
             this.cartDGV.ReadOnly = true;
             this.cartDGV.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.cartDGV.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.cartDGV.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.cartDGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.cartDGV.Size = new System.Drawing.Size(842, 350);
             this.cartDGV.TabIndex = 2;
@@ -178,6 +194,44 @@
             this.panelOrderAll.Name = "panelOrderAll";
             this.panelOrderAll.Size = new System.Drawing.Size(416, 180);
             this.panelOrderAll.TabIndex = 4;
+            // 
+            // orderAllBtn
+            // 
+            this.orderAllBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.orderAllBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
+            this.orderAllBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
+            this.orderAllBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.orderAllBtn.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.orderAllBtn.ForeColor = System.Drawing.Color.White;
+            this.orderAllBtn.Location = new System.Drawing.Point(3, 137);
+            this.orderAllBtn.Name = "orderAllBtn";
+            this.orderAllBtn.Size = new System.Drawing.Size(200, 40);
+            this.orderAllBtn.TabIndex = 3;
+            this.orderAllBtn.Text = "Заказать";
+            this.orderAllBtn.UseVisualStyleBackColor = false;
+            this.orderAllBtn.Click += new System.EventHandler(this.orderAllBtn_Click);
+            // 
+            // sumAll
+            // 
+            this.sumAll.AutoSize = true;
+            this.sumAll.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.sumAll.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
+            this.sumAll.Location = new System.Drawing.Point(3, 99);
+            this.sumAll.Name = "sumAll";
+            this.sumAll.Size = new System.Drawing.Size(62, 29);
+            this.sumAll.TabIndex = 2;
+            this.sumAll.Text = "0. 00";
+            // 
+            // orderAllLabel
+            // 
+            this.orderAllLabel.AutoSize = true;
+            this.orderAllLabel.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.orderAllLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
+            this.orderAllLabel.Location = new System.Drawing.Point(3, 4);
+            this.orderAllLabel.Name = "orderAllLabel";
+            this.orderAllLabel.Size = new System.Drawing.Size(137, 29);
+            this.orderAllLabel.TabIndex = 1;
+            this.orderAllLabel.Text = "Заказать всё";
             // 
             // sumOrderAllLabel
             // 
@@ -203,44 +257,19 @@
             this.panelOrderSelected.Size = new System.Drawing.Size(412, 180);
             this.panelOrderSelected.TabIndex = 5;
             // 
-            // sumOrderSelectedLabel
+            // sumSelected
             // 
-            this.sumOrderSelectedLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.sumSelected.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.sumOrderSelectedLabel.AutoSize = true;
-            this.sumOrderSelectedLabel.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.sumOrderSelectedLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
-            this.sumOrderSelectedLabel.Location = new System.Drawing.Point(3, 70);
-            this.sumOrderSelectedLabel.Name = "sumOrderSelectedLabel";
-            this.sumOrderSelectedLabel.Size = new System.Drawing.Size(145, 29);
-            this.sumOrderSelectedLabel.TabIndex = 0;
-            this.sumOrderSelectedLabel.Text = "Сумма заказа";
-            // 
-            // orderSelectedLabel
-            // 
-            this.orderSelectedLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.orderSelectedLabel.AutoSize = true;
-            this.orderSelectedLabel.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.orderSelectedLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
-            this.orderSelectedLabel.Location = new System.Drawing.Point(3, 4);
-            this.orderSelectedLabel.Name = "orderSelectedLabel";
-            this.orderSelectedLabel.Size = new System.Drawing.Size(217, 29);
-            this.orderSelectedLabel.TabIndex = 1;
-            this.orderSelectedLabel.Text = "Заказать выбранные";
-            // 
-            // orderAllLabel
-            // 
-            this.orderAllLabel.AutoSize = true;
-            this.orderAllLabel.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.orderAllLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
-            this.orderAllLabel.Location = new System.Drawing.Point(3, 4);
-            this.orderAllLabel.Name = "orderAllLabel";
-            this.orderAllLabel.Size = new System.Drawing.Size(137, 29);
-            this.orderAllLabel.TabIndex = 1;
-            this.orderAllLabel.Text = "Заказать всё";
+            this.sumSelected.AutoSize = true;
+            this.sumSelected.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.sumSelected.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
+            this.sumSelected.Location = new System.Drawing.Point(3, 99);
+            this.sumSelected.Name = "sumSelected";
+            this.sumSelected.Size = new System.Drawing.Size(56, 29);
+            this.sumSelected.TabIndex = 3;
+            this.sumSelected.Text = "0.00";
             // 
             // orderSelectedBtn
             // 
@@ -257,61 +286,33 @@
             this.orderSelectedBtn.Text = "Заказать";
             this.orderSelectedBtn.UseVisualStyleBackColor = false;
             // 
-            // sumSelected
+            // orderSelectedLabel
             // 
-            this.sumSelected.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.orderSelectedLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.sumSelected.AutoSize = true;
-            this.sumSelected.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.sumSelected.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
-            this.sumSelected.Location = new System.Drawing.Point(3, 99);
-            this.sumSelected.Name = "sumSelected";
-            this.sumSelected.Size = new System.Drawing.Size(56, 29);
-            this.sumSelected.TabIndex = 3;
-            this.sumSelected.Text = "0.00";
+            this.orderSelectedLabel.AutoSize = true;
+            this.orderSelectedLabel.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.orderSelectedLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
+            this.orderSelectedLabel.Location = new System.Drawing.Point(3, 4);
+            this.orderSelectedLabel.Name = "orderSelectedLabel";
+            this.orderSelectedLabel.Size = new System.Drawing.Size(217, 29);
+            this.orderSelectedLabel.TabIndex = 1;
+            this.orderSelectedLabel.Text = "Заказать выбранные";
             // 
-            // sumAll
+            // sumOrderSelectedLabel
             // 
-            this.sumAll.AutoSize = true;
-            this.sumAll.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.sumAll.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
-            this.sumAll.Location = new System.Drawing.Point(3, 99);
-            this.sumAll.Name = "sumAll";
-            this.sumAll.Size = new System.Drawing.Size(62, 29);
-            this.sumAll.TabIndex = 2;
-            this.sumAll.Text = "0. 00";
-            // 
-            // deleteAllBtn
-            // 
-            this.deleteAllBtn.BackColor = System.Drawing.Color.White;
-            this.deleteAllBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.deleteAllBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.deleteAllBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.deleteAllBtn.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.deleteAllBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
-            this.deleteAllBtn.Location = new System.Drawing.Point(96, 4);
-            this.deleteAllBtn.Name = "deleteAllBtn";
-            this.deleteAllBtn.Size = new System.Drawing.Size(120, 33);
-            this.deleteAllBtn.TabIndex = 11;
-            this.deleteAllBtn.Text = "Удалить всё";
-            this.deleteAllBtn.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.deleteAllBtn.UseVisualStyleBackColor = false;
-            // 
-            // orderAllBtn
-            // 
-            this.orderAllBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.orderAllBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
-            this.orderAllBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
-            this.orderAllBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.orderAllBtn.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.orderAllBtn.ForeColor = System.Drawing.Color.White;
-            this.orderAllBtn.Location = new System.Drawing.Point(3, 137);
-            this.orderAllBtn.Name = "orderAllBtn";
-            this.orderAllBtn.Size = new System.Drawing.Size(200, 40);
-            this.orderAllBtn.TabIndex = 3;
-            this.orderAllBtn.Text = "Заказать";
-            this.orderAllBtn.UseVisualStyleBackColor = false;
+            this.sumOrderSelectedLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.sumOrderSelectedLabel.AutoSize = true;
+            this.sumOrderSelectedLabel.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.sumOrderSelectedLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
+            this.sumOrderSelectedLabel.Location = new System.Drawing.Point(3, 70);
+            this.sumOrderSelectedLabel.Name = "sumOrderSelectedLabel";
+            this.sumOrderSelectedLabel.Size = new System.Drawing.Size(145, 29);
+            this.sumOrderSelectedLabel.TabIndex = 0;
+            this.sumOrderSelectedLabel.Text = "Сумма заказа";
             // 
             // panelOrder
             // 
