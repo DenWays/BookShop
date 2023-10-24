@@ -43,7 +43,7 @@ namespace BookShopBD
             }
             sumAll.Text = sumAll_.ToString();
 
-            DBConnection.msCommand.CommandText = $"SELECT order_book.id_order FROM order_book JOIN order_ USING(id_order) WHERE id_customer = 5 AND Status = 'Ожидает оплаты' GROUP BY order_book.id_order;";
+            DBConnection.msCommand.CommandText = $"SELECT order_book.id_order FROM order_book JOIN order_ USING(id_order) WHERE id_customer = {(int)id_customer} AND Status = 'Ожидает оплаты' GROUP BY order_book.id_order;";
             DBConnection.dataReader = DBConnection.msCommand.ExecuteReader();
 
             while (DBConnection.dataReader.Read())
@@ -121,6 +121,7 @@ namespace BookShopBD
                 DBConnection.msCommand.ExecuteNonQuery();
             }
             refreshButton_Click("↻", e);
+            MessageBox.Show("Книги успешно заказаны. Ожидайте подтверждения продавца.", "Успешно");
         }
 
         private void orderSelectedBtn_Click(object sender, EventArgs e)
@@ -156,6 +157,86 @@ namespace BookShopBD
                 }
             }
             refreshButton_Click("↻", e);
+            MessageBox.Show("Книги успешно заказаны. Ожидайте подтверждения продавца.", "Успешно");
+        }
+
+        private void deleteBtn_Click(object sender, EventArgs e)
+        {
+            if(cartDGV.Rows.Count == 0) 
+            {
+                MessageBox.Show("Корзина пуста.", "Ошибка удаления", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return; 
+            }
+            DBConnection.ConnectionDB();
+            for (int i = 0; i < cartDGV.SelectedRows.Count; i++)
+            {               
+                for (int j = 0; j < ids_order.Count; j++)
+                {
+                    DBConnection.msCommand.CommandText = $"SELECT id_employee FROM order_ WHERE id_order = {ids_order[j]};";
+                    object id_employee = DBConnection.msCommand.ExecuteScalar();
+
+                    DBConnection.msCommand.CommandText = $"CALL GetUserId({CurrentUser.Id_account}, 'Покупатель');";
+                    object id_customer = DBConnection.msCommand.ExecuteScalar();
+
+                    DBConnection.msCommand.CommandText = $"DELETE order_book FROM order_book JOIN book USING(id_book) JOIN author USING(id_author) WHERE Book_name = '{cartDGV.SelectedRows[i].Cells[0].Value}' AND Author_name = '{cartDGV.SelectedRows[i].Cells[1].Value}' AND order_book.id_order = {ids_order[j]} AND order_book.Amount = {int.Parse(cartDGV.SelectedRows[i].Cells[3].Value.ToString())} AND order_book.Price = {double.Parse(cartDGV.SelectedRows[i].Cells[2].Value.ToString())} AND Status = 'Ожидает оплаты';";
+                    DBConnection.msCommand.ExecuteNonQuery();
+                }              
+            }
+            List<int> deleteIds = new List<int>();
+            DBConnection.msCommand.CommandText = $"SELECT id_order FROM order_ WHERE id_order NOT IN (SELECT id_order FROM order_book);";
+            DBConnection.dataReader = DBConnection.msCommand.ExecuteReader();
+            while(DBConnection.dataReader.Read())
+            {
+                deleteIds.Add((int)DBConnection.dataReader[0]);
+            }
+            DBConnection.CloseDB();
+            DBConnection.ConnectionDB();
+            for (int i = 0; i < deleteIds.Count; i++)
+            {
+                DBConnection.msCommand.CommandText = $"DELETE FROM order_ WHERE id_order = {deleteIds[i]}";
+                DBConnection.msCommand.ExecuteNonQuery();
+            }
+            refreshButton_Click("↻", e);
+            MessageBox.Show("Книги успешно удалены из корзины.", "Успех");
+        }
+
+        private void deleteAllBtn_Click(object sender, EventArgs e)
+        {
+            if (cartDGV.Rows.Count == 0) 
+            {
+                MessageBox.Show("Корзина пуста.", "Ошибка удаления", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return; 
+            }
+            DBConnection.ConnectionDB();
+            for (int i = 0; i < cartDGV.Rows.Count; i++)
+            {             
+                for (int j = 0; j < ids_order.Count; j++)
+                {
+                    DBConnection.msCommand.CommandText = $"SELECT id_employee FROM order_ WHERE id_order = {ids_order[j]};";
+                    object id_employee = DBConnection.msCommand.ExecuteScalar();
+
+                    DBConnection.msCommand.CommandText = $"CALL GetUserId({CurrentUser.Id_account}, 'Покупатель');";
+                    object id_customer = DBConnection.msCommand.ExecuteScalar();
+                    DBConnection.msCommand.CommandText = $"DELETE order_book FROM order_book JOIN book USING(id_book) JOIN author USING(id_author) WHERE Book_name = '{cartDGV.Rows[i].Cells[0].Value}' AND Author_name = '{cartDGV.Rows[i].Cells[1].Value}' AND order_book.id_order = {ids_order[j]} AND order_book.Amount = {int.Parse(cartDGV.Rows[i].Cells[3].Value.ToString())} AND order_book.Price = {double.Parse(cartDGV.Rows[i].Cells[2].Value.ToString())} AND Status = 'Ожидает оплаты';";
+                    DBConnection.msCommand.ExecuteNonQuery();
+                }
+            }
+            List<int> deleteIds = new List<int>();
+            DBConnection.msCommand.CommandText = $"SELECT id_order FROM order_ WHERE id_order NOT IN (SELECT id_order FROM order_book);";
+            DBConnection.dataReader = DBConnection.msCommand.ExecuteReader();
+            while (DBConnection.dataReader.Read())
+            {
+                deleteIds.Add((int)DBConnection.dataReader[0]);
+            }
+            DBConnection.CloseDB();
+            DBConnection.ConnectionDB();
+            for (int i = 0; i < deleteIds.Count; i++)
+            {
+                DBConnection.msCommand.CommandText = $"DELETE FROM order_ WHERE id_order = {deleteIds[i]}";
+                DBConnection.msCommand.ExecuteNonQuery();
+            }
+            refreshButton_Click("↻", e);
+            MessageBox.Show("Книги успешно удалены из корзины.", "Успех");
         }
     }
 }

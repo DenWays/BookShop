@@ -32,28 +32,28 @@
             this.panelTools = new System.Windows.Forms.Panel();
             this.closeButton = new System.Windows.Forms.Button();
             this.nameLabel = new System.Windows.Forms.Label();
+            this.icon = new System.Windows.Forms.PictureBox();
             this.maximazeButton = new System.Windows.Forms.Button();
             this.minimizedButton = new System.Windows.Forms.Button();
             this.panelMenu = new System.Windows.Forms.Panel();
-            this.panelChoise = new System.Windows.Forms.Panel();
-            this.panelInfo = new System.Windows.Forms.Panel();
+            this.panelInfoUser = new System.Windows.Forms.Panel();
             this.lastNLabel = new System.Windows.Forms.Label();
+            this.roleLabel = new System.Windows.Forms.Label();
             this.firstNLabel = new System.Windows.Forms.Label();
             this.middleNLabel = new System.Windows.Forms.Label();
-            this.roleLabel = new System.Windows.Forms.Label();
-            this.panelInfoUser = new System.Windows.Forms.Panel();
             this.border = new System.Windows.Forms.Panel();
             this.tabPanel = new System.Windows.Forms.Panel();
+            this.panelChoise = new System.Windows.Forms.Panel();
+            this.exitButton = new System.Windows.Forms.Button();
             this.history = new System.Windows.Forms.Button();
             this.catalog = new System.Windows.Forms.Button();
             this.cart = new System.Windows.Forms.Button();
-            this.icon = new System.Windows.Forms.PictureBox();
-            this.exitButton = new System.Windows.Forms.Button();
+            this.panelInfo = new System.Windows.Forms.Panel();
             this.panelTools.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.icon)).BeginInit();
             this.panelMenu.SuspendLayout();
             this.panelInfoUser.SuspendLayout();
             this.tabPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.icon)).BeginInit();
             this.SuspendLayout();
             // 
             // panelTools
@@ -100,6 +100,16 @@
             this.nameLabel.TabIndex = 2;
             this.nameLabel.Text = "BookShop";
             // 
+            // icon
+            // 
+            this.icon.Image = global::BookShopBD.Properties.Resources.bookWhite;
+            this.icon.Location = new System.Drawing.Point(3, 0);
+            this.icon.Name = "icon";
+            this.icon.Size = new System.Drawing.Size(32, 30);
+            this.icon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.icon.TabIndex = 1;
+            this.icon.TabStop = false;
+            // 
             // maximazeButton
             // 
             this.maximazeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -144,21 +154,16 @@
             this.panelMenu.Size = new System.Drawing.Size(158, 570);
             this.panelMenu.TabIndex = 3;
             // 
-            // panelChoise
+            // panelInfoUser
             // 
-            this.panelChoise.BackColor = System.Drawing.Color.White;
-            this.panelChoise.Location = new System.Drawing.Point(0, 4);
-            this.panelChoise.Name = "panelChoise";
-            this.panelChoise.Size = new System.Drawing.Size(6, 50);
-            this.panelChoise.TabIndex = 1;
-            // 
-            // panelInfo
-            // 
-            this.panelInfo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelInfo.Location = new System.Drawing.Point(158, 30);
-            this.panelInfo.Name = "panelInfo";
-            this.panelInfo.Size = new System.Drawing.Size(842, 570);
-            this.panelInfo.TabIndex = 4;
+            this.panelInfoUser.Controls.Add(this.lastNLabel);
+            this.panelInfoUser.Controls.Add(this.roleLabel);
+            this.panelInfoUser.Controls.Add(this.firstNLabel);
+            this.panelInfoUser.Controls.Add(this.middleNLabel);
+            this.panelInfoUser.Location = new System.Drawing.Point(0, 0);
+            this.panelInfoUser.Name = "panelInfoUser";
+            this.panelInfoUser.Size = new System.Drawing.Size(158, 106);
+            this.panelInfoUser.TabIndex = 8;
             // 
             // lastNLabel
             // 
@@ -170,6 +175,17 @@
             this.lastNLabel.Size = new System.Drawing.Size(94, 26);
             this.lastNLabel.TabIndex = 4;
             this.lastNLabel.Text = "Фамилия";
+            // 
+            // roleLabel
+            // 
+            this.roleLabel.AutoSize = true;
+            this.roleLabel.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.roleLabel.ForeColor = System.Drawing.Color.White;
+            this.roleLabel.Location = new System.Drawing.Point(0, 78);
+            this.roleLabel.Name = "roleLabel";
+            this.roleLabel.Size = new System.Drawing.Size(54, 26);
+            this.roleLabel.TabIndex = 7;
+            this.roleLabel.Text = "Роль";
             // 
             // firstNLabel
             // 
@@ -193,28 +209,6 @@
             this.middleNLabel.TabIndex = 6;
             this.middleNLabel.Text = "Отчество";
             // 
-            // roleLabel
-            // 
-            this.roleLabel.AutoSize = true;
-            this.roleLabel.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.roleLabel.ForeColor = System.Drawing.Color.White;
-            this.roleLabel.Location = new System.Drawing.Point(0, 78);
-            this.roleLabel.Name = "roleLabel";
-            this.roleLabel.Size = new System.Drawing.Size(54, 26);
-            this.roleLabel.TabIndex = 7;
-            this.roleLabel.Text = "Роль";
-            // 
-            // panelInfoUser
-            // 
-            this.panelInfoUser.Controls.Add(this.lastNLabel);
-            this.panelInfoUser.Controls.Add(this.roleLabel);
-            this.panelInfoUser.Controls.Add(this.firstNLabel);
-            this.panelInfoUser.Controls.Add(this.middleNLabel);
-            this.panelInfoUser.Location = new System.Drawing.Point(0, 0);
-            this.panelInfoUser.Name = "panelInfoUser";
-            this.panelInfoUser.Size = new System.Drawing.Size(158, 106);
-            this.panelInfoUser.TabIndex = 8;
-            // 
             // border
             // 
             this.border.BackColor = System.Drawing.Color.White;
@@ -237,6 +231,31 @@
             this.tabPanel.Name = "tabPanel";
             this.tabPanel.Size = new System.Drawing.Size(158, 454);
             this.tabPanel.TabIndex = 11;
+            // 
+            // panelChoise
+            // 
+            this.panelChoise.BackColor = System.Drawing.Color.White;
+            this.panelChoise.Location = new System.Drawing.Point(0, 4);
+            this.panelChoise.Name = "panelChoise";
+            this.panelChoise.Size = new System.Drawing.Size(6, 50);
+            this.panelChoise.TabIndex = 1;
+            // 
+            // exitButton
+            // 
+            this.exitButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.exitButton.BackColor = System.Drawing.Color.White;
+            this.exitButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.exitButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.exitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.exitButton.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.exitButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
+            this.exitButton.Location = new System.Drawing.Point(4, 400);
+            this.exitButton.Name = "exitButton";
+            this.exitButton.Size = new System.Drawing.Size(150, 50);
+            this.exitButton.TabIndex = 10;
+            this.exitButton.Text = "Выход";
+            this.exitButton.UseVisualStyleBackColor = false;
+            this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
             // 
             // history
             // 
@@ -292,32 +311,13 @@
             this.cart.UseVisualStyleBackColor = true;
             this.cart.Click += new System.EventHandler(this.cart_Click);
             // 
-            // icon
+            // panelInfo
             // 
-            this.icon.Image = global::BookShopBD.Properties.Resources.bookWhite;
-            this.icon.Location = new System.Drawing.Point(3, 0);
-            this.icon.Name = "icon";
-            this.icon.Size = new System.Drawing.Size(32, 30);
-            this.icon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.icon.TabIndex = 1;
-            this.icon.TabStop = false;
-            // 
-            // exitButton
-            // 
-            this.exitButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.exitButton.BackColor = System.Drawing.Color.White;
-            this.exitButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.exitButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.exitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.exitButton.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.exitButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
-            this.exitButton.Location = new System.Drawing.Point(4, 400);
-            this.exitButton.Name = "exitButton";
-            this.exitButton.Size = new System.Drawing.Size(150, 50);
-            this.exitButton.TabIndex = 10;
-            this.exitButton.Text = "Выход";
-            this.exitButton.UseVisualStyleBackColor = false;
-            this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
+            this.panelInfo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelInfo.Location = new System.Drawing.Point(158, 30);
+            this.panelInfo.Name = "panelInfo";
+            this.panelInfo.Size = new System.Drawing.Size(842, 570);
+            this.panelInfo.TabIndex = 4;
             // 
             // FormCustomer
             // 
@@ -337,11 +337,11 @@
             this.Load += new System.EventHandler(this.FormCustomer_Load);
             this.panelTools.ResumeLayout(false);
             this.panelTools.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.icon)).EndInit();
             this.panelMenu.ResumeLayout(false);
             this.panelInfoUser.ResumeLayout(false);
             this.panelInfoUser.PerformLayout();
             this.tabPanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.icon)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -358,7 +358,6 @@
         private System.Windows.Forms.Button catalog;
         private System.Windows.Forms.Panel panelChoise;
         private System.Windows.Forms.Button cart;
-        private System.Windows.Forms.Panel panelInfo;
         private System.Windows.Forms.Label roleLabel;
         private System.Windows.Forms.Label middleNLabel;
         private System.Windows.Forms.Label firstNLabel;
@@ -368,5 +367,6 @@
         private System.Windows.Forms.Panel border;
         private System.Windows.Forms.Panel tabPanel;
         private System.Windows.Forms.Button exitButton;
+        public System.Windows.Forms.Panel panelInfo;
     }
 }

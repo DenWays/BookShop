@@ -85,6 +85,7 @@
             this.deleteAllBtn.Text = "Удалить всё";
             this.deleteAllBtn.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.deleteAllBtn.UseVisualStyleBackColor = false;
+            this.deleteAllBtn.Click += new System.EventHandler(this.deleteAllBtn_Click);
             // 
             // deleteBtn
             // 
@@ -101,6 +102,7 @@
             this.deleteBtn.Text = "Удалить";
             this.deleteBtn.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.deleteBtn.UseVisualStyleBackColor = false;
+            this.deleteBtn.Click += new System.EventHandler(this.deleteBtn_Click);
             // 
             // refreshButton
             // 
