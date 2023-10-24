@@ -74,10 +74,19 @@ namespace BookShopBD
                 id_order = DBConnection.msCommand.ExecuteScalar();
             }
 
-            DBConnection.msCommand.CommandText = $"CALL AddToCart({(int)id_customer}, {(int)id_employee}, " +
+            DBConnection.msCommand.CommandText = $"SELECT id_order_book FROM order_ JOIN order_book USING(id_order) JOIN book USING(id_book) JOIN author USING(id_author) WHERE Book_name = '{UCCatalog.books.SelectedRows[0].Cells[0].Value}' AND Author_name = '{UCCatalog.books.SelectedRows[0].Cells[1].Value}' AND id_order = {(int)id_order};";
+            if(DBConnection.msCommand.ExecuteScalar() == null)
+            {
+                DBConnection.msCommand.CommandText = $"CALL AddToCart({(int)id_customer}, {(int)id_employee}, " +
                 $"'{UCCatalog.books.SelectedRows[0].Cells[0].Value}', '{UCCatalog.books.SelectedRows[0].Cells[1].Value}', {double.Parse(UCCatalog.books.SelectedRows[0].Cells[5].Value.ToString())}, {int.Parse(choiseAmountTB.Text)}, {(int)id_order});";
-            DBConnection.msCommand.ExecuteNonQuery();
-            MessageBox.Show("Книга успешно добавлена в корзину.", "Успешно");
+                DBConnection.msCommand.ExecuteNonQuery();
+                MessageBox.Show("Книга успешно добавлена в корзину.", "Успешно");
+            }
+            else
+            {
+                DBConnection.msCommand.CommandText = $"UPDATE order_book JOIN book USING(id_book) JOIN author USING(id_author) SET order_book.Amount = order_book.Amount + {int.Parse(choiseAmountTB.Text)} WHERE id_order = {(int)id_order} AND Book_name = '{UCCatalog.books.SelectedRows[0].Cells[0].Value}' AND Author_name = '{UCCatalog.books.SelectedRows[0].Cells[1].Value}';";
+                DBConnection.msCommand.ExecuteNonQuery();
+            }
         }
 
         private void FormAddToCart_Load(object sender, EventArgs e)

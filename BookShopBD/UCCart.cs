@@ -122,5 +122,14 @@ namespace BookShopBD
             }
             refreshButton_Click("↻", e);
         }
+
+        private void orderSelectedBtn_Click(object sender, EventArgs e)
+        {
+            DBConnection.ConnectionDB();
+            for (int i = 0; i < ids_order.Count; i++)
+            {
+
+            }
+        }
     }
 }
