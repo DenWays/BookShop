@@ -86,6 +86,7 @@ namespace BookShopBD
             {
                 DBConnection.msCommand.CommandText = $"UPDATE order_book JOIN book USING(id_book) JOIN author USING(id_author) SET order_book.Amount = order_book.Amount + {int.Parse(choiseAmountTB.Text)} WHERE id_order = {(int)id_order} AND Book_name = '{UCCatalog.books.SelectedRows[0].Cells[0].Value}' AND Author_name = '{UCCatalog.books.SelectedRows[0].Cells[1].Value}';";
                 DBConnection.msCommand.ExecuteNonQuery();
+                MessageBox.Show("Книга успешно добавлена в корзину.", "Успешно");
             }
         }
 

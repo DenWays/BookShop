@@ -59,6 +59,7 @@ namespace BookShopBD
 
         private void catalog_Click(object sender, EventArgs e)
         {
+            if(panelChoise.Location == new Point(0, catalog.Location.Y)) { return; }
             panelChoise.Location = new Point(0, catalog.Location.Y);
             UCCatalog uCCatalog = new UCCatalog();
             AddControlsToPanel(uCCatalog);
@@ -66,6 +67,7 @@ namespace BookShopBD
 
         private void cart_Click(object sender, EventArgs e)
         {
+            if(panelChoise.Location == new Point(0, cart.Location.Y)) { return; }
             panelChoise.Location = new Point(0, cart.Location.Y);
             UCCart uCCart = new UCCart();
             AddControlsToPanel(uCCart);
@@ -98,6 +100,7 @@ namespace BookShopBD
 
         private void history_Click(object sender, EventArgs e)
         {          
+            if(panelChoise.Location == new Point(0, history.Location.Y)) { return; }
             panelChoise.Location = new Point(0, history.Location.Y);
             UCHistory uCHistory = new UCHistory();
             AddControlsToPanel(uCHistory);

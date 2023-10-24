@@ -31,7 +31,7 @@ namespace BookShopBD
             object id_customer = DBConnection.msCommand.ExecuteScalar();
 
             DBConnection.msCommand.CommandText = $"SELECT Book_name AS Название, Author_name AS Автор, order_book.Price AS Цена, " +
-                $"order_book.Amount AS Количество FROM order_ JOIN order_book USING(id_order) JOIN book USING(id_book) " +
+                $"order_book.Amount AS Количество, CONCAT(employee.LastName, ' ', employee.FirstName, ' ',employee.MiddleName) AS 'ФИО продавца' FROM employee JOIN order_ USING(id_employee) JOIN order_book USING(id_order) JOIN book USING(id_book) " +
                 $"JOIN author USING(id_author) WHERE id_customer = {(int)id_customer} AND Status = 'Ожидает оплаты';";
             DBConnection.msDataAddapter.SelectCommand = DBConnection.msCommand;
             DBConnection.msDataAddapter.Fill(dataTable);
@@ -74,7 +74,7 @@ namespace BookShopBD
             object id_customer = DBConnection.msCommand.ExecuteScalar();
 
             DBConnection.msCommand.CommandText = $"SELECT Book_name AS Название, Author_name AS Автор, order_book.Price AS Цена, " +
-                $"order_book.Amount AS Количество FROM order_ JOIN order_book USING(id_order) JOIN book USING(id_book) " +
+                $"order_book.Amount AS Количество, CONCAT(employee.LastName, ' ', employee.FirstName, ' ',employee.MiddleName) AS 'ФИО продавца' FROM employee JOIN order_ USING(id_employee) JOIN order_book USING(id_order) JOIN book USING(id_book) " +
                 $"JOIN author USING(id_author) WHERE id_customer = {(int)id_customer} AND Status = 'Ожидает оплаты';";
             DBConnection.msDataAddapter.SelectCommand = DBConnection.msCommand;
             DBConnection.msDataAddapter.Fill(dataTable);
@@ -128,8 +128,34 @@ namespace BookShopBD
             DBConnection.ConnectionDB();
             for (int i = 0; i < ids_order.Count; i++)
             {
+                DBConnection.msCommand.CommandText = $"SELECT id_employee FROM order_ WHERE id_order = {ids_order[i]};";
+                object id_employee = DBConnection.msCommand.ExecuteScalar();
 
+                DBConnection.msCommand.CommandText = $"CALL GetUserId({CurrentUser.Id_account}, 'Покупатель');";
+                object id_customer = DBConnection.msCommand.ExecuteScalar();
+
+                DBConnection.msCommand.CommandText = $"INSERT order_(id_customer, id_employee, Date_order) " +
+                    $"VALUES({(int)id_customer}, {(int)id_employee}, CURDATE());";
+                DBConnection.msCommand.ExecuteNonQuery();
+
+                DBConnection.msCommand.CommandText = $"SELECT id_order FROM order_ WHERE id_order NOT IN (SELECT id_order FROM order_book);";
+                object id_order = DBConnection.msCommand.ExecuteScalar();
+
+                for (int j = 0; j < cartDGV.SelectedRows.Count; j++)
+                {
+                    DBConnection.msCommand.CommandText = $"UPDATE order_book JOIN book USING(id_book) JOIN author USING(id_author) SET order_book.id_order = {(int)id_order}, Status = 'Оплачен' WHERE order_book.id_order = {(ids_order[i])} AND Book_name = '{cartDGV.SelectedRows[j].Cells[0].Value}' AND Author_name = '{cartDGV.SelectedRows[j].Cells[1].Value}';";
+                    DBConnection.msCommand.ExecuteNonQuery();
+                }
+
+                DBConnection.msCommand.CommandText = $"SELECT id_order FROM order_ WHERE id_order NOT IN (SELECT id_order FROM order_book);";
+                id_order = DBConnection.msCommand.ExecuteScalar();
+                if(id_order != null)
+                {
+                    DBConnection.msCommand.CommandText = $"DELETE FROM order_ WHERE id_order = {(int)id_order}";
+                    DBConnection.msCommand.ExecuteNonQuery();
+                }
             }
+            refreshButton_Click("↻", e);
         }
     }
 }
