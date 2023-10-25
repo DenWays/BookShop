@@ -103,60 +103,60 @@
     <Compile Include="CreateAccount.cs" />
     <Compile Include="CurrentUser.cs" />
     <Compile Include="DBConnection.cs" />
-    <Compile Include="FormAddToCart.cs">
+    <Compile Include="Forms\FormAddToCart.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormAddToCart.Designer.cs">
+    <Compile Include="Forms\FormAddToCart.Designer.cs">
       <DependentUpon>FormAddToCart.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormCreateAccount.cs">
+    <Compile Include="Forms\FormCreateAccount.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormCreateAccount.Designer.cs">
+    <Compile Include="Forms\FormCreateAccount.Designer.cs">
       <DependentUpon>FormCreateAccount.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormAuthorizathion.cs">
+    <Compile Include="Forms\FormAuthorizathion.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormAuthorizathion.Designer.cs">
+    <Compile Include="Forms\FormAuthorizathion.Designer.cs">
       <DependentUpon>FormAuthorizathion.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormCustomer.cs">
+    <Compile Include="Forms\FormCustomer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormCustomer.Designer.cs">
+    <Compile Include="Forms\FormCustomer.Designer.cs">
       <DependentUpon>FormCustomer.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UCCart.cs">
+    <Compile Include="UserControls\UCCart.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UCCart.Designer.cs">
+    <Compile Include="UserControls\UCCart.Designer.cs">
       <DependentUpon>UCCart.cs</DependentUpon>
     </Compile>
-    <Compile Include="UCHistory.cs">
+    <Compile Include="UserControls\UCHistory.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UCHistory.Designer.cs">
+    <Compile Include="UserControls\UCHistory.Designer.cs">
       <DependentUpon>UCHistory.cs</DependentUpon>
     </Compile>
-    <Compile Include="UCCatalog.cs">
+    <Compile Include="UserControls\UCCatalog.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UCCatalog.Designer.cs">
+    <Compile Include="UserControls\UCCatalog.Designer.cs">
       <DependentUpon>UCCatalog.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="FormAddToCart.resx">
+    <EmbeddedResource Include="Forms\FormAddToCart.resx">
       <DependentUpon>FormAddToCart.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormCreateAccount.resx">
+    <EmbeddedResource Include="Forms\FormCreateAccount.resx">
       <DependentUpon>FormCreateAccount.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormAuthorizathion.resx">
+    <EmbeddedResource Include="Forms\FormAuthorizathion.resx">
       <DependentUpon>FormAuthorizathion.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormCustomer.resx">
+    <EmbeddedResource Include="Forms\FormCustomer.resx">
       <DependentUpon>FormCustomer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -169,13 +169,13 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="UCCart.resx">
+    <EmbeddedResource Include="UserControls\UCCart.resx">
       <DependentUpon>UCCart.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UCHistory.resx">
+    <EmbeddedResource Include="UserControls\UCHistory.resx">
       <DependentUpon>UCHistory.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UCCatalog.resx">
+    <EmbeddedResource Include="UserControls\UCCatalog.resx">
       <DependentUpon>UCCatalog.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
