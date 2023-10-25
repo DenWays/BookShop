@@ -10,7 +10,6 @@ namespace BookShopBD
     {
         public static DataGridView books;
         static bool selectFlag = false;
-        static int id_order = -1;
         public UCCatalog()
         {
             InitializeComponent();
@@ -39,6 +38,7 @@ namespace BookShopBD
             DBConnection.ConnectionDB();
             Form newForm = new FormAddToCart();
             newForm.ShowDialog();
+            refreshButton_Click("↻", e);
         }
 
         private void UCCatalog_SizeChanged(object sender, EventArgs e)

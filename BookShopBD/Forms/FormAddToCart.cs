@@ -39,7 +39,7 @@ namespace BookShopBD
 
         private void addButton_Click(object sender, EventArgs e)
         {         
-            if(choiseEmpCB.Text == "" && choiseAmountTB.Text == "")
+            if(choiseEmpCB.Text == "" || choiseAmountTB.Text == "")
             {
                 MessageBox.Show("Все поля должны быть заполнены!", "Ошибка при заполнении полей", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -81,6 +81,12 @@ namespace BookShopBD
                     $"AND id_employee = {(int)id_employee} ORDER BY id_order DESC LIMIT 1;";
                 id_order = DBConnection.msCommand.ExecuteScalar();
             }
+
+            DBConnection.msCommand.CommandText = $"UPDATE book JOIN author USING(id_author) " +
+                $"SET Amount = Amount - {int.Parse(choiseAmountTB.Text)} " +
+                $"WHERE Book_name = '{UCCatalog.books.SelectedRows[0].Cells[0].Value}' " +
+                $"AND Author_name = '{UCCatalog.books.SelectedRows[0].Cells[1].Value}';";
+            DBConnection.msCommand.ExecuteNonQuery();
 
             DBConnection.msCommand.CommandText = $"SELECT id_order_book FROM order_ JOIN order_book USING(id_order) " +
                 $"JOIN book USING(id_book) JOIN author USING(id_author) " +

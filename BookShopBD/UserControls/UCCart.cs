@@ -233,7 +233,14 @@ namespace BookShopBD
                         $"AND order_book.Amount = {int.Parse(cartDGV.SelectedRows[i].Cells[3].Value.ToString())} " +
                         $"AND order_book.Price = {double.Parse(cartDGV.SelectedRows[i].Cells[2].Value.ToString())} " +
                         $"AND Status = 'Ожидает заказа';";
-                    DBConnection.msCommand.ExecuteNonQuery();
+                    if(DBConnection.msCommand.ExecuteNonQuery() > 0)
+                    {
+                        DBConnection.msCommand.CommandText = $"UPDATE book JOIN author USING(id_author) " +
+                            $"SET Amount = Amount + {int.Parse(cartDGV.SelectedRows[i].Cells[3].Value.ToString())} " +
+                            $"WHERE Book_name = '{cartDGV.SelectedRows[i].Cells[0].Value}' " +
+                            $"AND Author_name = '{cartDGV.SelectedRows[i].Cells[1].Value}';";
+                        DBConnection.msCommand.ExecuteNonQuery();
+                    }
                 }              
             }
             List<int> deleteIds = new List<int>();
@@ -278,7 +285,14 @@ namespace BookShopBD
                         $"AND order_book.Amount = {int.Parse(cartDGV.Rows[i].Cells[3].Value.ToString())} " +
                         $"AND order_book.Price = {double.Parse(cartDGV.Rows[i].Cells[2].Value.ToString())} " +
                         $"AND Status = 'Ожидает заказа';";
-                    DBConnection.msCommand.ExecuteNonQuery();
+                    if (DBConnection.msCommand.ExecuteNonQuery() > 0)
+                    {
+                        DBConnection.msCommand.CommandText = $"UPDATE book JOIN author USING(id_author) " +
+                            $"SET Amount = Amount + {int.Parse(cartDGV.SelectedRows[i].Cells[3].Value.ToString())} " +
+                            $"WHERE Book_name = '{cartDGV.SelectedRows[i].Cells[0].Value}' " +
+                            $"AND Author_name = '{cartDGV.SelectedRows[i].Cells[1].Value}';";
+                        DBConnection.msCommand.ExecuteNonQuery();
+                    }
                 }
             }
             List<int> deleteIds = new List<int>();
