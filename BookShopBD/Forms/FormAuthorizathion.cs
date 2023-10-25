@@ -34,6 +34,7 @@ namespace BookShopBD
 
         private void closeButton_Click(object sender, System.EventArgs e)
         {
+            DBConnection.CloseDB();
             Close();
         }
 
