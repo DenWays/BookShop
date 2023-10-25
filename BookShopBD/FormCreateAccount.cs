@@ -1,8 +1,4 @@
-﻿using MySqlX.XDevAPI.Common;
-using System;
-using System.Drawing;
-using System.Drawing.Drawing2D;
-using System.Net.Mail;
+﻿using System;
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;

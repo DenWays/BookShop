@@ -1,17 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Data.Common;
-using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace BookShopBD
 {
@@ -58,33 +48,50 @@ namespace BookShopBD
             DBConnection.msCommand.CommandText = $"CALL GetUserId({ids_employee[choiseEmpCB.SelectedIndex]}, 'Продавец');";
             object id_employee = DBConnection.msCommand.ExecuteScalar();
 
-            DBConnection.msCommand.CommandText = $"SELECT id_order FROM order_ JOIN order_book USING(id_order) WHERE Status = 'Ожидает оплаты' AND id_customer = {(int)id_customer} AND id_employee = {(int)id_employee} ORDER BY id_order DESC LIMIT 1;";
+            DBConnection.msCommand.CommandText = $"SELECT id_order FROM order_ JOIN order_book USING(id_order) " +
+                $"WHERE Status = 'Ожидает заказа' AND id_customer = {(int)id_customer} " +
+                $"AND id_employee = {(int)id_employee} ORDER BY id_order DESC LIMIT 1;";
             
             if (DBConnection.msCommand.ExecuteScalar() == null)
             {             
-                DBConnection.msCommand.CommandText = $"INSERT order_(id_customer, id_employee, Date_order) VALUES({(int)id_customer}, {(int)id_employee}, CURDATE());";
+                DBConnection.msCommand.CommandText = $"INSERT order_(id_customer, id_employee, Date_order) " +
+                    $"VALUES({(int)id_customer}, {(int)id_employee}, CURDATE());";
                 DBConnection.msCommand.ExecuteNonQuery();
 
-                DBConnection.msCommand.CommandText = $"SELECT id_order FROM order_ WHERE id_customer = {(int)id_customer} AND id_employee = {(int)id_employee} ORDER BY id_order DESC LIMIT 1;";
+                DBConnection.msCommand.CommandText = $"SELECT id_order FROM order_ " +
+                    $"WHERE id_customer = {(int)id_customer} AND id_employee = {(int)id_employee} " +
+                    $"ORDER BY id_order DESC LIMIT 1;";
                 id_order = DBConnection.msCommand.ExecuteScalar(); 
             }
             else
             {
-                DBConnection.msCommand.CommandText = $"SELECT id_order FROM order_ JOIN order_book USING(id_order) WHERE Status = 'Ожидает оплаты' AND id_customer = {(int)id_customer} AND id_employee = {(int)id_employee} ORDER BY id_order DESC LIMIT 1;";
+                DBConnection.msCommand.CommandText = $"SELECT id_order FROM order_ JOIN order_book USING(id_order) " +
+                    $"WHERE Status = 'Ожидает заказа' AND id_customer = {(int)id_customer} " +
+                    $"AND id_employee = {(int)id_employee} ORDER BY id_order DESC LIMIT 1;";
                 id_order = DBConnection.msCommand.ExecuteScalar();
             }
 
-            DBConnection.msCommand.CommandText = $"SELECT id_order_book FROM order_ JOIN order_book USING(id_order) JOIN book USING(id_book) JOIN author USING(id_author) WHERE Book_name = '{UCCatalog.books.SelectedRows[0].Cells[0].Value}' AND Author_name = '{UCCatalog.books.SelectedRows[0].Cells[1].Value}' AND id_order = {(int)id_order};";
+            DBConnection.msCommand.CommandText = $"SELECT id_order_book FROM order_ JOIN order_book USING(id_order) " +
+                $"JOIN book USING(id_book) JOIN author USING(id_author) " +
+                $"WHERE Book_name = '{UCCatalog.books.SelectedRows[0].Cells[0].Value}' " +
+                $"AND Author_name = '{UCCatalog.books.SelectedRows[0].Cells[1].Value}' " +
+                $"AND id_order = {(int)id_order};";
             if(DBConnection.msCommand.ExecuteScalar() == null)
             {
                 DBConnection.msCommand.CommandText = $"CALL AddToCart({(int)id_customer}, {(int)id_employee}, " +
-                $"'{UCCatalog.books.SelectedRows[0].Cells[0].Value}', '{UCCatalog.books.SelectedRows[0].Cells[1].Value}', {double.Parse(UCCatalog.books.SelectedRows[0].Cells[5].Value.ToString())}, {int.Parse(choiseAmountTB.Text)}, {(int)id_order});";
+                $"'{UCCatalog.books.SelectedRows[0].Cells[0].Value}', '{UCCatalog.books.SelectedRows[0].Cells[1].Value}', " +
+                $"{double.Parse(UCCatalog.books.SelectedRows[0].Cells[5].Value.ToString())}, {int.Parse(choiseAmountTB.Text)}, " +
+                $"{(int)id_order});";
                 DBConnection.msCommand.ExecuteNonQuery();
                 MessageBox.Show("Книга успешно добавлена в корзину.", "Успешно");
             }
             else
             {
-                DBConnection.msCommand.CommandText = $"UPDATE order_book JOIN book USING(id_book) JOIN author USING(id_author) SET order_book.Amount = order_book.Amount + {int.Parse(choiseAmountTB.Text)} WHERE id_order = {(int)id_order} AND Book_name = '{UCCatalog.books.SelectedRows[0].Cells[0].Value}' AND Author_name = '{UCCatalog.books.SelectedRows[0].Cells[1].Value}';";
+                DBConnection.msCommand.CommandText = $"UPDATE order_book JOIN book USING(id_book) " +
+                    $"JOIN author USING(id_author) " +
+                    $"SET order_book.Amount = order_book.Amount + {int.Parse(choiseAmountTB.Text)} " +
+                    $"WHERE id_order = {(int)id_order} AND Book_name = '{UCCatalog.books.SelectedRows[0].Cells[0].Value}' " +
+                    $"AND Author_name = '{UCCatalog.books.SelectedRows[0].Cells[1].Value}';";
                 DBConnection.msCommand.ExecuteNonQuery();
                 MessageBox.Show("Книга успешно добавлена в корзину.", "Успешно");
             }
@@ -97,7 +104,8 @@ namespace BookShopBD
 
             while (DBConnection.dataReader.Read())
             {
-                choiseEmpCB.Items.Add($"{DBConnection.dataReader[0]} {DBConnection.dataReader[1]} {DBConnection.dataReader[2]}");
+                choiseEmpCB.Items.Add($"{DBConnection.dataReader[0]} {DBConnection.dataReader[1]} " +
+                    $"{DBConnection.dataReader[2]}");
                 ids_employee.Add(int.Parse(DBConnection.dataReader[3].ToString()));
             }
             DBConnection.CloseDB();

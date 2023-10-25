@@ -1,9 +1,6 @@
-﻿using MySqlX.XDevAPI.Common;
-using System;
+﻿using System;
 using System.Drawing;
-using System.Security.Cryptography;
 using System.Runtime.InteropServices;
-using System.Text;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
 
