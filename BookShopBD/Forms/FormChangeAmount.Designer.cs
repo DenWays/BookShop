@@ -36,6 +36,7 @@
             this.changeLabel = new System.Windows.Forms.Label();
             this.newAmountTB = new System.Windows.Forms.TextBox();
             this.changeButton = new System.Windows.Forms.Button();
+            this.backButton = new System.Windows.Forms.Button();
             this.panelTools.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.icon)).BeginInit();
             this.panelChange.SuspendLayout();
@@ -51,6 +52,7 @@
             this.panelTools.Name = "panelTools";
             this.panelTools.Size = new System.Drawing.Size(250, 30);
             this.panelTools.TabIndex = 3;
+            this.panelTools.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelTools_MouseDown);
             // 
             // closeButton
             // 
@@ -66,6 +68,7 @@
             this.closeButton.TabIndex = 0;
             this.closeButton.Text = "×";
             this.closeButton.UseVisualStyleBackColor = false;
+            this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
             // 
             // nameLabel
             // 
@@ -91,6 +94,7 @@
             // panelChange
             // 
             this.panelChange.BackColor = System.Drawing.Color.White;
+            this.panelChange.Controls.Add(this.backButton);
             this.panelChange.Controls.Add(this.changeButton);
             this.panelChange.Controls.Add(this.newAmountTB);
             this.panelChange.Controls.Add(this.changeLabel);
@@ -135,6 +139,22 @@
             this.changeButton.UseVisualStyleBackColor = false;
             this.changeButton.Click += new System.EventHandler(this.changeButton_Click);
             // 
+            // backButton
+            // 
+            this.backButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
+            this.backButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.backButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
+            this.backButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.backButton.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.backButton.ForeColor = System.Drawing.Color.White;
+            this.backButton.Location = new System.Drawing.Point(3, 77);
+            this.backButton.Name = "backButton";
+            this.backButton.Size = new System.Drawing.Size(110, 40);
+            this.backButton.TabIndex = 11;
+            this.backButton.Text = "Назад";
+            this.backButton.UseVisualStyleBackColor = false;
+            this.backButton.Click += new System.EventHandler(this.backButton_Click);
+            // 
             // FormChangeAmount
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -165,5 +185,6 @@
         private System.Windows.Forms.TextBox newAmountTB;
         private System.Windows.Forms.Label changeLabel;
         private System.Windows.Forms.Button changeButton;
+        private System.Windows.Forms.Button backButton;
     }
 }

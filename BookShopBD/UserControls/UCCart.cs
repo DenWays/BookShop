@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BookShopBD.Forms;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
@@ -9,7 +10,7 @@ namespace BookShopBD
     {
         static double sumSelected_ = 0.00;
         static double sumAll_ = 0.00;
-        List<int> ids_order = new List<int>();
+        public static List<int> ids_order = new List<int>();
         public static object id_order;
         public static List<string> itemsSelected = new List<string>();
         public UCCart()
@@ -332,10 +333,13 @@ namespace BookShopBD
         {
             if (cartDGV.CurrentCell.ColumnIndex != 3) { return; }
             itemsSelected.Clear();
-            for (int i = 0; i < cartDGV.ColumnCount - 1; i++)
+            for (int i = 0; i < cartDGV.ColumnCount; i++)
             {
                 itemsSelected.Add(cartDGV.SelectedRows[0].Cells[i].Value.ToString());
             }
+            Form newForm = new FormChangeAmount();
+            newForm.ShowDialog();
+            refreshButton_Click("↻", e);
         }
     }
 }
