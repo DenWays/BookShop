@@ -45,9 +45,15 @@ namespace BookShopBD
                 return;
             }
 
+            if(int.Parse(choiseAmountTB.Text) == 0)
+            {
+                MessageBox.Show("Нельзя заказать 0 книг.", "Ошибка при выборе количества", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             if(int.Parse(choiseAmountTB.Text) > int.Parse(UCCatalog.books.SelectedRows[0].Cells[6].Value.ToString()))
             {
-                MessageBox.Show($"На складе сейчас {int.Parse(UCCatalog.books.SelectedRows[0].Cells[6].Value.ToString())} книг.", "Ошибка при выборе колличества", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"На складе сейчас {int.Parse(UCCatalog.books.SelectedRows[0].Cells[6].Value.ToString())} книг.", "Ошибка при выборе количества", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 

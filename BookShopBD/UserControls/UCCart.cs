@@ -11,6 +11,7 @@ namespace BookShopBD
         static double sumAll_ = 0.00;
         List<int> ids_order = new List<int>();
         public static object id_order;
+        public static List<string> itemsSelected = new List<string>();
         public UCCart()
         {
             InitializeComponent();
@@ -312,6 +313,16 @@ namespace BookShopBD
             }
             refreshButton_Click("↻", e);
             MessageBox.Show("Книги успешно удалены из корзины.", "Успех");
+        }
+
+        private void cartDGV_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (cartDGV.CurrentCell.ColumnIndex != 3) { return; }
+            itemsSelected.Clear();
+            for (int i = 0; i < cartDGV.ColumnCount - 1; i++)
+            {
+                itemsSelected.Add(cartDGV.SelectedRows[0].Cells[i].Value.ToString());
+            }
         }
     }
 }
