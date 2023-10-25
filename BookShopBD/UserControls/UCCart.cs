@@ -218,31 +218,44 @@ namespace BookShopBD
             }
             DBConnection.ConnectionDB();
             for (int i = 0; i < cartDGV.SelectedRows.Count; i++)
-            {               
+            {
+                string[] FIO = new string[3];
+                FIO = cartDGV.SelectedRows[i].Cells[4].Value.ToString().Split(' ');
+                object id_employee = null;
                 for (int j = 0; j < ids_order.Count; j++)
                 {
-                    DBConnection.msCommand.CommandText = $"SELECT id_employee FROM order_ WHERE id_order = {ids_order[j]};";
-                    object id_employee = DBConnection.msCommand.ExecuteScalar();
+                    DBConnection.msCommand.CommandText = $"SELECT order_.id_employee FROM order_ JOIN order_book USING(id_order) " +
+                        $"JOIN employee USING(id_employee) WHERE order_book.id_order = {ids_order[j]} " +
+                        $"AND LastName = '{FIO[0]}' AND FirstName = '{FIO[1]}' AND MiddleName = '{FIO[2]}';";
+                    id_employee = DBConnection.msCommand.ExecuteScalar();
+                    if(id_employee != null) { break; }
+                }
+                DBConnection.msCommand.CommandText = $"CALL GetUserId({CurrentUser.Id_account}, 'Покупатель');";
+                object id_customer = DBConnection.msCommand.ExecuteScalar();
 
-                    DBConnection.msCommand.CommandText = $"CALL GetUserId({CurrentUser.Id_account}, 'Покупатель');";
-                    object id_customer = DBConnection.msCommand.ExecuteScalar();
+                DBConnection.msCommand.CommandText = $"SELECT id_order FROM order_ JOIN order_book USING(id_order) JOIN book USING(id_book) " +
+                    $"JOIN author USING(id_author) WHERE id_customer = {(int)id_customer} AND id_employee = {(int)id_employee} " +
+                    $"AND Book_name = '{cartDGV.SelectedRows[i].Cells[0].Value}' AND Author_name = '{cartDGV.SelectedRows[i].Cells[1].Value}' " +
+                    $"AND order_book.Amount = {int.Parse(cartDGV.SelectedRows[i].Cells[3].Value.ToString())} " +
+                    $"AND order_book.Price = {double.Parse(cartDGV.SelectedRows[i].Cells[2].Value.ToString())} " +
+                    $"AND Status = 'Ожидает заказа';";
+                object cur_id_order = DBConnection.msCommand.ExecuteScalar();
 
-                    DBConnection.msCommand.CommandText = $"DELETE order_book FROM order_book JOIN book USING(id_book) " +
-                        $"JOIN author USING(id_author) WHERE Book_name = '{cartDGV.SelectedRows[i].Cells[0].Value}' " +
-                        $"AND Author_name = '{cartDGV.SelectedRows[i].Cells[1].Value}' " +
-                        $"AND order_book.id_order = {ids_order[j]} " +
-                        $"AND order_book.Amount = {int.Parse(cartDGV.SelectedRows[i].Cells[3].Value.ToString())} " +
-                        $"AND order_book.Price = {double.Parse(cartDGV.SelectedRows[i].Cells[2].Value.ToString())} " +
-                        $"AND Status = 'Ожидает заказа';";
-                    if(DBConnection.msCommand.ExecuteNonQuery() > 0)
-                    {
-                        DBConnection.msCommand.CommandText = $"UPDATE book JOIN author USING(id_author) " +
-                            $"SET Amount = Amount + {int.Parse(cartDGV.SelectedRows[i].Cells[3].Value.ToString())} " +
-                            $"WHERE Book_name = '{cartDGV.SelectedRows[i].Cells[0].Value}' " +
-                            $"AND Author_name = '{cartDGV.SelectedRows[i].Cells[1].Value}';";
-                        DBConnection.msCommand.ExecuteNonQuery();
-                    }
-                }              
+                DBConnection.msCommand.CommandText = $"DELETE order_book FROM order_book JOIN book USING(id_book) " +
+                    $"JOIN author USING(id_author) WHERE Book_name = '{cartDGV.SelectedRows[i].Cells[0].Value}' " +
+                    $"AND Author_name = '{cartDGV.SelectedRows[i].Cells[1].Value}' " +
+                    $"AND order_book.id_order = {cur_id_order} " +
+                    $"AND order_book.Amount = {int.Parse(cartDGV.SelectedRows[i].Cells[3].Value.ToString())} " +
+                    $"AND order_book.Price = {double.Parse(cartDGV.SelectedRows[i].Cells[2].Value.ToString())} " +
+                    $"AND Status = 'Ожидает заказа';";
+                if (DBConnection.msCommand.ExecuteNonQuery() > 0)
+                {
+                    DBConnection.msCommand.CommandText = $"UPDATE book JOIN author USING(id_author) " +
+                        $"SET Amount = Amount + {int.Parse(cartDGV.SelectedRows[i].Cells[3].Value.ToString())} " +
+                        $"WHERE Book_name = '{cartDGV.SelectedRows[i].Cells[0].Value}' " +
+                        $"AND Author_name = '{cartDGV.SelectedRows[i].Cells[1].Value}';";
+                    DBConnection.msCommand.ExecuteNonQuery();
+                }         
             }
             List<int> deleteIds = new List<int>();
             DBConnection.msCommand.CommandText = $"SELECT id_order FROM order_ WHERE id_order " +
@@ -272,7 +285,7 @@ namespace BookShopBD
             }
             DBConnection.ConnectionDB();
             for (int i = 0; i < cartDGV.Rows.Count; i++)
-            {             
+            {
                 for (int j = 0; j < ids_order.Count; j++)
                 {
                     DBConnection.msCommand.CommandText = $"SELECT id_employee FROM order_ WHERE id_order = {ids_order[j]};";
