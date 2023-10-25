@@ -195,7 +195,6 @@
             this.Name = "FormAddToCart";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormAddToCart";
-            this.Load += new System.EventHandler(this.FormAddToCart_Load);
             this.panelTools.ResumeLayout(false);
             this.panelTools.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.icon)).EndInit();

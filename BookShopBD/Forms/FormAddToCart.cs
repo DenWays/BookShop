@@ -19,6 +19,17 @@ namespace BookShopBD
         {
             InitializeComponent();
             DBConnection.ConnectionDB();
+
+            DBConnection.msCommand.CommandText = "SELECT LastName, FirstName, MiddleName, id_account FROM employee";
+            DBConnection.dataReader = DBConnection.msCommand.ExecuteReader();
+
+            while (DBConnection.dataReader.Read())
+            {
+                choiseEmpCB.Items.Add($"{DBConnection.dataReader[0]} {DBConnection.dataReader[1]} " +
+                    $"{DBConnection.dataReader[2]}");
+                ids_employee.Add(int.Parse(DBConnection.dataReader[3].ToString()));
+            }
+            DBConnection.CloseDB();
         }
 
         private void backButton_Click(object sender, EventArgs e)
@@ -27,7 +38,7 @@ namespace BookShopBD
         }
 
         private void addButton_Click(object sender, EventArgs e)
-        {
+        {         
             if(choiseEmpCB.Text == "" && choiseAmountTB.Text == "")
             {
                 MessageBox.Show("Все поля должны быть заполнены!", "Ошибка при заполнении полей", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -84,6 +95,7 @@ namespace BookShopBD
                 $"{(int)id_order});";
                 DBConnection.msCommand.ExecuteNonQuery();
                 MessageBox.Show("Книга успешно добавлена в корзину.", "Успешно");
+                this.Hide();
             }
             else
             {
@@ -94,21 +106,8 @@ namespace BookShopBD
                     $"AND Author_name = '{UCCatalog.books.SelectedRows[0].Cells[1].Value}';";
                 DBConnection.msCommand.ExecuteNonQuery();
                 MessageBox.Show("Книга успешно добавлена в корзину.", "Успешно");
+                this.Hide();
             }
-        }
-
-        private void FormAddToCart_Load(object sender, EventArgs e)
-        {
-            DBConnection.msCommand.CommandText = "SELECT LastName, FirstName, MiddleName, id_account FROM employee";
-            DBConnection.dataReader = DBConnection.msCommand.ExecuteReader();
-
-            while (DBConnection.dataReader.Read())
-            {
-                choiseEmpCB.Items.Add($"{DBConnection.dataReader[0]} {DBConnection.dataReader[1]} " +
-                    $"{DBConnection.dataReader[2]}");
-                ids_employee.Add(int.Parse(DBConnection.dataReader[3].ToString()));
-            }
-            DBConnection.CloseDB();
         }
 
         private void panelTools_MouseDown(object sender, MouseEventArgs e)

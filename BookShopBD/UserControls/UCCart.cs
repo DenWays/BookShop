@@ -10,6 +10,7 @@ namespace BookShopBD
         static double sumSelected_ = 0.00;
         static double sumAll_ = 0.00;
         List<int> ids_order = new List<int>();
+        public static object id_order;
         public UCCart()
         {
             InitializeComponent();
@@ -91,6 +92,7 @@ namespace BookShopBD
 
             while (DBConnection.dataReader.Read())
             {
+                if(ids_order.Contains(int.Parse(DBConnection.dataReader[0].ToString()))) { continue; }
                 ids_order.Add(int.Parse(DBConnection.dataReader[0].ToString()));
             }
             DBConnection.CloseDB();
@@ -107,21 +109,40 @@ namespace BookShopBD
                 DBConnection.msCommand.CommandText = $"CALL GetUserId({CurrentUser.Id_account}, 'Покупатель');";
                 object id_customer = DBConnection.msCommand.ExecuteScalar();
 
-                DBConnection.msCommand.CommandText = $"INSERT order_(id_customer, id_employee, Date_order) " +
-                    $"VALUES({(int)id_customer}, {(int)id_employee}, CURDATE());";
-                DBConnection.msCommand.ExecuteNonQuery();
+                DBConnection.msCommand.CommandText = $"SELECT id_order FROM order_ JOIN order_book USING(id_order) " +
+                $"WHERE Status = 'Ожидает подтверждения' AND id_customer = {(int)id_customer} " +
+                $"AND id_employee = {(int)id_employee} ORDER BY id_order DESC LIMIT 1;";
 
-                DBConnection.msCommand.CommandText = $"SELECT id_order FROM order_ WHERE id_order " +
-                    $"NOT IN (SELECT id_order FROM order_book);";
-                object id_order = DBConnection.msCommand.ExecuteScalar();
+                if (DBConnection.msCommand.ExecuteScalar() == null)
+                {
+                    DBConnection.msCommand.CommandText = $"INSERT order_(id_customer, id_employee, Date_order) " +
+                    $"VALUES({(int)id_customer}, {(int)id_employee}, CURDATE());";
+                    DBConnection.msCommand.ExecuteNonQuery();
+
+                    DBConnection.msCommand.CommandText = $"SELECT id_order FROM order_ WHERE id_order " +
+                        $"NOT IN (SELECT id_order FROM order_book);";
+                    id_order = DBConnection.msCommand.ExecuteScalar();
+                }
+                else
+                {
+                    DBConnection.msCommand.CommandText = $"SELECT id_order FROM order_ JOIN order_book USING(id_order) " +
+                        $"WHERE Status = 'Ожидает подтверждения' AND id_customer = {(int)id_customer} " +
+                        $"AND id_employee = {(int)id_employee} ORDER BY id_order DESC LIMIT 1;";
+                    id_order = DBConnection.msCommand.ExecuteScalar();
+                }          
 
                 DBConnection.msCommand.CommandText = $"UPDATE order_book SET id_order = {(int)id_order}, " +
                     $"Status = 'Ожидает подтверждения' WHERE id_order = {ids_order[i]};";
                 DBConnection.msCommand.ExecuteNonQuery();
 
+                DBConnection.msCommand.CommandText = $"SELECT id_order FROM order_ WHERE id_order " +
+                    $"NOT IN (SELECT id_order FROM order_book);";
+                id_order = DBConnection.msCommand.ExecuteScalar();
+
                 DBConnection.msCommand.CommandText = $"DELETE FROM order_ WHERE id_order = {ids_order[i]}";
                 DBConnection.msCommand.ExecuteNonQuery();
             }
+            ids_order.Clear();
             refreshButton_Click("↻", e);
             MessageBox.Show("Книги успешно заказаны. Ожидайте подтверждения продавца.", "Успешно");
         }
@@ -129,6 +150,7 @@ namespace BookShopBD
         private void orderSelectedBtn_Click(object sender, EventArgs e)
         {
             DBConnection.ConnectionDB();
+            
             for (int i = 0; i < ids_order.Count; i++)
             {
                 DBConnection.msCommand.CommandText = $"SELECT id_employee FROM order_ WHERE id_order = {ids_order[i]};";
@@ -137,13 +159,27 @@ namespace BookShopBD
                 DBConnection.msCommand.CommandText = $"CALL GetUserId({CurrentUser.Id_account}, 'Покупатель');";
                 object id_customer = DBConnection.msCommand.ExecuteScalar();
 
-                DBConnection.msCommand.CommandText = $"INSERT order_(id_customer, id_employee, Date_order) " +
-                    $"VALUES({(int)id_customer}, {(int)id_employee}, CURDATE());";
-                DBConnection.msCommand.ExecuteNonQuery();
+                DBConnection.msCommand.CommandText = $"SELECT id_order FROM order_ JOIN order_book USING(id_order) " +
+                $"WHERE Status = 'Ожидает подтверждения' AND id_customer = {(int)id_customer} " +
+                $"AND id_employee = {(int)id_employee} ORDER BY id_order DESC LIMIT 1;";
 
-                DBConnection.msCommand.CommandText = $"SELECT id_order FROM order_ WHERE id_order " +
-                    $"NOT IN (SELECT id_order FROM order_book);";
-                object id_order = DBConnection.msCommand.ExecuteScalar();
+                if (DBConnection.msCommand.ExecuteScalar() == null)
+                {
+                    DBConnection.msCommand.CommandText = $"INSERT order_(id_customer, id_employee, Date_order) " +
+                    $"VALUES({(int)id_customer}, {(int)id_employee}, CURDATE());";
+                    DBConnection.msCommand.ExecuteNonQuery();
+
+                    DBConnection.msCommand.CommandText = $"SELECT id_order FROM order_ WHERE id_order " +
+                        $"NOT IN (SELECT id_order FROM order_book);";
+                    id_order = DBConnection.msCommand.ExecuteScalar();
+                }
+                else
+                {
+                    DBConnection.msCommand.CommandText = $"SELECT id_order FROM order_ JOIN order_book USING(id_order) " +
+                        $"WHERE Status = 'Ожидает подтверждения' AND id_customer = {(int)id_customer} " +
+                        $"AND id_employee = {(int)id_employee} ORDER BY id_order DESC LIMIT 1;";
+                    id_order = DBConnection.msCommand.ExecuteScalar();
+                }
 
                 for (int j = 0; j < cartDGV.SelectedRows.Count; j++)
                 {
@@ -162,6 +198,10 @@ namespace BookShopBD
                 {
                     DBConnection.msCommand.CommandText = $"DELETE FROM order_ WHERE id_order = {(int)id_order}";
                     DBConnection.msCommand.ExecuteNonQuery();
+                    if(ids_order.Contains((int)id_order))
+                    {
+                        ids_order.Remove((int)id_order);
+                    }
                 }
             }
             refreshButton_Click("↻", e);

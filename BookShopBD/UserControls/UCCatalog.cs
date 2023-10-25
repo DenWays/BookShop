@@ -36,6 +36,7 @@ namespace BookShopBD
 
         private void addToCartButton_Click(object sender, EventArgs e)
         {
+            DBConnection.ConnectionDB();
             Form newForm = new FormAddToCart();
             newForm.ShowDialog();
         }
