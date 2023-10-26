@@ -189,6 +189,7 @@
             // panelOrderAll
             // 
             this.panelOrderAll.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.panelOrderAll.BackColor = System.Drawing.Color.White;
             this.panelOrderAll.Controls.Add(this.orderAllBtn);
             this.panelOrderAll.Controls.Add(this.sumAll);
             this.panelOrderAll.Controls.Add(this.orderAllLabel);
@@ -251,6 +252,7 @@
             // 
             this.panelOrderSelected.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.panelOrderSelected.BackColor = System.Drawing.Color.White;
             this.panelOrderSelected.Controls.Add(this.sumSelected);
             this.panelOrderSelected.Controls.Add(this.orderSelectedBtn);
             this.panelOrderSelected.Controls.Add(this.orderSelectedLabel);
@@ -320,6 +322,7 @@
             // 
             // panelOrder
             // 
+            this.panelOrder.BackColor = System.Drawing.Color.White;
             this.panelOrder.Controls.Add(this.orderBtwnOrders);
             this.panelOrder.Controls.Add(this.panelOrderAll);
             this.panelOrder.Controls.Add(this.panelOrderSelected);
