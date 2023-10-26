@@ -117,7 +117,8 @@
             // newAmountTB
             // 
             this.newAmountTB.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.newAmountTB.Location = new System.Drawing.Point(8, 32);
+            this.newAmountTB.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
+            this.newAmountTB.Location = new System.Drawing.Point(3, 32);
             this.newAmountTB.Name = "newAmountTB";
             this.newAmountTB.Size = new System.Drawing.Size(150, 34);
             this.newAmountTB.TabIndex = 1;

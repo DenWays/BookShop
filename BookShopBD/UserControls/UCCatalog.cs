@@ -149,5 +149,10 @@ namespace BookShopBD
                 searchMethod($"SELECT * FROM catalog WHERE Количество = {int.Parse(searchTB.Text)}");
             }
         }
+
+        private void booksDGV_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            addToCartButton_Click("Добавить", e);
+        }
     }
 }

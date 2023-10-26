@@ -33,6 +33,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelSearch = new System.Windows.Forms.Panel();
+            this.searchButton = new System.Windows.Forms.Button();
             this.addToCartButton = new System.Windows.Forms.Button();
             this.refreshButton = new System.Windows.Forms.Button();
             this.searchTB = new System.Windows.Forms.TextBox();
@@ -45,7 +46,6 @@
             this.bookDescr = new System.Windows.Forms.Label();
             this.bookName = new System.Windows.Forms.Label();
             this.bookImage = new System.Windows.Forms.PictureBox();
-            this.searchButton = new System.Windows.Forms.Button();
             this.panelSearch.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.booksDGV)).BeginInit();
             this.borderGrid.SuspendLayout();
@@ -68,6 +68,23 @@
             this.panelSearch.Name = "panelSearch";
             this.panelSearch.Size = new System.Drawing.Size(842, 40);
             this.panelSearch.TabIndex = 0;
+            // 
+            // searchButton
+            // 
+            this.searchButton.BackColor = System.Drawing.Color.White;
+            this.searchButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.searchButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.searchButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.searchButton.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.searchButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
+            this.searchButton.Location = new System.Drawing.Point(389, 4);
+            this.searchButton.Name = "searchButton";
+            this.searchButton.Size = new System.Drawing.Size(80, 33);
+            this.searchButton.TabIndex = 9;
+            this.searchButton.Text = "Искать";
+            this.searchButton.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.searchButton.UseVisualStyleBackColor = false;
+            this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
             // 
             // addToCartButton
             // 
@@ -167,7 +184,6 @@
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Empty;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.booksDGV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
@@ -197,6 +213,7 @@
             this.booksDGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.booksDGV.Size = new System.Drawing.Size(842, 230);
             this.booksDGV.TabIndex = 1;
+            this.booksDGV.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.booksDGV_CellDoubleClick);
             this.booksDGV.SelectionChanged += new System.EventHandler(this.booksDGV_SelectionChanged);
             // 
             // borderGrid
@@ -267,23 +284,6 @@
             this.bookImage.Size = new System.Drawing.Size(202, 290);
             this.bookImage.TabIndex = 0;
             this.bookImage.TabStop = false;
-            // 
-            // searchButton
-            // 
-            this.searchButton.BackColor = System.Drawing.Color.White;
-            this.searchButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.searchButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.searchButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.searchButton.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.searchButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
-            this.searchButton.Location = new System.Drawing.Point(389, 4);
-            this.searchButton.Name = "searchButton";
-            this.searchButton.Size = new System.Drawing.Size(80, 33);
-            this.searchButton.TabIndex = 9;
-            this.searchButton.Text = "Искать";
-            this.searchButton.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.searchButton.UseVisualStyleBackColor = false;
-            this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
             // 
             // UCCatalog
             // 
