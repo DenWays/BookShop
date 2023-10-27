@@ -103,6 +103,12 @@
     <Compile Include="CreateAccount.cs" />
     <Compile Include="CurrentUser.cs" />
     <Compile Include="DBConnection.cs" />
+    <Compile Include="Forms\FormAddBook.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormAddBook.Designer.cs">
+      <DependentUpon>FormAddBook.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FormAddToCart.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -165,6 +171,9 @@
     <Compile Include="UserControls\UCCatalog.Designer.cs">
       <DependentUpon>UCCatalog.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Forms\FormAddBook.resx">
+      <DependentUpon>FormAddBook.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormAddToCart.resx">
       <DependentUpon>FormAddToCart.cs</DependentUpon>
     </EmbeddedResource>

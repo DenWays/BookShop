@@ -1,6 +1,6 @@
 ﻿namespace BookShopBD
 {
-    partial class UCCatalog
+    partial class UCCatalogEmployee
     {
         /// <summary> 
         /// Обязательная переменная конструктора.
@@ -34,7 +34,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelSearch = new System.Windows.Forms.Panel();
             this.searchButton = new System.Windows.Forms.Button();
-            this.addToCartButton = new System.Windows.Forms.Button();
+            this.addBookButton = new System.Windows.Forms.Button();
             this.refreshButton = new System.Windows.Forms.Button();
             this.searchTB = new System.Windows.Forms.TextBox();
             this.searchCB = new System.Windows.Forms.ComboBox();
@@ -58,7 +58,7 @@
             // 
             this.panelSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
             this.panelSearch.Controls.Add(this.searchButton);
-            this.panelSearch.Controls.Add(this.addToCartButton);
+            this.panelSearch.Controls.Add(this.addBookButton);
             this.panelSearch.Controls.Add(this.refreshButton);
             this.panelSearch.Controls.Add(this.searchTB);
             this.panelSearch.Controls.Add(this.searchCB);
@@ -86,23 +86,23 @@
             this.searchButton.UseVisualStyleBackColor = false;
             this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
             // 
-            // addToCartButton
+            // addBookButton
             // 
-            this.addToCartButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.addToCartButton.BackColor = System.Drawing.Color.White;
-            this.addToCartButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.addToCartButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.addToCartButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addToCartButton.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.addToCartButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
-            this.addToCartButton.Location = new System.Drawing.Point(614, 4);
-            this.addToCartButton.Name = "addToCartButton";
-            this.addToCartButton.Size = new System.Drawing.Size(182, 33);
-            this.addToCartButton.TabIndex = 8;
-            this.addToCartButton.Text = "Добавить в корзину";
-            this.addToCartButton.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.addToCartButton.UseVisualStyleBackColor = false;
-            this.addToCartButton.Click += new System.EventHandler(this.addToCartButton_Click);
+            this.addBookButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.addBookButton.BackColor = System.Drawing.Color.White;
+            this.addBookButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.addBookButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.addBookButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.addBookButton.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.addBookButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
+            this.addBookButton.Location = new System.Drawing.Point(614, 4);
+            this.addBookButton.Name = "addBookButton";
+            this.addBookButton.Size = new System.Drawing.Size(182, 33);
+            this.addBookButton.TabIndex = 8;
+            this.addBookButton.Text = "Добавить книгу";
+            this.addBookButton.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.addBookButton.UseVisualStyleBackColor = false;
+            this.addBookButton.Click += new System.EventHandler(this.addBook_Click);
             // 
             // refreshButton
             // 
@@ -213,7 +213,6 @@
             this.booksDGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.booksDGV.Size = new System.Drawing.Size(842, 230);
             this.booksDGV.TabIndex = 1;
-            this.booksDGV.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.booksDGV_CellDoubleClick);
             this.booksDGV.SelectionChanged += new System.EventHandler(this.booksDGV_SelectionChanged);
             // 
             // borderGrid
@@ -285,14 +284,14 @@
             this.bookImage.TabIndex = 0;
             this.bookImage.TabStop = false;
             // 
-            // UCCatalog
+            // UCCatalogEmployee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.panelBookInfo);
             this.Controls.Add(this.panelSearch);
             this.Controls.Add(this.borderGrid);
-            this.Name = "UCCatalog";
+            this.Name = "UCCatalogEmployee";
             this.Size = new System.Drawing.Size(842, 570);
             this.Load += new System.EventHandler(this.UCCatalog_Load);
             this.SizeChanged += new System.EventHandler(this.UCCatalog_SizeChanged);
@@ -315,7 +314,7 @@
         private System.Windows.Forms.Button refreshButton;
         private System.Windows.Forms.TextBox searchTB;
         private System.Windows.Forms.ComboBox searchCB;
-        private System.Windows.Forms.Button addToCartButton;
+        private System.Windows.Forms.Button addBookButton;
         public System.Windows.Forms.DataGridView booksDGV;
         private System.Windows.Forms.Panel borderGrid;
         private System.Windows.Forms.Panel panelBookInfo;

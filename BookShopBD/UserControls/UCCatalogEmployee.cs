@@ -6,11 +6,11 @@ using System.Windows.Forms;
 
 namespace BookShopBD
 {
-    public partial class UCCatalog : UserControl
+    public partial class UCCatalogEmployee : UserControl
     {
         public static DataGridView books;
         static bool selectFlag = false;
-        public UCCatalog()
+        public UCCatalogEmployee()
         {
             InitializeComponent();
             bookDescr.MaximumSize = new Size(panelDescr.Width - 5, panelDescr.Height);
@@ -33,7 +33,7 @@ namespace BookShopBD
             selectFlag = true;
         }
 
-        private void addToCartButton_Click(object sender, EventArgs e)
+        private void addBook_Click(object sender, EventArgs e)
         {
             DBConnection.ConnectionDB();
             Form newForm = new FormAddToCart();
@@ -148,11 +148,6 @@ namespace BookShopBD
             {
                 searchMethod($"SELECT * FROM catalog WHERE Количество = {int.Parse(searchTB.Text)}");
             }
-        }
-
-        private void booksDGV_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            addToCartButton_Click("Добавить", e);
         }
     }
 }
