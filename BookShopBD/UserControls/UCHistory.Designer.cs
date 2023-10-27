@@ -40,22 +40,22 @@
             this.refreshButton = new System.Windows.Forms.Button();
             this.tablePanel = new System.Windows.Forms.TableLayoutPanel();
             this.panelNotSuccess = new System.Windows.Forms.Panel();
-            this.panelSuccess = new System.Windows.Forms.Panel();
-            this.nSuccessDGV = new System.Windows.Forms.DataGridView();
-            this.successDGV = new System.Windows.Forms.DataGridView();
-            this.nSuccesLabel = new System.Windows.Forms.Label();
-            this.successLabel = new System.Windows.Forms.Label();
-            this.amountNSuccessLabel = new System.Windows.Forms.Label();
-            this.amountSuccessLabel = new System.Windows.Forms.Label();
+            this.sumNSuccessLabel = new System.Windows.Forms.Label();
             this.orderNSuccesLabel = new System.Windows.Forms.Label();
+            this.amountNSuccessLabel = new System.Windows.Forms.Label();
+            this.nSuccesLabel = new System.Windows.Forms.Label();
+            this.nSuccessDGV = new System.Windows.Forms.DataGridView();
+            this.panelSuccess = new System.Windows.Forms.Panel();
+            this.sumSuccessLabel = new System.Windows.Forms.Label();
             this.orderSuccesLabel = new System.Windows.Forms.Label();
-            this.sumNSuccesLabel = new System.Windows.Forms.Label();
-            this.sumSuccesLabel = new System.Windows.Forms.Label();
+            this.amountSuccessLabel = new System.Windows.Forms.Label();
+            this.successLabel = new System.Windows.Forms.Label();
+            this.successDGV = new System.Windows.Forms.DataGridView();
             this.sumPanel.SuspendLayout();
             this.tablePanel.SuspendLayout();
             this.panelNotSuccess.SuspendLayout();
-            this.panelSuccess.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nSuccessDGV)).BeginInit();
+            this.panelSuccess.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.successDGV)).BeginInit();
             this.SuspendLayout();
             // 
@@ -84,6 +84,7 @@
             this.refreshButton.TabIndex = 4;
             this.refreshButton.Text = "↻";
             this.refreshButton.UseVisualStyleBackColor = false;
+            this.refreshButton.Click += new System.EventHandler(this.refreshButton_Click);
             // 
             // tablePanel
             // 
@@ -107,7 +108,7 @@
             // panelNotSuccess
             // 
             this.panelNotSuccess.BackColor = System.Drawing.Color.White;
-            this.panelNotSuccess.Controls.Add(this.sumNSuccesLabel);
+            this.panelNotSuccess.Controls.Add(this.sumNSuccessLabel);
             this.panelNotSuccess.Controls.Add(this.orderNSuccesLabel);
             this.panelNotSuccess.Controls.Add(this.amountNSuccessLabel);
             this.panelNotSuccess.Controls.Add(this.nSuccesLabel);
@@ -118,19 +119,41 @@
             this.panelNotSuccess.Size = new System.Drawing.Size(415, 524);
             this.panelNotSuccess.TabIndex = 0;
             // 
-            // panelSuccess
+            // sumNSuccessLabel
             // 
-            this.panelSuccess.BackColor = System.Drawing.Color.White;
-            this.panelSuccess.Controls.Add(this.sumSuccesLabel);
-            this.panelSuccess.Controls.Add(this.orderSuccesLabel);
-            this.panelSuccess.Controls.Add(this.amountSuccessLabel);
-            this.panelSuccess.Controls.Add(this.successLabel);
-            this.panelSuccess.Controls.Add(this.successDGV);
-            this.panelSuccess.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelSuccess.Location = new System.Drawing.Point(424, 3);
-            this.panelSuccess.Name = "panelSuccess";
-            this.panelSuccess.Size = new System.Drawing.Size(415, 524);
-            this.panelSuccess.TabIndex = 1;
+            this.sumNSuccessLabel.AutoSize = true;
+            this.sumNSuccessLabel.Location = new System.Drawing.Point(188, 26);
+            this.sumNSuccessLabel.Name = "sumNSuccessLabel";
+            this.sumNSuccessLabel.Size = new System.Drawing.Size(52, 26);
+            this.sumNSuccessLabel.TabIndex = 7;
+            this.sumNSuccessLabel.Text = "0.00";
+            // 
+            // orderNSuccesLabel
+            // 
+            this.orderNSuccesLabel.AutoSize = true;
+            this.orderNSuccesLabel.Location = new System.Drawing.Point(19, 26);
+            this.orderNSuccesLabel.Name = "orderNSuccesLabel";
+            this.orderNSuccesLabel.Size = new System.Drawing.Size(175, 26);
+            this.orderNSuccesLabel.TabIndex = 6;
+            this.orderNSuccesLabel.Text = "заказов на сумму:";
+            // 
+            // amountNSuccessLabel
+            // 
+            this.amountNSuccessLabel.AutoSize = true;
+            this.amountNSuccessLabel.Location = new System.Drawing.Point(0, 26);
+            this.amountNSuccessLabel.Name = "amountNSuccessLabel";
+            this.amountNSuccessLabel.Size = new System.Drawing.Size(24, 26);
+            this.amountNSuccessLabel.TabIndex = 5;
+            this.amountNSuccessLabel.Text = "0";
+            // 
+            // nSuccesLabel
+            // 
+            this.nSuccesLabel.AutoSize = true;
+            this.nSuccesLabel.Location = new System.Drawing.Point(0, 0);
+            this.nSuccesLabel.Name = "nSuccesLabel";
+            this.nSuccesLabel.Size = new System.Drawing.Size(245, 26);
+            this.nSuccesLabel.TabIndex = 4;
+            this.nSuccesLabel.Text = "Ожидают подтверждения";
             // 
             // nSuccessDGV
             // 
@@ -183,6 +206,56 @@
             this.nSuccessDGV.Size = new System.Drawing.Size(415, 469);
             this.nSuccessDGV.TabIndex = 3;
             // 
+            // panelSuccess
+            // 
+            this.panelSuccess.BackColor = System.Drawing.Color.White;
+            this.panelSuccess.Controls.Add(this.sumSuccessLabel);
+            this.panelSuccess.Controls.Add(this.orderSuccesLabel);
+            this.panelSuccess.Controls.Add(this.amountSuccessLabel);
+            this.panelSuccess.Controls.Add(this.successLabel);
+            this.panelSuccess.Controls.Add(this.successDGV);
+            this.panelSuccess.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelSuccess.Location = new System.Drawing.Point(424, 3);
+            this.panelSuccess.Name = "panelSuccess";
+            this.panelSuccess.Size = new System.Drawing.Size(415, 524);
+            this.panelSuccess.TabIndex = 1;
+            // 
+            // sumSuccessLabel
+            // 
+            this.sumSuccessLabel.AutoSize = true;
+            this.sumSuccessLabel.Location = new System.Drawing.Point(188, 26);
+            this.sumSuccessLabel.Name = "sumSuccessLabel";
+            this.sumSuccessLabel.Size = new System.Drawing.Size(52, 26);
+            this.sumSuccessLabel.TabIndex = 8;
+            this.sumSuccessLabel.Text = "0.00";
+            // 
+            // orderSuccesLabel
+            // 
+            this.orderSuccesLabel.AutoSize = true;
+            this.orderSuccesLabel.Location = new System.Drawing.Point(19, 26);
+            this.orderSuccesLabel.Name = "orderSuccesLabel";
+            this.orderSuccesLabel.Size = new System.Drawing.Size(175, 26);
+            this.orderSuccesLabel.TabIndex = 7;
+            this.orderSuccesLabel.Text = "заказов на сумму:";
+            // 
+            // amountSuccessLabel
+            // 
+            this.amountSuccessLabel.AutoSize = true;
+            this.amountSuccessLabel.Location = new System.Drawing.Point(0, 26);
+            this.amountSuccessLabel.Name = "amountSuccessLabel";
+            this.amountSuccessLabel.Size = new System.Drawing.Size(24, 26);
+            this.amountSuccessLabel.TabIndex = 6;
+            this.amountSuccessLabel.Text = "0";
+            // 
+            // successLabel
+            // 
+            this.successLabel.AutoSize = true;
+            this.successLabel.Location = new System.Drawing.Point(0, 0);
+            this.successLabel.Name = "successLabel";
+            this.successLabel.Size = new System.Drawing.Size(146, 26);
+            this.successLabel.TabIndex = 5;
+            this.successLabel.Text = "Подтверждено";
+            // 
             // successDGV
             // 
             this.successDGV.AllowUserToAddRows = false;
@@ -234,78 +307,6 @@
             this.successDGV.Size = new System.Drawing.Size(415, 469);
             this.successDGV.TabIndex = 4;
             // 
-            // nSuccesLabel
-            // 
-            this.nSuccesLabel.AutoSize = true;
-            this.nSuccesLabel.Location = new System.Drawing.Point(0, 0);
-            this.nSuccesLabel.Name = "nSuccesLabel";
-            this.nSuccesLabel.Size = new System.Drawing.Size(245, 26);
-            this.nSuccesLabel.TabIndex = 4;
-            this.nSuccesLabel.Text = "Ожидают подтверждения";
-            // 
-            // successLabel
-            // 
-            this.successLabel.AutoSize = true;
-            this.successLabel.Location = new System.Drawing.Point(0, 0);
-            this.successLabel.Name = "successLabel";
-            this.successLabel.Size = new System.Drawing.Size(146, 26);
-            this.successLabel.TabIndex = 5;
-            this.successLabel.Text = "Подтверждено";
-            // 
-            // amountNSuccessLabel
-            // 
-            this.amountNSuccessLabel.AutoSize = true;
-            this.amountNSuccessLabel.Location = new System.Drawing.Point(0, 26);
-            this.amountNSuccessLabel.Name = "amountNSuccessLabel";
-            this.amountNSuccessLabel.Size = new System.Drawing.Size(24, 26);
-            this.amountNSuccessLabel.TabIndex = 5;
-            this.amountNSuccessLabel.Text = "0";
-            // 
-            // amountSuccessLabel
-            // 
-            this.amountSuccessLabel.AutoSize = true;
-            this.amountSuccessLabel.Location = new System.Drawing.Point(0, 26);
-            this.amountSuccessLabel.Name = "amountSuccessLabel";
-            this.amountSuccessLabel.Size = new System.Drawing.Size(24, 26);
-            this.amountSuccessLabel.TabIndex = 6;
-            this.amountSuccessLabel.Text = "0";
-            // 
-            // orderNSuccesLabel
-            // 
-            this.orderNSuccesLabel.AutoSize = true;
-            this.orderNSuccesLabel.Location = new System.Drawing.Point(19, 26);
-            this.orderNSuccesLabel.Name = "orderNSuccesLabel";
-            this.orderNSuccesLabel.Size = new System.Drawing.Size(175, 26);
-            this.orderNSuccesLabel.TabIndex = 6;
-            this.orderNSuccesLabel.Text = "заказов на сумму:";
-            // 
-            // orderSuccesLabel
-            // 
-            this.orderSuccesLabel.AutoSize = true;
-            this.orderSuccesLabel.Location = new System.Drawing.Point(19, 26);
-            this.orderSuccesLabel.Name = "orderSuccesLabel";
-            this.orderSuccesLabel.Size = new System.Drawing.Size(175, 26);
-            this.orderSuccesLabel.TabIndex = 7;
-            this.orderSuccesLabel.Text = "заказов на сумму:";
-            // 
-            // sumNSuccesLabel
-            // 
-            this.sumNSuccesLabel.AutoSize = true;
-            this.sumNSuccesLabel.Location = new System.Drawing.Point(188, 26);
-            this.sumNSuccesLabel.Name = "sumNSuccesLabel";
-            this.sumNSuccesLabel.Size = new System.Drawing.Size(52, 26);
-            this.sumNSuccesLabel.TabIndex = 7;
-            this.sumNSuccesLabel.Text = "0.00";
-            // 
-            // sumSuccesLabel
-            // 
-            this.sumSuccesLabel.AutoSize = true;
-            this.sumSuccesLabel.Location = new System.Drawing.Point(188, 26);
-            this.sumSuccesLabel.Name = "sumSuccesLabel";
-            this.sumSuccesLabel.Size = new System.Drawing.Size(52, 26);
-            this.sumSuccesLabel.TabIndex = 8;
-            this.sumSuccesLabel.Text = "0.00";
-            // 
             // UCHistory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -315,13 +316,14 @@
             this.Controls.Add(this.sumPanel);
             this.Name = "UCHistory";
             this.Size = new System.Drawing.Size(842, 570);
+            this.Load += new System.EventHandler(this.UCHistory_Load);
             this.sumPanel.ResumeLayout(false);
             this.tablePanel.ResumeLayout(false);
             this.panelNotSuccess.ResumeLayout(false);
             this.panelNotSuccess.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nSuccessDGV)).EndInit();
             this.panelSuccess.ResumeLayout(false);
             this.panelSuccess.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nSuccessDGV)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.successDGV)).EndInit();
             this.ResumeLayout(false);
 
@@ -336,11 +338,11 @@
         private System.Windows.Forms.Panel panelSuccess;
         public System.Windows.Forms.DataGridView nSuccessDGV;
         public System.Windows.Forms.DataGridView successDGV;
-        private System.Windows.Forms.Label sumNSuccesLabel;
+        private System.Windows.Forms.Label sumNSuccessLabel;
         private System.Windows.Forms.Label orderNSuccesLabel;
         private System.Windows.Forms.Label amountNSuccessLabel;
         private System.Windows.Forms.Label nSuccesLabel;
-        private System.Windows.Forms.Label sumSuccesLabel;
+        private System.Windows.Forms.Label sumSuccessLabel;
         private System.Windows.Forms.Label orderSuccesLabel;
         private System.Windows.Forms.Label amountSuccessLabel;
         private System.Windows.Forms.Label successLabel;

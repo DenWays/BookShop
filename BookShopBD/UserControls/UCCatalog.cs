@@ -9,7 +9,7 @@ namespace BookShopBD
     public partial class UCCatalog : UserControl
     {
         public static DataGridView books;
-        static bool selectFlag = false;      
+        static bool selectFlag = false;
         public UCCatalog()
         {
             InitializeComponent();

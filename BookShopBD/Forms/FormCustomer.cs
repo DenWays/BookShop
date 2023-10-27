@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Runtime.InteropServices;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace BookShopBD
@@ -105,6 +106,11 @@ namespace BookShopBD
             panelChoise.Location = new Point(0, history.Location.Y);
             UCHistory uCHistory = new UCHistory();
             AddControlsToPanel(uCHistory);
+        }
+
+        private void FormCustomer_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DBConnection.CloseDB();
         }
     }
 }

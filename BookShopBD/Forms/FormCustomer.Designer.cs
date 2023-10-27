@@ -334,6 +334,7 @@
             this.Name = "FormCustomer";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormCustomer";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormCustomer_FormClosing);
             this.Load += new System.EventHandler(this.FormCustomer_Load);
             this.panelTools.ResumeLayout(false);
             this.panelTools.PerformLayout();
