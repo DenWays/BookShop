@@ -84,14 +84,14 @@ namespace BookShopBD
                     DBConnection.msCommand.CommandText = $"SELECT FirstName FROM Employee JOIN account USING(id_account) " +
                         $"WHERE Login = '{login}';";
                     firstName = DBConnection.msCommand.ExecuteScalar().ToString();
-                    return lastName;
+                    return firstName;
                 }
                 else
                 {
                     DBConnection.msCommand.CommandText = $"SELECT FirstName FROM Admin JOIN account USING(id_account) " +
                         $"WHERE Login = '{login}';";
                     firstName = DBConnection.msCommand.ExecuteScalar().ToString();
-                    return lastName;
+                    return firstName;
                 }
             }
 			catch (Exception)

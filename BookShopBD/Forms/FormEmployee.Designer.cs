@@ -1,6 +1,6 @@
 ﻿namespace BookShopBD
 {
-    partial class FormCustomer
+    partial class FormEmployee
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormCustomer));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormEmployee));
             this.panelTools = new System.Windows.Forms.Panel();
             this.closeButton = new System.Windows.Forms.Button();
             this.nameLabel = new System.Windows.Forms.Label();
@@ -47,7 +47,6 @@
             this.exitButton = new System.Windows.Forms.Button();
             this.history = new System.Windows.Forms.Button();
             this.catalog = new System.Windows.Forms.Button();
-            this.cart = new System.Windows.Forms.Button();
             this.panelInfo = new System.Windows.Forms.Panel();
             this.panelTools.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.icon)).BeginInit();
@@ -226,7 +225,6 @@
             this.tabPanel.Controls.Add(this.exitButton);
             this.tabPanel.Controls.Add(this.history);
             this.tabPanel.Controls.Add(this.catalog);
-            this.tabPanel.Controls.Add(this.cart);
             this.tabPanel.Location = new System.Drawing.Point(0, 116);
             this.tabPanel.Name = "tabPanel";
             this.tabPanel.Size = new System.Drawing.Size(158, 454);
@@ -265,7 +263,7 @@
             this.history.ForeColor = System.Drawing.Color.White;
             this.history.Image = global::BookShopBD.Properties.Resources.historyBtn;
             this.history.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.history.Location = new System.Drawing.Point(6, 104);
+            this.history.Location = new System.Drawing.Point(6, 54);
             this.history.Name = "history";
             this.history.Size = new System.Drawing.Size(153, 50);
             this.history.TabIndex = 9;
@@ -293,24 +291,6 @@
             this.catalog.UseVisualStyleBackColor = true;
             this.catalog.Click += new System.EventHandler(this.catalog_Click);
             // 
-            // cart
-            // 
-            this.cart.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
-            this.cart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cart.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.cart.ForeColor = System.Drawing.Color.White;
-            this.cart.Image = global::BookShopBD.Properties.Resources.cartBtn;
-            this.cart.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.cart.Location = new System.Drawing.Point(6, 54);
-            this.cart.Name = "cart";
-            this.cart.Size = new System.Drawing.Size(153, 50);
-            this.cart.TabIndex = 2;
-            this.cart.Text = "Корзина";
-            this.cart.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.cart.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.cart.UseVisualStyleBackColor = true;
-            this.cart.Click += new System.EventHandler(this.cart_Click);
-            // 
             // panelInfo
             // 
             this.panelInfo.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -319,7 +299,7 @@
             this.panelInfo.Size = new System.Drawing.Size(842, 570);
             this.panelInfo.TabIndex = 4;
             // 
-            // FormCustomer
+            // FormEmployee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -331,7 +311,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(1000, 600);
-            this.Name = "FormCustomer";
+            this.Name = "FormEmployee";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Book Shop";
             this.Load += new System.EventHandler(this.FormCustomer_Load);
@@ -357,7 +337,6 @@
         private System.Windows.Forms.Panel panelMenu;
         private System.Windows.Forms.Button catalog;
         private System.Windows.Forms.Panel panelChoise;
-        private System.Windows.Forms.Button cart;
         private System.Windows.Forms.Label roleLabel;
         private System.Windows.Forms.Label middleNLabel;
         private System.Windows.Forms.Label firstNLabel;

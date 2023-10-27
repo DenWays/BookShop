@@ -80,7 +80,7 @@ namespace BookShopBD
                             MessageBox.Show("Такого аккаунт не существует.", "Ошибка авторизации", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             break;
                         }
-                    default:
+                    case "Покупатель":
                         {
                             CurrentUser.Login = loginTB.Text;
                             CurrentUser.LastName = Authorization.GetLastName(loginTB.Text);
@@ -90,6 +90,20 @@ namespace BookShopBD
                             MessageBox.Show($"Добро пожаловать в профиль, {CurrentUser.LastName} {CurrentUser.FirstName} {CurrentUser.MiddleName}.",
                                 "Успешно!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             Form newForm = new FormCustomer();
+                            this.Hide();
+                            newForm.Show();
+                            break;
+                        }
+                    case "Продавец":
+                        {
+                            CurrentUser.Login = loginTB.Text;
+                            CurrentUser.LastName = Authorization.GetLastName(loginTB.Text);
+                            CurrentUser.FirstName = Authorization.GetFirstName(loginTB.Text);
+                            CurrentUser.MiddleName = Authorization.GetMiddleName(loginTB.Text);
+                            CurrentUser.Id_account = Authorization.GetAccountID();
+                            MessageBox.Show($"Добро пожаловать в профиль, {CurrentUser.LastName} {CurrentUser.FirstName} {CurrentUser.MiddleName}.",
+                                "Успешно!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            Form newForm = new FormEmployee();
                             this.Hide();
                             newForm.Show();
                             break;

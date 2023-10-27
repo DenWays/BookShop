@@ -147,6 +147,12 @@
     <Compile Include="UserControls\UCCart.Designer.cs">
       <DependentUpon>UCCart.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\UCCatalogEmployee.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UCCatalogEmployee.Designer.cs">
+      <DependentUpon>UCCatalogEmployee.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\UCHistory.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -189,6 +195,9 @@
     </Compile>
     <EmbeddedResource Include="UserControls\UCCart.resx">
       <DependentUpon>UCCart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UCCatalogEmployee.resx">
+      <DependentUpon>UCCatalogEmployee.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UCHistory.resx">
       <DependentUpon>UCHistory.cs</DependentUpon>

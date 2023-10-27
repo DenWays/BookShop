@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Drawing;
 using System.Runtime.InteropServices;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace BookShopBD
 {
-    public partial class FormCustomer : Form
+    public partial class FormEmployee : Form
     {
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HTCAPTION = 0x2;
@@ -16,7 +15,7 @@ namespace BookShopBD
         public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
         bool fullScreenFlag = false;
         public static int id_account;
-        public FormCustomer()
+        public FormEmployee()
         {
             InitializeComponent();
             UCCatalog uCCatalog = new UCCatalog();
@@ -65,14 +64,6 @@ namespace BookShopBD
             panelChoise.Location = new Point(0, catalog.Location.Y);
             UCCatalog uCCatalog = new UCCatalog();
             AddControlsToPanel(uCCatalog);
-        }
-
-        private void cart_Click(object sender, EventArgs e)
-        {
-            if(panelChoise.Location == new Point(0, cart.Location.Y)) { return; }
-            panelChoise.Location = new Point(0, cart.Location.Y);
-            UCCart uCCart = new UCCart();
-            AddControlsToPanel(uCCart);
         }
 
         private void panelTools_MouseDown(object sender, MouseEventArgs e)
