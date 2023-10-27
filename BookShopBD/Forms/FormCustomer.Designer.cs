@@ -333,8 +333,7 @@
             this.MinimumSize = new System.Drawing.Size(1000, 600);
             this.Name = "FormCustomer";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FormCustomer";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormCustomer_FormClosing);
+            this.Text = "Book Shop";
             this.Load += new System.EventHandler(this.FormCustomer_Load);
             this.panelTools.ResumeLayout(false);
             this.panelTools.PerformLayout();

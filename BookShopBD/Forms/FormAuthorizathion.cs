@@ -102,13 +102,6 @@ namespace BookShopBD
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            Form newForm = new FormCustomer();
-            this.Hide();
-            newForm.Show();
-        }
-
         private void loginTB_KeyPress(object sender, KeyPressEventArgs e)
         {
             string Symbol = e.KeyChar.ToString();

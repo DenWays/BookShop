@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAddToCart));
             this.panelTools = new System.Windows.Forms.Panel();
             this.closeButton = new System.Windows.Forms.Button();
             this.nameLabel = new System.Windows.Forms.Label();
@@ -192,9 +193,10 @@
             this.Controls.Add(this.panelTools);
             this.Controls.Add(this.border);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormAddToCart";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FormAddToCart";
+            this.Text = "Book Shop";
             this.panelTools.ResumeLayout(false);
             this.panelTools.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.icon)).EndInit();

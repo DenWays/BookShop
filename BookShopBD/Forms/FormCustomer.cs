@@ -107,10 +107,5 @@ namespace BookShopBD
             UCHistory uCHistory = new UCHistory();
             AddControlsToPanel(uCHistory);
         }
-
-        private void FormCustomer_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            DBConnection.CloseDB();
-        }
     }
 }

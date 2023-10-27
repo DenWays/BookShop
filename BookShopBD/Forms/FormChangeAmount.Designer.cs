@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             this.panelTools = new System.Windows.Forms.Panel();
-            this.closeButton = new System.Windows.Forms.Button();
             this.nameLabel = new System.Windows.Forms.Label();
+            this.closeButton = new System.Windows.Forms.Button();
             this.icon = new System.Windows.Forms.PictureBox();
             this.panelChange = new System.Windows.Forms.Panel();
-            this.changeLabel = new System.Windows.Forms.Label();
-            this.newAmountTB = new System.Windows.Forms.TextBox();
-            this.changeButton = new System.Windows.Forms.Button();
             this.backButton = new System.Windows.Forms.Button();
+            this.changeButton = new System.Windows.Forms.Button();
+            this.newAmountTB = new System.Windows.Forms.TextBox();
+            this.changeLabel = new System.Windows.Forms.Label();
             this.panelTools.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.icon)).BeginInit();
             this.panelChange.SuspendLayout();
@@ -54,6 +54,17 @@
             this.panelTools.TabIndex = 3;
             this.panelTools.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelTools_MouseDown);
             // 
+            // nameLabel
+            // 
+            this.nameLabel.AutoSize = true;
+            this.nameLabel.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.nameLabel.ForeColor = System.Drawing.Color.White;
+            this.nameLabel.Location = new System.Drawing.Point(41, 7);
+            this.nameLabel.Name = "nameLabel";
+            this.nameLabel.Size = new System.Drawing.Size(67, 18);
+            this.nameLabel.TabIndex = 2;
+            this.nameLabel.Text = "BookShop";
+            // 
             // closeButton
             // 
             this.closeButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
@@ -69,17 +80,6 @@
             this.closeButton.Text = "×";
             this.closeButton.UseVisualStyleBackColor = false;
             this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
-            // 
-            // nameLabel
-            // 
-            this.nameLabel.AutoSize = true;
-            this.nameLabel.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.nameLabel.ForeColor = System.Drawing.Color.White;
-            this.nameLabel.Location = new System.Drawing.Point(41, 7);
-            this.nameLabel.Name = "nameLabel";
-            this.nameLabel.Size = new System.Drawing.Size(67, 18);
-            this.nameLabel.TabIndex = 2;
-            this.nameLabel.Text = "BookShop";
             // 
             // icon
             // 
@@ -103,26 +103,21 @@
             this.panelChange.Size = new System.Drawing.Size(250, 120);
             this.panelChange.TabIndex = 4;
             // 
-            // changeLabel
+            // backButton
             // 
-            this.changeLabel.AutoSize = true;
-            this.changeLabel.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.changeLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
-            this.changeLabel.Location = new System.Drawing.Point(-2, 3);
-            this.changeLabel.Name = "changeLabel";
-            this.changeLabel.Size = new System.Drawing.Size(255, 26);
-            this.changeLabel.TabIndex = 0;
-            this.changeLabel.Text = "Введите новое количество";
-            // 
-            // newAmountTB
-            // 
-            this.newAmountTB.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.newAmountTB.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
-            this.newAmountTB.Location = new System.Drawing.Point(3, 32);
-            this.newAmountTB.Name = "newAmountTB";
-            this.newAmountTB.Size = new System.Drawing.Size(150, 34);
-            this.newAmountTB.TabIndex = 1;
-            this.newAmountTB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.newAmountTB_KeyPress);
+            this.backButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
+            this.backButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.backButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
+            this.backButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.backButton.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.backButton.ForeColor = System.Drawing.Color.White;
+            this.backButton.Location = new System.Drawing.Point(3, 77);
+            this.backButton.Name = "backButton";
+            this.backButton.Size = new System.Drawing.Size(110, 40);
+            this.backButton.TabIndex = 11;
+            this.backButton.Text = "Назад";
+            this.backButton.UseVisualStyleBackColor = false;
+            this.backButton.Click += new System.EventHandler(this.backButton_Click);
             // 
             // changeButton
             // 
@@ -140,21 +135,26 @@
             this.changeButton.UseVisualStyleBackColor = false;
             this.changeButton.Click += new System.EventHandler(this.changeButton_Click);
             // 
-            // backButton
+            // newAmountTB
             // 
-            this.backButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
-            this.backButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.backButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
-            this.backButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.backButton.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.backButton.ForeColor = System.Drawing.Color.White;
-            this.backButton.Location = new System.Drawing.Point(3, 77);
-            this.backButton.Name = "backButton";
-            this.backButton.Size = new System.Drawing.Size(110, 40);
-            this.backButton.TabIndex = 11;
-            this.backButton.Text = "Назад";
-            this.backButton.UseVisualStyleBackColor = false;
-            this.backButton.Click += new System.EventHandler(this.backButton_Click);
+            this.newAmountTB.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.newAmountTB.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
+            this.newAmountTB.Location = new System.Drawing.Point(3, 32);
+            this.newAmountTB.Name = "newAmountTB";
+            this.newAmountTB.Size = new System.Drawing.Size(150, 34);
+            this.newAmountTB.TabIndex = 1;
+            this.newAmountTB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.newAmountTB_KeyPress);
+            // 
+            // changeLabel
+            // 
+            this.changeLabel.AutoSize = true;
+            this.changeLabel.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.changeLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
+            this.changeLabel.Location = new System.Drawing.Point(-2, 3);
+            this.changeLabel.Name = "changeLabel";
+            this.changeLabel.Size = new System.Drawing.Size(255, 26);
+            this.changeLabel.TabIndex = 0;
+            this.changeLabel.Text = "Введите новое количество";
             // 
             // FormChangeAmount
             // 
@@ -166,7 +166,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormChangeAmount";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FormChangeAmount";
+            this.Text = "Book Shop";
             this.panelTools.ResumeLayout(false);
             this.panelTools.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.icon)).EndInit();

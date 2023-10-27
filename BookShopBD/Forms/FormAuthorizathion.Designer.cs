@@ -37,7 +37,6 @@
             this.createAccountLabel = new System.Windows.Forms.Label();
             this.authorizationButton = new System.Windows.Forms.Button();
             this.panelAuthorization = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
             this.bookPB = new System.Windows.Forms.PictureBox();
             this.panelTools = new System.Windows.Forms.Panel();
             this.closeButton = new System.Windows.Forms.Button();
@@ -149,7 +148,6 @@
             // panelAuthorization
             // 
             this.panelAuthorization.BackColor = System.Drawing.Color.White;
-            this.panelAuthorization.Controls.Add(this.button1);
             this.panelAuthorization.Controls.Add(this.bookPB);
             this.panelAuthorization.Controls.Add(this.authorizationButton);
             this.panelAuthorization.Controls.Add(this.createAccountLabel);
@@ -162,16 +160,6 @@
             this.panelAuthorization.Name = "panelAuthorization";
             this.panelAuthorization.Size = new System.Drawing.Size(400, 370);
             this.panelAuthorization.TabIndex = 0;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(313, 14);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // bookPB
             // 
@@ -289,7 +277,6 @@
         private System.Windows.Forms.Label nameLabel;
         private System.Windows.Forms.PictureBox icon;
         private System.Windows.Forms.Button minimizedButton;
-        private System.Windows.Forms.Button button1;
     }
 }
 
