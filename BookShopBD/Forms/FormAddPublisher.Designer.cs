@@ -1,6 +1,6 @@
 ﻿namespace BookShopBD.Forms
 {
-    partial class FormAddGenre
+    partial class FormAddPublisher
     {
         /// <summary>
         /// Required designer variable.
@@ -35,8 +35,8 @@
             this.panelChange = new System.Windows.Forms.Panel();
             this.backButton = new System.Windows.Forms.Button();
             this.changeButton = new System.Windows.Forms.Button();
-            this.genreTB = new System.Windows.Forms.TextBox();
-            this.genreLabel = new System.Windows.Forms.Label();
+            this.publisherTB = new System.Windows.Forms.TextBox();
+            this.publisherLabel = new System.Windows.Forms.Label();
             this.panelTools.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.icon)).BeginInit();
             this.panelChange.SuspendLayout();
@@ -96,8 +96,8 @@
             this.panelChange.BackColor = System.Drawing.Color.White;
             this.panelChange.Controls.Add(this.backButton);
             this.panelChange.Controls.Add(this.changeButton);
-            this.panelChange.Controls.Add(this.genreTB);
-            this.panelChange.Controls.Add(this.genreLabel);
+            this.panelChange.Controls.Add(this.publisherTB);
+            this.panelChange.Controls.Add(this.publisherLabel);
             this.panelChange.Location = new System.Drawing.Point(0, 30);
             this.panelChange.Name = "panelChange";
             this.panelChange.Size = new System.Drawing.Size(250, 120);
@@ -135,28 +135,28 @@
             this.changeButton.UseVisualStyleBackColor = false;
             this.changeButton.Click += new System.EventHandler(this.changeButton_Click);
             // 
-            // genreTB
+            // publisherTB
             // 
-            this.genreTB.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.genreTB.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
-            this.genreTB.Location = new System.Drawing.Point(3, 32);
-            this.genreTB.Name = "genreTB";
-            this.genreTB.Size = new System.Drawing.Size(244, 34);
-            this.genreTB.TabIndex = 1;
-            this.genreTB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.newAmountTB_KeyPress);
+            this.publisherTB.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.publisherTB.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
+            this.publisherTB.Location = new System.Drawing.Point(3, 32);
+            this.publisherTB.Name = "publisherTB";
+            this.publisherTB.Size = new System.Drawing.Size(244, 34);
+            this.publisherTB.TabIndex = 1;
+            this.publisherTB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.newAmountTB_KeyPress);
             // 
-            // genreLabel
+            // publisherLabel
             // 
-            this.genreLabel.AutoSize = true;
-            this.genreLabel.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.genreLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
-            this.genreLabel.Location = new System.Drawing.Point(-2, 3);
-            this.genreLabel.Name = "genreLabel";
-            this.genreLabel.Size = new System.Drawing.Size(234, 26);
-            this.genreLabel.TabIndex = 0;
-            this.genreLabel.Text = "Введите название жанра";
+            this.publisherLabel.AutoSize = true;
+            this.publisherLabel.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.publisherLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
+            this.publisherLabel.Location = new System.Drawing.Point(-2, 3);
+            this.publisherLabel.Name = "publisherLabel";
+            this.publisherLabel.Size = new System.Drawing.Size(213, 26);
+            this.publisherLabel.TabIndex = 0;
+            this.publisherLabel.Text = "Введите издательство";
             // 
-            // FormAddGenre
+            // FormAddPublisher
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -164,7 +164,7 @@
             this.Controls.Add(this.panelTools);
             this.Controls.Add(this.panelChange);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "FormAddGenre";
+            this.Name = "FormAddPublisher";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Book Shop";
             this.panelTools.ResumeLayout(false);
@@ -183,8 +183,8 @@
         private System.Windows.Forms.Button closeButton;
         private System.Windows.Forms.PictureBox icon;
         private System.Windows.Forms.Panel panelChange;
-        private System.Windows.Forms.TextBox genreTB;
-        private System.Windows.Forms.Label genreLabel;
+        private System.Windows.Forms.TextBox publisherTB;
+        private System.Windows.Forms.Label publisherLabel;
         private System.Windows.Forms.Button changeButton;
         private System.Windows.Forms.Button backButton;
     }

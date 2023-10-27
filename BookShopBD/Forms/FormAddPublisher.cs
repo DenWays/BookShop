@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace BookShopBD.Forms
 {
-    public partial class FormAddGenre : Form
+    public partial class FormAddPublisher : Form
     {
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HTCAPTION = 0x2;
@@ -19,7 +19,7 @@ namespace BookShopBD.Forms
         public static extern bool ReleaseCapture();
         [DllImport("User32.dll")]
         public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
-        public FormAddGenre()
+        public FormAddPublisher()
         {
             InitializeComponent();
             DBConnection.ConnectionDB();
@@ -37,7 +37,7 @@ namespace BookShopBD.Forms
 
         private void changeButton_Click(object sender, EventArgs e)
         {
-            if (genreTB.Text == "")
+            if (authorTB.Text == "")
             {
                 MessageBox.Show("Все поля должны быть заполнены!", "Ошибка при заполнении полей", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;

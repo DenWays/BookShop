@@ -103,6 +103,12 @@
     <Compile Include="CreateAccount.cs" />
     <Compile Include="CurrentUser.cs" />
     <Compile Include="DBConnection.cs" />
+    <Compile Include="Forms\FormAddPublisher.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormAddPublisher.Designer.cs">
+      <DependentUpon>FormAddPublisher.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FormAddGenre.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -183,6 +189,9 @@
     <Compile Include="UserControls\UCCatalog.Designer.cs">
       <DependentUpon>UCCatalog.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Forms\FormAddPublisher.resx">
+      <DependentUpon>FormAddPublisher.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormAddGenre.resx">
       <DependentUpon>FormAddGenre.cs</DependentUpon>
     </EmbeddedResource>
