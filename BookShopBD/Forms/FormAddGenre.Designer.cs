@@ -35,7 +35,7 @@
             this.panelChange = new System.Windows.Forms.Panel();
             this.backButton = new System.Windows.Forms.Button();
             this.changeButton = new System.Windows.Forms.Button();
-            this.authorTB = new System.Windows.Forms.TextBox();
+            this.newAmountTB = new System.Windows.Forms.TextBox();
             this.authorLabel = new System.Windows.Forms.Label();
             this.panelTools.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.icon)).BeginInit();
@@ -96,7 +96,7 @@
             this.panelChange.BackColor = System.Drawing.Color.White;
             this.panelChange.Controls.Add(this.backButton);
             this.panelChange.Controls.Add(this.changeButton);
-            this.panelChange.Controls.Add(this.authorTB);
+            this.panelChange.Controls.Add(this.newAmountTB);
             this.panelChange.Controls.Add(this.authorLabel);
             this.panelChange.Location = new System.Drawing.Point(0, 30);
             this.panelChange.Name = "panelChange";
@@ -135,15 +135,15 @@
             this.changeButton.UseVisualStyleBackColor = false;
             this.changeButton.Click += new System.EventHandler(this.changeButton_Click);
             // 
-            // authorTB
+            // newAmountTB
             // 
-            this.authorTB.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.authorTB.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
-            this.authorTB.Location = new System.Drawing.Point(3, 32);
-            this.authorTB.Name = "authorTB";
-            this.authorTB.Size = new System.Drawing.Size(244, 34);
-            this.authorTB.TabIndex = 1;
-            this.authorTB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.newAmountTB_KeyPress);
+            this.newAmountTB.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.newAmountTB.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
+            this.newAmountTB.Location = new System.Drawing.Point(3, 32);
+            this.newAmountTB.Name = "newAmountTB";
+            this.newAmountTB.Size = new System.Drawing.Size(244, 34);
+            this.newAmountTB.TabIndex = 1;
+            this.newAmountTB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.newAmountTB_KeyPress);
             // 
             // authorLabel
             // 
@@ -183,7 +183,7 @@
         private System.Windows.Forms.Button closeButton;
         private System.Windows.Forms.PictureBox icon;
         private System.Windows.Forms.Panel panelChange;
-        private System.Windows.Forms.TextBox authorTB;
+        private System.Windows.Forms.TextBox newAmountTB;
         private System.Windows.Forms.Label authorLabel;
         private System.Windows.Forms.Button changeButton;
         private System.Windows.Forms.Button backButton;

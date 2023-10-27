@@ -37,7 +37,7 @@ namespace BookShopBD.Forms
 
         private void changeButton_Click(object sender, EventArgs e)
         {
-            if (authorTB.Text == "")
+            if (newAmountTB.Text == "")
             {
                 MessageBox.Show("Все поля должны быть заполнены!", "Ошибка при заполнении полей", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
