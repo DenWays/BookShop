@@ -12,8 +12,7 @@ namespace BookShopBD
 {
     public partial class UCHistory : UserControl
     {
-        double sumSuccess = 0.00;
-        double sumNSuccess = 0.00;
+        public static int id_order;
         public UCHistory()
         {
             InitializeComponent();
@@ -56,6 +55,20 @@ namespace BookShopBD
             DBConnection.msDataAddapter.Fill(dataTable2);
             successDGV.DataSource = dataTable2;
             DBConnection.CloseDB();
+        }
+
+        private void nSuccessDGV_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            id_order = int.Parse(nSuccessDGV.SelectedRows[0].Cells[0].Value.ToString());
+            Form newForm = new FormOrder();
+            newForm.ShowDialog();
+        }
+
+        private void successDGV_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            id_order = int.Parse(successDGV.SelectedRows[0].Cells[0].Value.ToString());
+            Form newForm = new FormOrder();
+            newForm.ShowDialog();
         }
     }
 }

@@ -65,8 +65,9 @@
             this.sumPanel.Controls.Add(this.refreshButton);
             this.sumPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.sumPanel.Location = new System.Drawing.Point(0, 0);
+            this.sumPanel.Margin = new System.Windows.Forms.Padding(4);
             this.sumPanel.Name = "sumPanel";
-            this.sumPanel.Size = new System.Drawing.Size(842, 40);
+            this.sumPanel.Size = new System.Drawing.Size(1123, 49);
             this.sumPanel.TabIndex = 0;
             // 
             // refreshButton
@@ -78,9 +79,10 @@
             this.refreshButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.refreshButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.refreshButton.ForeColor = System.Drawing.Color.White;
-            this.refreshButton.Location = new System.Drawing.Point(802, -15);
+            this.refreshButton.Location = new System.Drawing.Point(1069, -18);
+            this.refreshButton.Margin = new System.Windows.Forms.Padding(4);
             this.refreshButton.Name = "refreshButton";
-            this.refreshButton.Size = new System.Drawing.Size(40, 53);
+            this.refreshButton.Size = new System.Drawing.Size(53, 65);
             this.refreshButton.TabIndex = 4;
             this.refreshButton.Text = "↻";
             this.refreshButton.UseVisualStyleBackColor = false;
@@ -97,12 +99,13 @@
             this.tablePanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tablePanel.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tablePanel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
-            this.tablePanel.Location = new System.Drawing.Point(0, 40);
+            this.tablePanel.Location = new System.Drawing.Point(0, 49);
+            this.tablePanel.Margin = new System.Windows.Forms.Padding(4);
             this.tablePanel.Name = "tablePanel";
             this.tablePanel.RowCount = 1;
             this.tablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 529F));
-            this.tablePanel.Size = new System.Drawing.Size(842, 530);
+            this.tablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 651F));
+            this.tablePanel.Size = new System.Drawing.Size(1123, 653);
             this.tablePanel.TabIndex = 1;
             // 
             // panelNotSuccess
@@ -114,35 +117,39 @@
             this.panelNotSuccess.Controls.Add(this.nSuccesLabel);
             this.panelNotSuccess.Controls.Add(this.nSuccessDGV);
             this.panelNotSuccess.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelNotSuccess.Location = new System.Drawing.Point(3, 3);
+            this.panelNotSuccess.Location = new System.Drawing.Point(4, 4);
+            this.panelNotSuccess.Margin = new System.Windows.Forms.Padding(4);
             this.panelNotSuccess.Name = "panelNotSuccess";
-            this.panelNotSuccess.Size = new System.Drawing.Size(415, 524);
+            this.panelNotSuccess.Size = new System.Drawing.Size(553, 645);
             this.panelNotSuccess.TabIndex = 0;
             // 
             // sumNSuccessLabel
             // 
             this.sumNSuccessLabel.AutoSize = true;
-            this.sumNSuccessLabel.Location = new System.Drawing.Point(188, 26);
+            this.sumNSuccessLabel.Location = new System.Drawing.Point(251, 32);
+            this.sumNSuccessLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.sumNSuccessLabel.Name = "sumNSuccessLabel";
-            this.sumNSuccessLabel.Size = new System.Drawing.Size(52, 26);
+            this.sumNSuccessLabel.Size = new System.Drawing.Size(66, 33);
             this.sumNSuccessLabel.TabIndex = 7;
             this.sumNSuccessLabel.Text = "0.00";
             // 
             // orderNSuccesLabel
             // 
             this.orderNSuccesLabel.AutoSize = true;
-            this.orderNSuccesLabel.Location = new System.Drawing.Point(19, 26);
+            this.orderNSuccesLabel.Location = new System.Drawing.Point(25, 32);
+            this.orderNSuccesLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.orderNSuccesLabel.Name = "orderNSuccesLabel";
-            this.orderNSuccesLabel.Size = new System.Drawing.Size(175, 26);
+            this.orderNSuccesLabel.Size = new System.Drawing.Size(219, 33);
             this.orderNSuccesLabel.TabIndex = 6;
             this.orderNSuccesLabel.Text = "заказов на сумму:";
             // 
             // amountNSuccessLabel
             // 
             this.amountNSuccessLabel.AutoSize = true;
-            this.amountNSuccessLabel.Location = new System.Drawing.Point(0, 26);
+            this.amountNSuccessLabel.Location = new System.Drawing.Point(0, 32);
+            this.amountNSuccessLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.amountNSuccessLabel.Name = "amountNSuccessLabel";
-            this.amountNSuccessLabel.Size = new System.Drawing.Size(24, 26);
+            this.amountNSuccessLabel.Size = new System.Drawing.Size(30, 33);
             this.amountNSuccessLabel.TabIndex = 5;
             this.amountNSuccessLabel.Text = "0";
             // 
@@ -150,8 +157,9 @@
             // 
             this.nSuccesLabel.AutoSize = true;
             this.nSuccesLabel.Location = new System.Drawing.Point(0, 0);
+            this.nSuccesLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.nSuccesLabel.Name = "nSuccesLabel";
-            this.nSuccesLabel.Size = new System.Drawing.Size(245, 26);
+            this.nSuccesLabel.Size = new System.Drawing.Size(307, 33);
             this.nSuccesLabel.TabIndex = 4;
             this.nSuccesLabel.Text = "Ожидают подтверждения";
             // 
@@ -190,7 +198,8 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.nSuccessDGV.DefaultCellStyle = dataGridViewCellStyle3;
             this.nSuccessDGV.GridColor = System.Drawing.Color.White;
-            this.nSuccessDGV.Location = new System.Drawing.Point(0, 55);
+            this.nSuccessDGV.Location = new System.Drawing.Point(0, 68);
+            this.nSuccessDGV.Margin = new System.Windows.Forms.Padding(4);
             this.nSuccessDGV.Name = "nSuccessDGV";
             this.nSuccessDGV.ReadOnly = true;
             this.nSuccessDGV.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -202,9 +211,11 @@
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.nSuccessDGV.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.nSuccessDGV.RowHeadersWidth = 51;
             this.nSuccessDGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.nSuccessDGV.Size = new System.Drawing.Size(415, 469);
+            this.nSuccessDGV.Size = new System.Drawing.Size(553, 577);
             this.nSuccessDGV.TabIndex = 3;
+            this.nSuccessDGV.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.nSuccessDGV_CellDoubleClick);
             // 
             // panelSuccess
             // 
@@ -215,35 +226,39 @@
             this.panelSuccess.Controls.Add(this.successLabel);
             this.panelSuccess.Controls.Add(this.successDGV);
             this.panelSuccess.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelSuccess.Location = new System.Drawing.Point(424, 3);
+            this.panelSuccess.Location = new System.Drawing.Point(565, 4);
+            this.panelSuccess.Margin = new System.Windows.Forms.Padding(4);
             this.panelSuccess.Name = "panelSuccess";
-            this.panelSuccess.Size = new System.Drawing.Size(415, 524);
+            this.panelSuccess.Size = new System.Drawing.Size(554, 645);
             this.panelSuccess.TabIndex = 1;
             // 
             // sumSuccessLabel
             // 
             this.sumSuccessLabel.AutoSize = true;
-            this.sumSuccessLabel.Location = new System.Drawing.Point(188, 26);
+            this.sumSuccessLabel.Location = new System.Drawing.Point(251, 32);
+            this.sumSuccessLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.sumSuccessLabel.Name = "sumSuccessLabel";
-            this.sumSuccessLabel.Size = new System.Drawing.Size(52, 26);
+            this.sumSuccessLabel.Size = new System.Drawing.Size(66, 33);
             this.sumSuccessLabel.TabIndex = 8;
             this.sumSuccessLabel.Text = "0.00";
             // 
             // orderSuccesLabel
             // 
             this.orderSuccesLabel.AutoSize = true;
-            this.orderSuccesLabel.Location = new System.Drawing.Point(19, 26);
+            this.orderSuccesLabel.Location = new System.Drawing.Point(25, 32);
+            this.orderSuccesLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.orderSuccesLabel.Name = "orderSuccesLabel";
-            this.orderSuccesLabel.Size = new System.Drawing.Size(175, 26);
+            this.orderSuccesLabel.Size = new System.Drawing.Size(219, 33);
             this.orderSuccesLabel.TabIndex = 7;
             this.orderSuccesLabel.Text = "заказов на сумму:";
             // 
             // amountSuccessLabel
             // 
             this.amountSuccessLabel.AutoSize = true;
-            this.amountSuccessLabel.Location = new System.Drawing.Point(0, 26);
+            this.amountSuccessLabel.Location = new System.Drawing.Point(0, 32);
+            this.amountSuccessLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.amountSuccessLabel.Name = "amountSuccessLabel";
-            this.amountSuccessLabel.Size = new System.Drawing.Size(24, 26);
+            this.amountSuccessLabel.Size = new System.Drawing.Size(30, 33);
             this.amountSuccessLabel.TabIndex = 6;
             this.amountSuccessLabel.Text = "0";
             // 
@@ -251,8 +266,9 @@
             // 
             this.successLabel.AutoSize = true;
             this.successLabel.Location = new System.Drawing.Point(0, 0);
+            this.successLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.successLabel.Name = "successLabel";
-            this.successLabel.Size = new System.Drawing.Size(146, 26);
+            this.successLabel.Size = new System.Drawing.Size(184, 33);
             this.successLabel.TabIndex = 5;
             this.successLabel.Text = "Подтверждено";
             // 
@@ -291,7 +307,8 @@
             dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.successDGV.DefaultCellStyle = dataGridViewCellStyle7;
             this.successDGV.GridColor = System.Drawing.Color.White;
-            this.successDGV.Location = new System.Drawing.Point(0, 55);
+            this.successDGV.Location = new System.Drawing.Point(0, 68);
+            this.successDGV.Margin = new System.Windows.Forms.Padding(4);
             this.successDGV.Name = "successDGV";
             this.successDGV.ReadOnly = true;
             this.successDGV.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -303,19 +320,22 @@
             dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.successDGV.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            this.successDGV.RowHeadersWidth = 51;
             this.successDGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.successDGV.Size = new System.Drawing.Size(415, 469);
+            this.successDGV.Size = new System.Drawing.Size(554, 577);
             this.successDGV.TabIndex = 4;
+            this.successDGV.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.successDGV_CellDoubleClick);
             // 
             // UCHistory
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.tablePanel);
             this.Controls.Add(this.sumPanel);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "UCHistory";
-            this.Size = new System.Drawing.Size(842, 570);
+            this.Size = new System.Drawing.Size(1123, 702);
             this.Load += new System.EventHandler(this.UCHistory_Load);
             this.sumPanel.ResumeLayout(false);
             this.tablePanel.ResumeLayout(false);
