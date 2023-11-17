@@ -35,45 +35,27 @@ namespace BookShopBD
             DBConnection.msCommand.CommandText = $"CALL GetUserId({CurrentUser.Id_account}, 'Покупатель');";
             object id_customer = DBConnection.msCommand.ExecuteScalar();
 
-            DBConnection.msCommand.CommandText = $"SELECT Book_name AS Название, Author_name AS Автор, " +
-                $"order_book.Price AS Цена, order_book.Amount AS Количество, " +
-                $"Date_order AS Дата " +
-                $"FROM order_ JOIN order_book USING(id_order) JOIN book USING(id_book) " +
-                $"JOIN author USING(id_author) WHERE id_customer = {(int)id_customer} AND Status = 'Ожидает подтверждения';";
+            DBConnection.msCommand.CommandText = $"SELECT id_order AS 'Номер заказа', COUNT(id_order_book) AS Товаров, Date_order AS Дата " +
+                $"FROM order_ JOIN order_book USING(id_order) " +
+                $"WHERE id_customer = {(int)id_customer} AND Status = 'Ожидает подтверждения' GROUP BY id_order;";
             DBConnection.msDataAddapter.SelectCommand = DBConnection.msCommand;
             DBConnection.msDataAddapter.Fill(dataTable);
             nSuccessDGV.DataSource = dataTable;
             DBConnection.CloseDB();
-            sumNSuccess = 0.00;
-            amountNSuccessLabel.Text = nSuccessDGV.RowCount.ToString();
-            for (int i = 0; i < nSuccessDGV.RowCount; i++)
-            {
-                sumNSuccess += (double.Parse(nSuccessDGV.Rows[i].Cells[2].Value.ToString()) * int.Parse(nSuccessDGV.Rows[i].Cells[3].Value.ToString()));
-            }
-            sumNSuccessLabel.Text = sumNSuccess.ToString();
+
 
             DBConnection.ConnectionDB();
-
             DataTable dataTable2 = new DataTable();
             dataTable2.Clear();
 
-            DBConnection.msCommand.CommandText = $"SELECT Book_name AS Название, Author_name AS Автор, " +
-                $"order_book.Price AS Цена, order_book.Amount AS Количество, " +
-                $"CONCAT(employee.LastName, ' ', employee.FirstName, ' ',employee.MiddleName) AS 'ФИО продавца', " +
-                $"Date_order AS Дата " +
-                $"FROM employee JOIN order_ USING(id_employee) JOIN order_book USING(id_order) JOIN book USING(id_book) " +
-                $"JOIN author USING(id_author) WHERE id_customer = {(int)id_customer} AND Status = 'Подтверждён';";
+            DBConnection.msCommand.CommandText = $"SELECT id_order AS 'Номер заказа', COUNT(id_order_book) AS Товаров, " +
+                $"CONCAT(LastName, ' ' , FirstName, ' ' , MiddleName) AS 'ФИО продавца', " +
+                $"Date_order AS Дата FROM order_book JOIN order_ USING(id_order) JOIN employee USING(id_employee) " +
+                $"WHERE id_customer = {(int)id_customer} AND Status = 'Подтверждён' GROUP BY id_order;";
             DBConnection.msDataAddapter.SelectCommand = DBConnection.msCommand;
             DBConnection.msDataAddapter.Fill(dataTable2);
             successDGV.DataSource = dataTable2;
             DBConnection.CloseDB();
-            sumSuccess = 0.00;
-            amountSuccessLabel.Text = successDGV.RowCount.ToString();
-            for (int i = 0; i < successDGV.RowCount; i++)
-            {
-                sumSuccess += (double.Parse(successDGV.Rows[i].Cells[2].Value.ToString()) * int.Parse(successDGV.Rows[i].Cells[3].Value.ToString()));
-            }
-            sumSuccessLabel.Text = sumSuccess.ToString();
         }
     }
 }
