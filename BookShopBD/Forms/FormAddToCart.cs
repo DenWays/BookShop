@@ -19,17 +19,6 @@ namespace BookShopBD
         {
             InitializeComponent();
             DBConnection.ConnectionDB();
-
-            DBConnection.msCommand.CommandText = "SELECT LastName, FirstName, MiddleName, id_account FROM employee";
-            DBConnection.dataReader = DBConnection.msCommand.ExecuteReader();
-
-            while (DBConnection.dataReader.Read())
-            {
-                choiseEmpCB.Items.Add($"{DBConnection.dataReader[0]} {DBConnection.dataReader[1]} " +
-                    $"{DBConnection.dataReader[2]}");
-                ids_employee.Add(int.Parse(DBConnection.dataReader[3].ToString()));
-            }
-            DBConnection.CloseDB();
         }
 
         private void backButton_Click(object sender, EventArgs e)
@@ -39,7 +28,7 @@ namespace BookShopBD
 
         private void addButton_Click(object sender, EventArgs e)
         {         
-            if(choiseEmpCB.Text == "" || choiseAmountTB.Text == "")
+            if(choiseAmountTB.Text == "")
             {
                 MessageBox.Show("Все поля должны быть заполнены!", "Ошибка при заполнении полей", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -62,29 +51,22 @@ namespace BookShopBD
             DBConnection.msCommand.CommandText = $"CALL GetUserId({CurrentUser.Id_account}, 'Покупатель');";
             object id_customer = DBConnection.msCommand.ExecuteScalar();
 
-            DBConnection.msCommand.CommandText = $"CALL GetUserId({ids_employee[choiseEmpCB.SelectedIndex]}, 'Продавец');";
-            object id_employee = DBConnection.msCommand.ExecuteScalar();
-
             DBConnection.msCommand.CommandText = $"SELECT id_order FROM order_ JOIN order_book USING(id_order) " +
-                $"WHERE Status = 'Ожидает заказа' AND id_customer = {(int)id_customer} " +
-                $"AND id_employee = {(int)id_employee} ORDER BY id_order DESC LIMIT 1;";
-            
+                $"WHERE id_customer = {(int)id_customer} AND id_employee IS NULL AND Status = 'Ожидает заказа';";
+            object id_order;
+
             if (DBConnection.msCommand.ExecuteScalar() == null)
-            {             
-                DBConnection.msCommand.CommandText = $"INSERT order_(id_customer, id_employee, Date_order) " +
-                    $"VALUES({(int)id_customer}, {(int)id_employee}, CURDATE());";
+            {
+                DBConnection.msCommand.CommandText = $"INSERT order_(id_customer, Date_order) VALUES({(int)id_customer}, CURDATE())";
                 DBConnection.msCommand.ExecuteNonQuery();
 
-                DBConnection.msCommand.CommandText = $"SELECT id_order FROM order_ " +
-                    $"WHERE id_customer = {(int)id_customer} AND id_employee = {(int)id_employee} " +
-                    $"ORDER BY id_order DESC LIMIT 1;";
-                id_order = DBConnection.msCommand.ExecuteScalar(); 
+                DBConnection.msCommand.CommandText = $"SELECT LAST_INSERT_ID();";
+                id_order = DBConnection.msCommand.ExecuteScalar();
             }
             else
             {
                 DBConnection.msCommand.CommandText = $"SELECT id_order FROM order_ JOIN order_book USING(id_order) " +
-                    $"WHERE Status = 'Ожидает заказа' AND id_customer = {(int)id_customer} " +
-                    $"AND id_employee = {(int)id_employee} ORDER BY id_order DESC LIMIT 1;";
+                $"WHERE id_customer = {(int)id_customer} AND id_employee IS NULL AND Status = 'Ожидает заказа';";
                 id_order = DBConnection.msCommand.ExecuteScalar();
             }
 
@@ -98,13 +80,13 @@ namespace BookShopBD
                 $"JOIN book USING(id_book) JOIN author USING(id_author) " +
                 $"WHERE Book_name = '{UCCatalog.books.SelectedRows[0].Cells[0].Value}' " +
                 $"AND Author_name = '{UCCatalog.books.SelectedRows[0].Cells[1].Value}' " +
-                $"AND id_order = {(int)id_order};";
-            if(DBConnection.msCommand.ExecuteScalar() == null)
+                $"AND id_order = {int.Parse(id_order.ToString())}";
+            if (DBConnection.msCommand.ExecuteScalar() == null)
             {
-                DBConnection.msCommand.CommandText = $"CALL AddToCart({(int)id_customer}, {(int)id_employee}, " +
+                DBConnection.msCommand.CommandText = $"CALL AddToCart(" +
                 $"'{UCCatalog.books.SelectedRows[0].Cells[0].Value}', '{UCCatalog.books.SelectedRows[0].Cells[1].Value}', " +
                 $"{double.Parse(UCCatalog.books.SelectedRows[0].Cells[5].Value.ToString())}, {int.Parse(choiseAmountTB.Text)}, " +
-                $"{(int)id_order});";
+                $"{int.Parse(id_order.ToString())});";
                 DBConnection.msCommand.ExecuteNonQuery();
                 MessageBox.Show("Книга успешно добавлена в корзину.", "Успешно");
                 this.Hide();
@@ -114,7 +96,7 @@ namespace BookShopBD
                 DBConnection.msCommand.CommandText = $"UPDATE order_book JOIN book USING(id_book) " +
                     $"JOIN author USING(id_author) " +
                     $"SET order_book.Amount = order_book.Amount + {int.Parse(choiseAmountTB.Text)} " +
-                    $"WHERE id_order = {(int)id_order} AND Book_name = '{UCCatalog.books.SelectedRows[0].Cells[0].Value}' " +
+                    $"WHERE id_order = {int.Parse(id_order.ToString())} AND Book_name = '{UCCatalog.books.SelectedRows[0].Cells[0].Value}' " +
                     $"AND Author_name = '{UCCatalog.books.SelectedRows[0].Cells[1].Value}';";
                 DBConnection.msCommand.ExecuteNonQuery();
                 MessageBox.Show("Книга успешно добавлена в корзину.", "Успешно");
