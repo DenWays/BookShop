@@ -91,12 +91,12 @@ namespace BookShopBD
             id_account = CurrentUser.Id_account;
         }
 
-        private void history_Click(object sender, EventArgs e)
+        private void orders_Click(object sender, EventArgs e)
         {          
-            if(panelChoise.Location == new Point(0, history.Location.Y)) { return; }
-            panelChoise.Location = new Point(0, history.Location.Y);
-            UCHistory uCHistory = new UCHistory();
-            AddControlsToPanel(uCHistory);
+            if(panelChoise.Location == new Point(0, orders.Location.Y)) { return; }
+            panelChoise.Location = new Point(0, orders.Location.Y);
+            UCOrderEmployee uCOrderEmployee = new UCOrderEmployee();
+            AddControlsToPanel(uCOrderEmployee);
         }
     }
 }

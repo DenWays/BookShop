@@ -32,7 +32,6 @@
             this.panelTools = new System.Windows.Forms.Panel();
             this.closeButton = new System.Windows.Forms.Button();
             this.nameLabel = new System.Windows.Forms.Label();
-            this.icon = new System.Windows.Forms.PictureBox();
             this.maximazeButton = new System.Windows.Forms.Button();
             this.minimizedButton = new System.Windows.Forms.Button();
             this.panelMenu = new System.Windows.Forms.Panel();
@@ -45,14 +44,15 @@
             this.tabPanel = new System.Windows.Forms.Panel();
             this.panelChoise = new System.Windows.Forms.Panel();
             this.exitButton = new System.Windows.Forms.Button();
-            this.history = new System.Windows.Forms.Button();
-            this.catalog = new System.Windows.Forms.Button();
             this.panelInfo = new System.Windows.Forms.Panel();
+            this.orders = new System.Windows.Forms.Button();
+            this.catalog = new System.Windows.Forms.Button();
+            this.icon = new System.Windows.Forms.PictureBox();
             this.panelTools.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.icon)).BeginInit();
             this.panelMenu.SuspendLayout();
             this.panelInfoUser.SuspendLayout();
             this.tabPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.icon)).BeginInit();
             this.SuspendLayout();
             // 
             // panelTools
@@ -65,8 +65,9 @@
             this.panelTools.Controls.Add(this.minimizedButton);
             this.panelTools.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTools.Location = new System.Drawing.Point(0, 0);
+            this.panelTools.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelTools.Name = "panelTools";
-            this.panelTools.Size = new System.Drawing.Size(1000, 30);
+            this.panelTools.Size = new System.Drawing.Size(1333, 37);
             this.panelTools.TabIndex = 2;
             this.panelTools.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelTools_MouseDown);
             // 
@@ -79,9 +80,10 @@
             this.closeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.closeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.closeButton.ForeColor = System.Drawing.Color.White;
-            this.closeButton.Location = new System.Drawing.Point(967, -8);
+            this.closeButton.Location = new System.Drawing.Point(1289, -10);
+            this.closeButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.closeButton.Name = "closeButton";
-            this.closeButton.Size = new System.Drawing.Size(36, 40);
+            this.closeButton.Size = new System.Drawing.Size(48, 49);
             this.closeButton.TabIndex = 0;
             this.closeButton.Text = "×";
             this.closeButton.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -93,21 +95,12 @@
             this.nameLabel.AutoSize = true;
             this.nameLabel.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.nameLabel.ForeColor = System.Drawing.Color.White;
-            this.nameLabel.Location = new System.Drawing.Point(41, 7);
+            this.nameLabel.Location = new System.Drawing.Point(55, 9);
+            this.nameLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.nameLabel.Name = "nameLabel";
-            this.nameLabel.Size = new System.Drawing.Size(67, 18);
+            this.nameLabel.Size = new System.Drawing.Size(91, 24);
             this.nameLabel.TabIndex = 2;
             this.nameLabel.Text = "BookShop";
-            // 
-            // icon
-            // 
-            this.icon.Image = global::BookShopBD.Properties.Resources.bookWhite;
-            this.icon.Location = new System.Drawing.Point(3, 0);
-            this.icon.Name = "icon";
-            this.icon.Size = new System.Drawing.Size(32, 30);
-            this.icon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.icon.TabIndex = 1;
-            this.icon.TabStop = false;
             // 
             // maximazeButton
             // 
@@ -116,9 +109,10 @@
             this.maximazeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.maximazeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.maximazeButton.ForeColor = System.Drawing.Color.White;
-            this.maximazeButton.Location = new System.Drawing.Point(935, -8);
+            this.maximazeButton.Location = new System.Drawing.Point(1247, -10);
+            this.maximazeButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.maximazeButton.Name = "maximazeButton";
-            this.maximazeButton.Size = new System.Drawing.Size(36, 39);
+            this.maximazeButton.Size = new System.Drawing.Size(48, 48);
             this.maximazeButton.TabIndex = 4;
             this.maximazeButton.Text = "⛶";
             this.maximazeButton.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -132,9 +126,10 @@
             this.minimizedButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.minimizedButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.minimizedButton.ForeColor = System.Drawing.Color.White;
-            this.minimizedButton.Location = new System.Drawing.Point(903, -4);
+            this.minimizedButton.Location = new System.Drawing.Point(1204, -5);
+            this.minimizedButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.minimizedButton.Name = "minimizedButton";
-            this.minimizedButton.Size = new System.Drawing.Size(36, 37);
+            this.minimizedButton.Size = new System.Drawing.Size(48, 46);
             this.minimizedButton.TabIndex = 3;
             this.minimizedButton.Text = "—";
             this.minimizedButton.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -148,9 +143,10 @@
             this.panelMenu.Controls.Add(this.border);
             this.panelMenu.Controls.Add(this.tabPanel);
             this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panelMenu.Location = new System.Drawing.Point(0, 30);
+            this.panelMenu.Location = new System.Drawing.Point(0, 37);
+            this.panelMenu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelMenu.Name = "panelMenu";
-            this.panelMenu.Size = new System.Drawing.Size(158, 570);
+            this.panelMenu.Size = new System.Drawing.Size(211, 701);
             this.panelMenu.TabIndex = 3;
             // 
             // panelInfoUser
@@ -160,8 +156,9 @@
             this.panelInfoUser.Controls.Add(this.firstNLabel);
             this.panelInfoUser.Controls.Add(this.middleNLabel);
             this.panelInfoUser.Location = new System.Drawing.Point(0, 0);
+            this.panelInfoUser.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelInfoUser.Name = "panelInfoUser";
-            this.panelInfoUser.Size = new System.Drawing.Size(158, 106);
+            this.panelInfoUser.Size = new System.Drawing.Size(211, 130);
             this.panelInfoUser.TabIndex = 8;
             // 
             // lastNLabel
@@ -170,8 +167,9 @@
             this.lastNLabel.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lastNLabel.ForeColor = System.Drawing.Color.White;
             this.lastNLabel.Location = new System.Drawing.Point(0, 0);
+            this.lastNLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lastNLabel.Name = "lastNLabel";
-            this.lastNLabel.Size = new System.Drawing.Size(94, 26);
+            this.lastNLabel.Size = new System.Drawing.Size(118, 33);
             this.lastNLabel.TabIndex = 4;
             this.lastNLabel.Text = "Фамилия";
             // 
@@ -180,9 +178,10 @@
             this.roleLabel.AutoSize = true;
             this.roleLabel.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.roleLabel.ForeColor = System.Drawing.Color.White;
-            this.roleLabel.Location = new System.Drawing.Point(0, 78);
+            this.roleLabel.Location = new System.Drawing.Point(0, 96);
+            this.roleLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.roleLabel.Name = "roleLabel";
-            this.roleLabel.Size = new System.Drawing.Size(54, 26);
+            this.roleLabel.Size = new System.Drawing.Size(70, 33);
             this.roleLabel.TabIndex = 7;
             this.roleLabel.Text = "Роль";
             // 
@@ -191,9 +190,10 @@
             this.firstNLabel.AutoSize = true;
             this.firstNLabel.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.firstNLabel.ForeColor = System.Drawing.Color.White;
-            this.firstNLabel.Location = new System.Drawing.Point(0, 26);
+            this.firstNLabel.Location = new System.Drawing.Point(0, 32);
+            this.firstNLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.firstNLabel.Name = "firstNLabel";
-            this.firstNLabel.Size = new System.Drawing.Size(50, 26);
+            this.firstNLabel.Size = new System.Drawing.Size(63, 33);
             this.firstNLabel.TabIndex = 5;
             this.firstNLabel.Text = "Имя";
             // 
@@ -202,9 +202,10 @@
             this.middleNLabel.AutoSize = true;
             this.middleNLabel.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.middleNLabel.ForeColor = System.Drawing.Color.White;
-            this.middleNLabel.Location = new System.Drawing.Point(0, 52);
+            this.middleNLabel.Location = new System.Drawing.Point(0, 64);
+            this.middleNLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.middleNLabel.Name = "middleNLabel";
-            this.middleNLabel.Size = new System.Drawing.Size(96, 26);
+            this.middleNLabel.Size = new System.Drawing.Size(120, 33);
             this.middleNLabel.TabIndex = 6;
             this.middleNLabel.Text = "Отчество";
             // 
@@ -212,8 +213,9 @@
             // 
             this.border.BackColor = System.Drawing.Color.White;
             this.border.Location = new System.Drawing.Point(0, 0);
+            this.border.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.border.Name = "border";
-            this.border.Size = new System.Drawing.Size(158, 112);
+            this.border.Size = new System.Drawing.Size(211, 138);
             this.border.TabIndex = 10;
             // 
             // tabPanel
@@ -223,19 +225,21 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabPanel.Controls.Add(this.panelChoise);
             this.tabPanel.Controls.Add(this.exitButton);
-            this.tabPanel.Controls.Add(this.history);
+            this.tabPanel.Controls.Add(this.orders);
             this.tabPanel.Controls.Add(this.catalog);
-            this.tabPanel.Location = new System.Drawing.Point(0, 116);
+            this.tabPanel.Location = new System.Drawing.Point(0, 143);
+            this.tabPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabPanel.Name = "tabPanel";
-            this.tabPanel.Size = new System.Drawing.Size(158, 454);
+            this.tabPanel.Size = new System.Drawing.Size(211, 558);
             this.tabPanel.TabIndex = 11;
             // 
             // panelChoise
             // 
             this.panelChoise.BackColor = System.Drawing.Color.White;
-            this.panelChoise.Location = new System.Drawing.Point(0, 4);
+            this.panelChoise.Location = new System.Drawing.Point(0, 5);
+            this.panelChoise.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelChoise.Name = "panelChoise";
-            this.panelChoise.Size = new System.Drawing.Size(6, 50);
+            this.panelChoise.Size = new System.Drawing.Size(8, 62);
             this.panelChoise.TabIndex = 1;
             // 
             // exitButton
@@ -247,31 +251,42 @@
             this.exitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.exitButton.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.exitButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
-            this.exitButton.Location = new System.Drawing.Point(4, 400);
+            this.exitButton.Location = new System.Drawing.Point(5, 491);
+            this.exitButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.exitButton.Name = "exitButton";
-            this.exitButton.Size = new System.Drawing.Size(150, 50);
+            this.exitButton.Size = new System.Drawing.Size(200, 62);
             this.exitButton.TabIndex = 10;
             this.exitButton.Text = "Выход";
             this.exitButton.UseVisualStyleBackColor = false;
             this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
             // 
-            // history
+            // panelInfo
             // 
-            this.history.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
-            this.history.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.history.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.history.ForeColor = System.Drawing.Color.White;
-            this.history.Image = global::BookShopBD.Properties.Resources.historyBtn;
-            this.history.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.history.Location = new System.Drawing.Point(6, 54);
-            this.history.Name = "history";
-            this.history.Size = new System.Drawing.Size(153, 50);
-            this.history.TabIndex = 9;
-            this.history.Text = "Заказы";
-            this.history.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.history.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.history.UseVisualStyleBackColor = true;
-            this.history.Click += new System.EventHandler(this.history_Click);
+            this.panelInfo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelInfo.Location = new System.Drawing.Point(211, 37);
+            this.panelInfo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelInfo.Name = "panelInfo";
+            this.panelInfo.Size = new System.Drawing.Size(1122, 701);
+            this.panelInfo.TabIndex = 4;
+            // 
+            // orders
+            // 
+            this.orders.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
+            this.orders.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.orders.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.orders.ForeColor = System.Drawing.Color.White;
+            this.orders.Image = global::BookShopBD.Properties.Resources.historyBtn;
+            this.orders.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.orders.Location = new System.Drawing.Point(8, 66);
+            this.orders.Margin = new System.Windows.Forms.Padding(4);
+            this.orders.Name = "orders";
+            this.orders.Size = new System.Drawing.Size(204, 62);
+            this.orders.TabIndex = 9;
+            this.orders.Text = "Заказы";
+            this.orders.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.orders.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.orders.UseVisualStyleBackColor = true;
+            this.orders.Click += new System.EventHandler(this.orders_Click);
             // 
             // catalog
             // 
@@ -281,9 +296,10 @@
             this.catalog.ForeColor = System.Drawing.Color.White;
             this.catalog.Image = global::BookShopBD.Properties.Resources.catalogBtn;
             this.catalog.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.catalog.Location = new System.Drawing.Point(6, 4);
+            this.catalog.Location = new System.Drawing.Point(8, 5);
+            this.catalog.Margin = new System.Windows.Forms.Padding(4);
             this.catalog.Name = "catalog";
-            this.catalog.Size = new System.Drawing.Size(153, 50);
+            this.catalog.Size = new System.Drawing.Size(204, 62);
             this.catalog.TabIndex = 0;
             this.catalog.Text = "Каталог";
             this.catalog.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -291,37 +307,41 @@
             this.catalog.UseVisualStyleBackColor = true;
             this.catalog.Click += new System.EventHandler(this.catalog_Click);
             // 
-            // panelInfo
+            // icon
             // 
-            this.panelInfo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelInfo.Location = new System.Drawing.Point(158, 30);
-            this.panelInfo.Name = "panelInfo";
-            this.panelInfo.Size = new System.Drawing.Size(842, 570);
-            this.panelInfo.TabIndex = 4;
+            this.icon.Image = global::BookShopBD.Properties.Resources.bookWhite;
+            this.icon.Location = new System.Drawing.Point(4, 0);
+            this.icon.Margin = new System.Windows.Forms.Padding(4);
+            this.icon.Name = "icon";
+            this.icon.Size = new System.Drawing.Size(43, 37);
+            this.icon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.icon.TabIndex = 1;
+            this.icon.TabStop = false;
             // 
             // FormEmployee
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1000, 600);
+            this.ClientSize = new System.Drawing.Size(1333, 738);
             this.Controls.Add(this.panelInfo);
             this.Controls.Add(this.panelMenu);
             this.Controls.Add(this.panelTools);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(1000, 600);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.MinimumSize = new System.Drawing.Size(1333, 738);
             this.Name = "FormEmployee";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Book Shop";
             this.Load += new System.EventHandler(this.FormCustomer_Load);
             this.panelTools.ResumeLayout(false);
             this.panelTools.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.icon)).EndInit();
             this.panelMenu.ResumeLayout(false);
             this.panelInfoUser.ResumeLayout(false);
             this.panelInfoUser.PerformLayout();
             this.tabPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.icon)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -342,7 +362,7 @@
         private System.Windows.Forms.Label firstNLabel;
         private System.Windows.Forms.Label lastNLabel;
         private System.Windows.Forms.Panel panelInfoUser;
-        private System.Windows.Forms.Button history;
+        private System.Windows.Forms.Button orders;
         private System.Windows.Forms.Panel border;
         private System.Windows.Forms.Panel tabPanel;
         private System.Windows.Forms.Button exitButton;

@@ -115,6 +115,12 @@
     <Compile Include="Forms\FormChangeAmount.Designer.cs">
       <DependentUpon>FormChangeAmount.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FormOrderEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormOrderEmployee.Designer.cs">
+      <DependentUpon>FormOrderEmployee.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FormOrder.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -159,6 +165,12 @@
     <Compile Include="UserControls\UCCatalogEmployee.Designer.cs">
       <DependentUpon>UCCatalogEmployee.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\UCOrderEmployee.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UCOrderEmployee.Designer.cs">
+      <DependentUpon>UCOrderEmployee.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\UCHistory.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -176,6 +188,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormChangeAmount.resx">
       <DependentUpon>FormChangeAmount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormOrderEmployee.resx">
+      <DependentUpon>FormOrderEmployee.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormOrder.resx">
       <DependentUpon>FormOrder.cs</DependentUpon>
@@ -207,6 +222,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UCCatalogEmployee.resx">
       <DependentUpon>UCCatalogEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UCOrderEmployee.resx">
+      <DependentUpon>UCOrderEmployee.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UCHistory.resx">
       <DependentUpon>UCHistory.cs</DependentUpon>
