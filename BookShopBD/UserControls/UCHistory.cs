@@ -34,7 +34,7 @@ namespace BookShopBD
             DBConnection.msCommand.CommandText = $"CALL GetUserId({CurrentUser.Id_account}, 'Покупатель');";
             object id_customer = DBConnection.msCommand.ExecuteScalar();
 
-            DBConnection.msCommand.CommandText = $"SELECT id_order AS 'Номер заказа', COUNT(id_order_book) AS Товаров, Date_order AS Дата " +
+            DBConnection.msCommand.CommandText = $"SELECT id_order AS 'Номер заказа', SUM(order_book.Amount) AS Товаров, Date_order AS Дата " +
                 $"FROM order_ JOIN order_book USING(id_order) " +
                 $"WHERE id_customer = {(int)id_customer} AND Status = 'Ожидает подтверждения' GROUP BY id_order;";
             DBConnection.msDataAddapter.SelectCommand = DBConnection.msCommand;
@@ -42,12 +42,20 @@ namespace BookShopBD
             nSuccessDGV.DataSource = dataTable;
             DBConnection.CloseDB();
 
-
             DBConnection.ConnectionDB();
+
+            DBConnection.msCommand.CommandText = $"SELECT COUNT(id_order) FROM order_ " +
+                $"WHERE id_customer = {(int)id_customer} AND id_employee IS NULL";
+            amountNSuccessLabel.Text = DBConnection.msCommand.ExecuteScalar().ToString();
+
+            DBConnection.msCommand.CommandText = $"SELECT SUM(order_book.Amount * order_book.Price) " +
+                $"FROM order_ JOIN order_book USING(id_order) WHERE id_customer = {(int)id_customer} AND Status = 'Ожидает подтверждения';";
+            sumNSuccessLabel.Text = DBConnection.msCommand.ExecuteScalar().ToString();
+
             DataTable dataTable2 = new DataTable();
             dataTable2.Clear();
 
-            DBConnection.msCommand.CommandText = $"SELECT id_order AS 'Номер заказа', COUNT(id_order_book) AS Товаров, " +
+            DBConnection.msCommand.CommandText = $"SELECT id_order AS 'Номер заказа', SUM(order_book.Amount) AS Товаров, " +
                 $"CONCAT(LastName, ' ' , FirstName, ' ' , MiddleName) AS 'ФИО продавца', " +
                 $"Date_order AS Дата FROM order_book JOIN order_ USING(id_order) JOIN employee USING(id_employee) " +
                 $"WHERE id_customer = {(int)id_customer} AND Status = 'Подтверждён' GROUP BY id_order;";
@@ -55,6 +63,19 @@ namespace BookShopBD
             DBConnection.msDataAddapter.Fill(dataTable2);
             successDGV.DataSource = dataTable2;
             DBConnection.CloseDB();
+
+            DBConnection.ConnectionDB();
+            DBConnection.msCommand.CommandText = $"SELECT COUNT(id_order) FROM order_ " +
+                $"WHERE id_customer = {(int)id_customer} AND id_employee IS NOT NULL";
+            amountSuccessLabel.Text = DBConnection.msCommand.ExecuteScalar().ToString();
+
+            DBConnection.msCommand.CommandText = $"SELECT SUM(order_book.Amount * order_book.Price) " +
+                $"FROM order_ JOIN order_book USING(id_order) WHERE id_customer = {(int)id_customer} AND Status = 'Подтверждён';";
+            sumSuccessLabel.Text = DBConnection.msCommand.ExecuteScalar().ToString();
+            if (sumNSuccessLabel.Text == "")
+                sumNSuccessLabel.Text = "0,00";
+            if (sumSuccessLabel.Text == "")
+                sumSuccessLabel.Text = "0,00";
         }
 
         private void nSuccessDGV_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
