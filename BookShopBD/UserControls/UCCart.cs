@@ -80,6 +80,8 @@ namespace BookShopBD
                     $"NOT IN (SELECT id_order FROM order_book);";
             id_order = DBConnection.msCommand.ExecuteScalar();
 
+            ids_order.Clear();
+
             refreshButton_Click("↻", e);
             MessageBox.Show("Книги успешно заказаны. Ожидайте подтверждения продавца.", "Успешно");
         }
