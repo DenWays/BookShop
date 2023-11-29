@@ -38,11 +38,11 @@
             this.nameLabel = new System.Windows.Forms.Label();
             this.icon = new System.Windows.Forms.PictureBox();
             this.panelMain = new System.Windows.Forms.Panel();
-            this.orderLabel = new System.Windows.Forms.Label();
-            this.countLabel = new System.Windows.Forms.Label();
-            this.sumLabel = new System.Windows.Forms.Label();
-            this.ordersDGV = new System.Windows.Forms.DataGridView();
             this.getCheckButton = new System.Windows.Forms.Button();
+            this.ordersDGV = new System.Windows.Forms.DataGridView();
+            this.sumLabel = new System.Windows.Forms.Label();
+            this.countLabel = new System.Windows.Forms.Label();
+            this.orderLabel = new System.Windows.Forms.Label();
             this.panelTools.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.icon)).BeginInit();
             this.panelMain.SuspendLayout();
@@ -56,7 +56,7 @@
             this.panelTools.Controls.Add(this.nameLabel);
             this.panelTools.Controls.Add(this.icon);
             this.panelTools.Location = new System.Drawing.Point(0, 0);
-            this.panelTools.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelTools.Margin = new System.Windows.Forms.Padding(4);
             this.panelTools.Name = "panelTools";
             this.panelTools.Size = new System.Drawing.Size(800, 37);
             this.panelTools.TabIndex = 1;
@@ -71,7 +71,7 @@
             this.closeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.closeButton.ForeColor = System.Drawing.Color.White;
             this.closeButton.Location = new System.Drawing.Point(756, -10);
-            this.closeButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.closeButton.Margin = new System.Windows.Forms.Padding(4);
             this.closeButton.Name = "closeButton";
             this.closeButton.Size = new System.Drawing.Size(48, 48);
             this.closeButton.TabIndex = 0;
@@ -95,7 +95,7 @@
             // 
             this.icon.Image = global::BookShopBD.Properties.Resources.bookWhite;
             this.icon.Location = new System.Drawing.Point(4, 0);
-            this.icon.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.icon.Margin = new System.Windows.Forms.Padding(4);
             this.icon.Name = "icon";
             this.icon.Size = new System.Drawing.Size(43, 37);
             this.icon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -114,38 +114,20 @@
             this.panelMain.Size = new System.Drawing.Size(800, 455);
             this.panelMain.TabIndex = 2;
             // 
-            // orderLabel
+            // getCheckButton
             // 
-            this.orderLabel.AutoSize = true;
-            this.orderLabel.Font = new System.Drawing.Font("Comic Sans MS", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.orderLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
-            this.orderLabel.Location = new System.Drawing.Point(27, 14);
-            this.orderLabel.Name = "orderLabel";
-            this.orderLabel.Size = new System.Drawing.Size(210, 31);
-            this.orderLabel.TabIndex = 1;
-            this.orderLabel.Text = "товаров на сумму";
-            // 
-            // countLabel
-            // 
-            this.countLabel.AutoSize = true;
-            this.countLabel.Font = new System.Drawing.Font("Comic Sans MS", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.countLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
-            this.countLabel.Location = new System.Drawing.Point(3, 14);
-            this.countLabel.Name = "countLabel";
-            this.countLabel.Size = new System.Drawing.Size(28, 31);
-            this.countLabel.TabIndex = 2;
-            this.countLabel.Text = "0";
-            // 
-            // sumLabel
-            // 
-            this.sumLabel.AutoSize = true;
-            this.sumLabel.Font = new System.Drawing.Font("Comic Sans MS", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.sumLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
-            this.sumLabel.Location = new System.Drawing.Point(255, 14);
-            this.sumLabel.Name = "sumLabel";
-            this.sumLabel.Size = new System.Drawing.Size(61, 31);
-            this.sumLabel.TabIndex = 3;
-            this.sumLabel.Text = "0.00";
+            this.getCheckButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
+            this.getCheckButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
+            this.getCheckButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.getCheckButton.Font = new System.Drawing.Font("Comic Sans MS", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.getCheckButton.ForeColor = System.Drawing.Color.White;
+            this.getCheckButton.Location = new System.Drawing.Point(515, 410);
+            this.getCheckButton.Name = "getCheckButton";
+            this.getCheckButton.Size = new System.Drawing.Size(282, 42);
+            this.getCheckButton.TabIndex = 5;
+            this.getCheckButton.Text = "Получить чек";
+            this.getCheckButton.UseVisualStyleBackColor = false;
+            this.getCheckButton.Click += new System.EventHandler(this.getCheckButton_Click);
             // 
             // ordersDGV
             // 
@@ -200,19 +182,38 @@
             this.ordersDGV.Size = new System.Drawing.Size(800, 360);
             this.ordersDGV.TabIndex = 4;
             // 
-            // getCheckButton
+            // sumLabel
             // 
-            this.getCheckButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
-            this.getCheckButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
-            this.getCheckButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.getCheckButton.Font = new System.Drawing.Font("Comic Sans MS", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.getCheckButton.ForeColor = System.Drawing.Color.White;
-            this.getCheckButton.Location = new System.Drawing.Point(515, 410);
-            this.getCheckButton.Name = "getCheckButton";
-            this.getCheckButton.Size = new System.Drawing.Size(282, 42);
-            this.getCheckButton.TabIndex = 5;
-            this.getCheckButton.Text = "Получить чек";
-            this.getCheckButton.UseVisualStyleBackColor = false;
+            this.sumLabel.AutoSize = true;
+            this.sumLabel.Font = new System.Drawing.Font("Comic Sans MS", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.sumLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
+            this.sumLabel.Location = new System.Drawing.Point(255, 14);
+            this.sumLabel.Name = "sumLabel";
+            this.sumLabel.Size = new System.Drawing.Size(61, 31);
+            this.sumLabel.TabIndex = 3;
+            this.sumLabel.Text = "0.00";
+            // 
+            // countLabel
+            // 
+            this.countLabel.AutoSize = true;
+            this.countLabel.Font = new System.Drawing.Font("Comic Sans MS", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.countLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
+            this.countLabel.Location = new System.Drawing.Point(3, 14);
+            this.countLabel.Name = "countLabel";
+            this.countLabel.Size = new System.Drawing.Size(28, 31);
+            this.countLabel.TabIndex = 2;
+            this.countLabel.Text = "0";
+            // 
+            // orderLabel
+            // 
+            this.orderLabel.AutoSize = true;
+            this.orderLabel.Font = new System.Drawing.Font("Comic Sans MS", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.orderLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
+            this.orderLabel.Location = new System.Drawing.Point(27, 14);
+            this.orderLabel.Name = "orderLabel";
+            this.orderLabel.Size = new System.Drawing.Size(210, 31);
+            this.orderLabel.TabIndex = 1;
+            this.orderLabel.Text = "товаров на сумму";
             // 
             // FormOrder
             // 
@@ -224,7 +225,7 @@
             this.Controls.Add(this.panelTools);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "FormOrder";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

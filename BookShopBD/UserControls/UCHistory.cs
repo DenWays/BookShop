@@ -13,6 +13,9 @@ namespace BookShopBD
     public partial class UCHistory : UserControl
     {
         public static int id_order;
+        public static string FIOEmp;
+        public static string Date;
+        public static bool flag = false;
         public UCHistory()
         {
             InitializeComponent();
@@ -78,16 +81,20 @@ namespace BookShopBD
                 sumSuccessLabel.Text = "0,00";
         }
 
-        private void nSuccessDGV_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void successDGV_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            id_order = int.Parse(nSuccessDGV.SelectedRows[0].Cells[0].Value.ToString());
+            id_order = int.Parse(successDGV.SelectedRows[0].Cells[0].Value.ToString());
+            FIOEmp = successDGV.SelectedRows[0].Cells[2].Value.ToString();
+            Date = successDGV.SelectedRows[0].Cells[3].Value.ToString();
+            flag = true;
             Form newForm = new FormOrder();
             newForm.ShowDialog();
         }
 
-        private void successDGV_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void nSuccessDGV_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            id_order = int.Parse(successDGV.SelectedRows[0].Cells[0].Value.ToString());
+            id_order = int.Parse(nSuccessDGV.SelectedRows[0].Cells[0].Value.ToString());
+            flag = false;
             Form newForm = new FormOrder();
             newForm.ShowDialog();
         }
