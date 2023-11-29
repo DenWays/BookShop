@@ -130,7 +130,7 @@ namespace BookShopBD
             oPara4 = oDoc.Content.Paragraphs.Add(ref oMissing);
             string date = UCHistory.Date;
             string[] dates = date.Split(' ');
-            oPara4.Range.Text = $"Заказ номер {UCHistory.id_order}: {countLabel.Text} товаров на сумму {sumLabel.Text}. Дата: {dates[0]}";
+            oPara4.Range.Text = $"Заказ номер {UCHistory.id_order}: {countLabel.Text} товаров на сумму {sumLabel.Text},00. Дата: {dates[0]}";
             oPara4.Range.Font.Size = 14;
             oPara4.Range.Font.Bold = 0;
             oPara4.Alignment = WdParagraphAlignment.wdAlignParagraphLeft;
