@@ -1,8 +1,12 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
+using System.Net;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace BookShopBD
 {
@@ -28,9 +32,18 @@ namespace BookShopBD
             object id_author = DBConnection.msCommand.ExecuteScalar();
             bookName.Text = booksDGV.SelectedRows[0].Cells[0].Value.ToString();
             DBConnection.msCommand.CommandText = $"SELECT Descr FROM book " +
-                $"WHERE book_name = '{booksDGV.SelectedRows[0].Cells[0].Value}' AND id_author = {(int)id_author};";
+                $"WHERE Book_name = '{booksDGV.SelectedRows[0].Cells[0].Value}' AND id_author = {(int)id_author};";
             bookDescr.Text = DBConnection.msCommand.ExecuteScalar().ToString();
             selectFlag = true;
+
+            DBConnection.msCommand.CommandText = $"SELECT Image FROM book JOIN author USING(id_author)" +
+                $"WHERE Book_name = '{booksDGV.SelectedRows[0].Cells[0].Value}' AND id_author = {(int)id_author};";
+            string image = DBConnection.msCommand.ExecuteScalar().ToString();
+            bookImage.BackColor = Color.White;
+            if(image != null)
+            {
+                bookImage.LoadAsync(DBConnection.msCommand.ExecuteScalar().ToString());
+            }            
         }
 
         private void addToCartButton_Click(object sender, EventArgs e)
@@ -59,6 +72,20 @@ namespace BookShopBD
                 DBConnection.msCommand.CommandText = $"SELECT Descr FROM book " +
                     $"WHERE book_name = '{booksDGV.SelectedRows[0].Cells[0].Value}' AND id_author = {(int)id_author};";
                 bookDescr.Text = DBConnection.msCommand.ExecuteScalar().ToString();
+                DBConnection.msCommand.CommandText = $"SELECT Image FROM book JOIN author USING(id_author)" +
+                $"WHERE Book_name = '{booksDGV.SelectedRows[0].Cells[0].Value}' AND id_author = {(int)id_author};";
+                string image = DBConnection.msCommand.ExecuteScalar().ToString();
+                Bitmap bmp = new Bitmap(bookImage.Location.X, bookImage.Location.Y);
+                using (Graphics graph = Graphics.FromImage(bmp))
+                {
+                    Rectangle ImageSize = new Rectangle(0, 0, bookImage.Location.X, bookImage.Location.Y);
+                    graph.FillRectangle(Brushes.White, ImageSize);
+                }
+                bookImage.Image = bmp;
+                if (image != null)
+                {
+                    bookImage.LoadAsync(DBConnection.msCommand.ExecuteScalar().ToString());
+                }
             }
             catch (Exception)
             {
@@ -67,13 +94,7 @@ namespace BookShopBD
 
         private void refreshButton_Click(object sender, EventArgs e)
         {
-            DataTable dataTable = new DataTable();
-            dataTable.Clear();
-            DBConnection.msCommand.CommandText = "SELECT * FROM catalog";
-            DBConnection.msDataAddapter.SelectCommand = DBConnection.msCommand;
-            DBConnection.msDataAddapter.Fill(dataTable);
-            booksDGV.DataSource = dataTable;
-            books = booksDGV;
+            UCCatalog_Load("asd", e);
         }
 
         private void searchTB_KeyPress(object sender, KeyPressEventArgs e)

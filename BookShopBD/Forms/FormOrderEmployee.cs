@@ -74,7 +74,7 @@ namespace BookShopBD
             {
                 sum += (double.Parse(ordersDGV.Rows[i].Cells[2].Value.ToString()) * int.Parse(ordersDGV.Rows[i].Cells[3].Value.ToString()));
             }
-            sumLabel.Text = sum.ToString();
+            sumLabel.Text = sum.ToString() + ",00";
         }
 
         private void getCheckButton_Click(object sender, EventArgs e)
@@ -85,7 +85,7 @@ namespace BookShopBD
             object id_employee = DBConnection.msCommand.ExecuteScalar();
 
             DBConnection.msCommand.CommandText = $"UPDATE order_book JOIN order_ USING(id_order) " +
-                $"SET Status = 'Подтверждён', id_employee = {(int)id_employee} " +
+                $"SET Status = 'Подтверждён', id_employee = {(int)id_employee}, Date_order = CURDATE() " +
                 $"WHERE id_order = {UCOrderEmployee.id_order};";
             DBConnection.msCommand.ExecuteNonQuery();
             MessageBox.Show("Успешно подтверждено.", "Успешно", MessageBoxButtons.OK);
