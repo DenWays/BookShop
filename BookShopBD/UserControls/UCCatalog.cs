@@ -23,6 +23,14 @@ namespace BookShopBD
 
         private void UCCatalog_Load(object sender, EventArgs e)
         {
+            if(CurrentUser.Role == "Покупатель")
+            {
+                addToCartButton.Visible = true;
+            }
+            else
+            {
+                addToCartButton.Visible = false;
+            }
             DBConnection.ConnectionDB();
 
             searchMethod("SELECT * FROM catalog;");
