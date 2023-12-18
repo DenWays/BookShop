@@ -71,9 +71,15 @@ namespace BookShopBD
 
         private void orderAllBtn_Click(object sender, EventArgs e)
         {
+            if(cartDGV.Rows.Count == 0)
+            {
+                MessageBox.Show("Корзина пуста", "Пустая корзина", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             DBConnection.ConnectionDB();
 
-            DBConnection.msCommand.CommandText = $"UPDATE order_book SET Status = 'Ожидает подтверждения' WHERE id_order = {ids_order[0]}";
+            DBConnection.msCommand.CommandText = $"UPDATE order_ SET Status = 'Ожидает подтверждения' WHERE id_order = {ids_order[0]}";
             DBConnection.msCommand.ExecuteNonQuery();
 
             DBConnection.msCommand.CommandText = $"SELECT id_order FROM order_ WHERE id_order " +
@@ -88,12 +94,19 @@ namespace BookShopBD
 
         private void orderSelectedBtn_Click(object sender, EventArgs e)
         {
+            if (cartDGV.Rows.Count == 0)
+            {
+                MessageBox.Show("Корзина пуста", "Пустая корзина", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             DBConnection.ConnectionDB();
 
             DBConnection.msCommand.CommandText = $"CALL GetUserId({CurrentUser.Id_account}, 'Покупатель');";
             object id_customer = DBConnection.msCommand.ExecuteScalar();
 
-            DBConnection.msCommand.CommandText = $"INSERT order_(id_customer, Date_order) VALUES({(int)id_customer}, CURDATE());";
+            DBConnection.msCommand.CommandText = $"INSERT order_(id_customer, Date_order, Status) " +
+                $"VALUES({(int)id_customer}, CURDATE(), 'Ожидает подтверждения');";
             DBConnection.msCommand.ExecuteNonQuery();
 
             DBConnection.msCommand.CommandText = $"SELECT LAST_INSERT_ID()";
@@ -102,8 +115,8 @@ namespace BookShopBD
             for (int i = 0; i < cartDGV.SelectedRows.Count; i++)
             {
                 DBConnection.msCommand.CommandText = $"UPDATE order_book JOIN book USING(id_book) " +
-                        $"JOIN author USING(id_author) SET order_book.id_order = {int.Parse(id_order.ToString())}, " +
-                        $"Status = 'Ожидает подтверждения' WHERE order_book.id_order = {(ids_order[0])} " +
+                        $"JOIN author USING(id_author) SET order_book.id_order = {int.Parse(id_order.ToString())} " +
+                        $"WHERE order_book.id_order = {(ids_order[0])} " +
                         $"AND Book_name = '{cartDGV.SelectedRows[i].Cells[0].Value}' " +
                         $"AND Author_name = '{cartDGV.SelectedRows[i].Cells[1].Value}';";
                 DBConnection.msCommand.ExecuteNonQuery();
@@ -133,7 +146,8 @@ namespace BookShopBD
             DBConnection.ConnectionDB();
             for (int i = 0; i < cartDGV.SelectedRows.Count; i++)
             {
-                DBConnection.msCommand.CommandText = $"DELETE order_book FROM order_book JOIN book USING(id_book) " +
+                DBConnection.msCommand.CommandText = $"DELETE order_book FROM order_ JOIN order_book USING(id_order) " +
+                    $"JOIN book USING(id_book) " +
                     $"JOIN author USING(id_author) WHERE Book_name = '{cartDGV.SelectedRows[i].Cells[0].Value}' " +
                     $"AND Author_name = '{cartDGV.SelectedRows[i].Cells[1].Value}' AND order_book.id_order = {ids_order[0]} " +
                     $"AND order_book.Amount = {int.Parse(cartDGV.SelectedRows[i].Cells[3].Value.ToString())} " +
@@ -174,7 +188,8 @@ namespace BookShopBD
             DBConnection.ConnectionDB();
             for (int i = 0; i < cartDGV.Rows.Count; i++)
             {
-                DBConnection.msCommand.CommandText = $"DELETE order_book FROM order_book JOIN book USING(id_book) " +
+                DBConnection.msCommand.CommandText = $"DELETE order_book FROM order_ JOIN order_book USING(id_order) " +
+                    $"JOIN book USING(id_book) " +
                     $"JOIN author USING(id_author) WHERE Book_name = '{cartDGV.Rows[i].Cells[0].Value}' " +
                     $"AND Author_name = '{cartDGV.Rows[i].Cells[1].Value}' AND order_book.id_order = {ids_order[0]} " +
                     $"AND order_book.Amount = {int.Parse(cartDGV.Rows[i].Cells[3].Value.ToString())} " +

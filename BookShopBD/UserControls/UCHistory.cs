@@ -48,7 +48,7 @@ namespace BookShopBD
             DBConnection.ConnectionDB();
 
             DBConnection.msCommand.CommandText = $"SELECT COUNT(id_order) FROM order_ " +
-                $"WHERE id_customer = {(int)id_customer} AND id_employee IS NULL";
+                $"WHERE id_customer = {(int)id_customer} AND Status = 'Ожидает подтверждения'";
             amountNSuccessLabel.Text = DBConnection.msCommand.ExecuteScalar().ToString();
 
             DBConnection.msCommand.CommandText = $"SELECT SUM(order_book.Amount * order_book.Price) " +

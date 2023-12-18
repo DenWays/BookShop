@@ -57,7 +57,8 @@ namespace BookShopBD
 
             if (DBConnection.msCommand.ExecuteScalar() == null)
             {
-                DBConnection.msCommand.CommandText = $"INSERT order_(id_customer, Date_order) VALUES({(int)id_customer}, CURDATE())";
+                DBConnection.msCommand.CommandText = $"INSERT order_(id_customer, Date_order, Status) " +
+                    $"VALUES({(int)id_customer}, CURDATE(), 'Ожидает заказа')";
                 DBConnection.msCommand.ExecuteNonQuery();
 
                 DBConnection.msCommand.CommandText = $"SELECT LAST_INSERT_ID();";

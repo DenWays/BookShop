@@ -187,7 +187,7 @@
             this.sumLabel.AutoSize = true;
             this.sumLabel.Font = new System.Drawing.Font("Comic Sans MS", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.sumLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
-            this.sumLabel.Location = new System.Drawing.Point(255, 14);
+            this.sumLabel.Location = new System.Drawing.Point(264, 14);
             this.sumLabel.Name = "sumLabel";
             this.sumLabel.Size = new System.Drawing.Size(61, 31);
             this.sumLabel.TabIndex = 3;
@@ -209,7 +209,7 @@
             this.orderLabel.AutoSize = true;
             this.orderLabel.Font = new System.Drawing.Font("Comic Sans MS", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.orderLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
-            this.orderLabel.Location = new System.Drawing.Point(27, 14);
+            this.orderLabel.Location = new System.Drawing.Point(37, 14);
             this.orderLabel.Name = "orderLabel";
             this.orderLabel.Size = new System.Drawing.Size(210, 31);
             this.orderLabel.TabIndex = 1;
