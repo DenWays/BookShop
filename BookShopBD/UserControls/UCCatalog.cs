@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BookShopBD.UserControls;
+using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
@@ -14,11 +16,11 @@ namespace BookShopBD
     {
         public static DataGridView books;
         static bool selectFlag = false;
+        DataTable catalog = new DataTable();
+        List<Book> catalogbooks = new List<Book>(1);
         public UCCatalog()
         {
             InitializeComponent();
-            bookDescr.MaximumSize = new Size(panelDescr.Width - 5, panelDescr.Height);
-            bookDescr.AutoSize = true;
         }
 
         private void UCCatalog_Load(object sender, EventArgs e)
@@ -31,27 +33,73 @@ namespace BookShopBD
             {
                 addToCartButton.Visible = false;
             }
-            DBConnection.ConnectionDB();
 
-            searchMethod("SELECT * FROM catalog;");
-
-            DBConnection.msCommand.CommandText = $"SELECT id_author FROM book JOIN author USING(id_author) " +
-                $"WHERE Book_name = '{booksDGV.SelectedRows[0].Cells[0].Value}';";
-            object id_author = DBConnection.msCommand.ExecuteScalar();
-            bookName.Text = booksDGV.SelectedRows[0].Cells[0].Value.ToString();
-            DBConnection.msCommand.CommandText = $"SELECT Descr FROM book " +
-                $"WHERE Book_name = '{booksDGV.SelectedRows[0].Cells[0].Value}' AND id_author = {(int)id_author};";
-            bookDescr.Text = DBConnection.msCommand.ExecuteScalar().ToString();
-            selectFlag = true;
-
-            DBConnection.msCommand.CommandText = $"SELECT Image FROM book JOIN author USING(id_author)" +
-                $"WHERE Book_name = '{booksDGV.SelectedRows[0].Cells[0].Value}' AND id_author = {(int)id_author};";
-            string image = DBConnection.msCommand.ExecuteScalar().ToString();
-            bookImage.BackColor = Color.White;
-            if(image != null)
+            if(flowCatalogPanel.Controls.Count != 0)
             {
-                bookImage.LoadAsync(DBConnection.msCommand.ExecuteScalar().ToString());
-            }            
+                flowCatalogPanel.Controls.Clear();
+            }
+            DataTable dt = new DataTable();
+
+            DBConnection.ConnectionDB();
+            DBConnection.msCommand.CommandText = $"SELECT id_book, Book_name, Image, Descr, Author_name, Genre_name, " +
+                $"Publisher_name, YEAR(Publication_Year), Price, Amount FROM author JOIN book USING(id_author) " +
+                $"JOIN genre USING(id_genre) JOIN publisher ON book.id_publisher = publisher.id_publisher ORDER BY id_book;";
+            DBConnection.msDataAddapter.SelectCommand = DBConnection.msCommand;
+            DBConnection.msDataAddapter.Fill(dt);
+
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                catalogbooks.Add(new Book());
+                catalogbooks[i].Id = dt.Rows[i][0].ToString();
+                catalogbooks[i].BookName = dt.Rows[i][1].ToString();
+                catalogbooks[i].Image = dt.Rows[i][2].ToString();
+                catalogbooks[i].Description = dt.Rows[i][3].ToString();
+                catalogbooks[i].AuthorName = dt.Rows[i][4].ToString();
+                catalogbooks[i].GenreName = dt.Rows[i][5].ToString();
+                catalogbooks[i].PublisherName = dt.Rows[i][6].ToString();
+                catalogbooks[i].Year = dt.Rows[i][7].ToString();
+                catalogbooks[i].Price = dt.Rows[i][8].ToString();
+                catalogbooks[i].Amount = dt.Rows[i][9].ToString();
+            }
+
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                Panel panel = new Panel();
+                panel.Size = new Size(130, 270);
+
+                PictureBox pictureBox = new PictureBox();
+                pictureBox.Size = new Size(130, 220);
+                pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+                pictureBox.LoadAsync(catalogbooks[i].Image);
+                pictureBox.Dock = DockStyle.Top;
+                panel.Controls.Add(pictureBox);
+
+                Label label = new Label();
+                label.Text = catalogbooks[i].BookName;
+                label.Dock = DockStyle.Bottom;
+                label.AutoEllipsis = true;
+                label.Font = new Font("Comic Sans MS", 10);
+                panel.Controls.Add(label);
+
+                Label label2 = new Label();
+                label2.Text = "Цена: " + catalogbooks[i].Price;
+                label2.Dock = DockStyle.Bottom;
+                label2.Font = new Font("Comic Sans MS", 10);
+                panel.Controls.Add(label2);
+
+                panel.Name = catalogbooks[i].Id;
+
+                pictureBox.Click += infoPanel_Click;
+                panel.Click += infoPanel_Click;
+                flowCatalogPanel.Controls.Add(panel);
+            }
+        }
+
+        private void infoPanel_Click(object sender, EventArgs e)
+        {
+            Panel panel = (Panel)((PictureBox)sender).Parent;
+            FormBook newFrom = new FormBook(int.Parse(panel.Name));
+            newFrom.ShowDialog();
         }
 
         private void addToCartButton_Click(object sender, EventArgs e)
@@ -64,40 +112,12 @@ namespace BookShopBD
 
         private void UCCatalog_SizeChanged(object sender, EventArgs e)
         {
-            bookDescr.MaximumSize = new Size(panelDescr.Width - 5, 0);
-            bookDescr.AutoSize = true;
+
         }
 
         private void booksDGV_SelectionChanged(object sender, EventArgs e)
         {
-            try
-            {
-                if (selectFlag == false) { return; }
-                DBConnection.msCommand.CommandText = $"SELECT id_author FROM book JOIN author USING(id_author) " +
-                    $"WHERE Book_name = '{booksDGV.SelectedRows[0].Cells[0].Value}';";
-                object id_author = DBConnection.msCommand.ExecuteScalar();
-                bookName.Text = booksDGV.SelectedRows[0].Cells[0].Value.ToString();
-                DBConnection.msCommand.CommandText = $"SELECT Descr FROM book " +
-                    $"WHERE book_name = '{booksDGV.SelectedRows[0].Cells[0].Value}' AND id_author = {(int)id_author};";
-                bookDescr.Text = DBConnection.msCommand.ExecuteScalar().ToString();
-                DBConnection.msCommand.CommandText = $"SELECT Image FROM book JOIN author USING(id_author)" +
-                $"WHERE Book_name = '{booksDGV.SelectedRows[0].Cells[0].Value}' AND id_author = {(int)id_author};";
-                string image = DBConnection.msCommand.ExecuteScalar().ToString();
-                Bitmap bmp = new Bitmap(bookImage.Location.X, bookImage.Location.Y);
-                using (Graphics graph = Graphics.FromImage(bmp))
-                {
-                    Rectangle ImageSize = new Rectangle(0, 0, bookImage.Location.X, bookImage.Location.Y);
-                    graph.FillRectangle(Brushes.White, ImageSize);
-                }
-                bookImage.Image = bmp;
-                if (image != null)
-                {
-                    bookImage.LoadAsync(DBConnection.msCommand.ExecuteScalar().ToString());
-                }
-            }
-            catch (Exception)
-            {
-            }           
+             
         }
 
         private void refreshButton_Click(object sender, EventArgs e)
@@ -143,8 +163,7 @@ namespace BookShopBD
             DBConnection.msCommand.CommandText = command;
             DBConnection.msDataAddapter.SelectCommand = DBConnection.msCommand;
             DBConnection.msDataAddapter.Fill(dataTable);
-            booksDGV.DataSource = dataTable;
-            books = booksDGV;
+
         }
 
         private void searchButton_Click(object sender, EventArgs e)

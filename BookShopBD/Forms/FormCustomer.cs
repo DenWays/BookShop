@@ -107,5 +107,10 @@ namespace BookShopBD
             UCHistory uCHistory = new UCHistory();
             AddControlsToPanel(uCHistory);
         }
+
+        private void FormCustomer_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
