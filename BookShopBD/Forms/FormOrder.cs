@@ -137,7 +137,6 @@ namespace BookShopBD
             oPara4.Format.SpaceAfter = 14;
             oPara4.Range.InsertParagraphAfter();
 
-
             System.Data.DataTable dataTable = new System.Data.DataTable();
             DBConnection.ConnectionDB();
             DBConnection.msCommand.CommandText = $"CALL GetUserId({CurrentUser.Id_account}, 'Покупатель');";
@@ -154,7 +153,8 @@ namespace BookShopBD
             Paragraph oPara5;
             oPara5 = oDoc.Content.Paragraphs.Add(ref oMissing);
 
-            Table table = oWord.Application.ActiveDocument.Tables.Add(oPara5.Range, dataTable.Rows.Count + 1, dataTable.Columns.Count, Type.Missing, Type.Missing);
+            Table table = oWord.Application.ActiveDocument.Tables.Add(oPara5.Range, dataTable.Rows.Count + 1, dataTable.Columns.Count, 
+                Type.Missing, Type.Missing);
             table.Borders.OutsideLineStyle = WdLineStyle.wdLineStyleSingle;
             table.Borders.InsideLineStyle = WdLineStyle.wdLineStyleSingle;
 

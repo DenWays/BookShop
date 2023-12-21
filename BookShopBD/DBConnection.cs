@@ -6,7 +6,9 @@ namespace BookShopBD
 {
     internal class DBConnection
     {
-        static string DBConnect = "server = 127.0.0.1; user=root; password=Danat@78;database=BookShop";
+        /*server=mc.flectone.net; port=3307; user=root; database=bookshop; password=7KaXphKo3z8QAJ;*/
+        /*server=localhost; port=3306; user=root; database=bookshop; password=Danat@78;*/
+        static string DBConnect = "server=localhost; port=3306; user=root; database=bookshop; password=Danat@78;";
         static public MySqlDataAdapter msDataAddapter;
         static MySqlConnection myConnect;
         static public MySqlCommand msCommand;

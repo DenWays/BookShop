@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Data;
-using System.Security.Principal;
 using System.Windows.Forms;
 
 namespace BookShopBD
@@ -42,14 +40,14 @@ namespace BookShopBD
             {
                 if (role == "Покупатель")
                 {
-                    DBConnection.msCommand.CommandText = $"SELECT LastName FROM Customer JOIN account USING(id_account) " +
+                    DBConnection.msCommand.CommandText = $"SELECT LastName FROM customer JOIN account USING(id_account) " +
                         $"WHERE Login = '{login}';";
                     lastName = DBConnection.msCommand.ExecuteScalar().ToString();
                     return lastName;
                 }
                 else if (role == "Продавец")
                 {
-                    DBConnection.msCommand.CommandText = $"SELECT LastName FROM Employee JOIN account USING(id_account) " +
+                    DBConnection.msCommand.CommandText = $"SELECT LastName FROM employee JOIN account USING(id_account) " +
                         $"WHERE Login = '{login}';";
                     lastName = DBConnection.msCommand.ExecuteScalar().ToString();
                     return lastName;
@@ -74,14 +72,14 @@ namespace BookShopBD
 			{
                 if (role == "Покупатель")
                 {
-                    DBConnection.msCommand.CommandText = $"SELECT FirstName FROM Customer JOIN account USING(id_account) " +
+                    DBConnection.msCommand.CommandText = $"SELECT FirstName FROM customer JOIN account USING(id_account) " +
                         $"WHERE Login = '{login}';";
                     firstName = DBConnection.msCommand.ExecuteScalar().ToString();
                     return firstName;
                 }
                 else if (role == "Продавец")
                 {
-                    DBConnection.msCommand.CommandText = $"SELECT FirstName FROM Employee JOIN account USING(id_account) " +
+                    DBConnection.msCommand.CommandText = $"SELECT FirstName FROM employee JOIN account USING(id_account) " +
                         $"WHERE Login = '{login}';";
                     firstName = DBConnection.msCommand.ExecuteScalar().ToString();
                     return firstName;
@@ -106,14 +104,14 @@ namespace BookShopBD
             {
                 if (role == "Покупатель")
                 {
-                    DBConnection.msCommand.CommandText = $"SELECT MiddleName FROM Customer JOIN account USING(id_account) " +
+                    DBConnection.msCommand.CommandText = $"SELECT MiddleName FROM customer JOIN account USING(id_account) " +
                         $"WHERE Login = '{login}';";
                     middleName = DBConnection.msCommand.ExecuteScalar().ToString();
                     return middleName;
                 }
                 else if (role == "Продавец")
                 {
-                    DBConnection.msCommand.CommandText = $"SELECT MiddleName FROM Employee JOIN account USING(id_account) " +
+                    DBConnection.msCommand.CommandText = $"SELECT MiddleName FROM employee JOIN account USING(id_account) " +
                         $"WHERE Login = '{login}';";
                     middleName = DBConnection.msCommand.ExecuteScalar().ToString();
                     return middleName;

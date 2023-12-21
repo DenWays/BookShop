@@ -127,7 +127,8 @@ namespace BookShopBD
             id_order = DBConnection.msCommand.ExecuteScalar();
             if (id_order != null)
             {
-                DBConnection.msCommand.CommandText = $"SET foreign_key_checks = 0; DELETE FROM order_ WHERE id_order = {int.Parse(id_order.ToString())}";
+                DBConnection.msCommand.CommandText = $"SET foreign_key_checks = 0; DELETE FROM order_ " +
+                    $"WHERE id_order = {int.Parse(id_order.ToString())}";
                 DBConnection.msCommand.ExecuteNonQuery();
                 ids_order.Remove(int.Parse(id_order.ToString()));
             }

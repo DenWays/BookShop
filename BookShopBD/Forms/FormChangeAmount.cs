@@ -58,30 +58,18 @@ namespace BookShopBD.Forms
                 return;
             }
 
-            string[] FIO = new string[3];
-            FIO = UCCart.itemsSelected[4].Split(' ');
-
-            object id_employee = null;
-            for (int j = 0; j < UCCart.ids_order.Count; j++)
-            {
-                DBConnection.msCommand.CommandText = $"SELECT order_.id_employee FROM order_ JOIN order_book USING(id_order) " +
-                    $"JOIN employee USING(id_employee) WHERE order_book.id_order = {UCCart.ids_order[j]} " +
-                    $"AND LastName = '{FIO[0]}' AND FirstName = '{FIO[1]}' AND MiddleName = '{FIO[2]}';";
-                id_employee = DBConnection.msCommand.ExecuteScalar();
-                if (id_employee != null) { break; }
-            }
             DBConnection.msCommand.CommandText = $"CALL GetUserId({CurrentUser.Id_account}, 'Покупатель');";
             object id_customer = DBConnection.msCommand.ExecuteScalar();
 
             DBConnection.msCommand.CommandText = $"SELECT id_order FROM order_ JOIN order_book USING(id_order) JOIN book USING(id_book) " +
-                    $"JOIN author USING(id_author) WHERE id_customer = {(int)id_customer} AND id_employee = {(int)id_employee} " +
+                    $"JOIN author USING(id_author) WHERE id_customer = {(int)id_customer} " +
                     $"AND Book_name = '{UCCart.itemsSelected[0]}' AND Author_name = '{UCCart.itemsSelected[1]}' " +
                     $"AND order_book.Amount = {int.Parse(UCCart.itemsSelected[3])} " +
                     $"AND order_book.Price = {double.Parse(UCCart.itemsSelected[2])} " +
                     $"AND Status = 'Ожидает заказа';";
             object cur_id_order = DBConnection.msCommand.ExecuteScalar();
 
-            DBConnection.msCommand.CommandText = $"SELECT id_order_book FROM order_book JOIN book USING(id_book) JOIN author USING(id_author) " +
+            DBConnection.msCommand.CommandText = $"SELECT id_order_book FROM order_ JOIN order_book USING(id_order) JOIN book USING(id_book) JOIN author USING(id_author) " +
                 $"WHERE id_order = {(int)cur_id_order} AND Book_name = '{UCCart.itemsSelected[0]}' " +
                 $"AND Author_name = '{UCCart.itemsSelected[1]}' AND order_book.Amount = {int.Parse(UCCart.itemsSelected[3])} " +
                 $"AND order_book.Price = {double.Parse(UCCart.itemsSelected[2])} AND Status = 'Ожидает заказа'";
