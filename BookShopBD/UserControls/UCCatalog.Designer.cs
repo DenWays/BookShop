@@ -29,9 +29,8 @@
         private void InitializeComponent()
         {
             this.panelSearch = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.searchButton = new System.Windows.Forms.Button();
-            this.addToCartButton = new System.Windows.Forms.Button();
+            this.sortCB = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.refreshButton = new System.Windows.Forms.Button();
             this.searchTB = new System.Windows.Forms.TextBox();
             this.searchCB = new System.Windows.Forms.ComboBox();
@@ -43,9 +42,8 @@
             // panelSearch
             // 
             this.panelSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
-            this.panelSearch.Controls.Add(this.button1);
-            this.panelSearch.Controls.Add(this.searchButton);
-            this.panelSearch.Controls.Add(this.addToCartButton);
+            this.panelSearch.Controls.Add(this.sortCB);
+            this.panelSearch.Controls.Add(this.label1);
             this.panelSearch.Controls.Add(this.refreshButton);
             this.panelSearch.Controls.Add(this.searchTB);
             this.panelSearch.Controls.Add(this.searchCB);
@@ -57,51 +55,31 @@
             this.panelSearch.Size = new System.Drawing.Size(1123, 49);
             this.panelSearch.TabIndex = 0;
             // 
-            // button1
+            // sortCB
             // 
-            this.button1.Location = new System.Drawing.Point(664, 16);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.sortCB.BackColor = System.Drawing.Color.White;
+            this.sortCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.sortCB.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.sortCB.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.sortCB.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
+            this.sortCB.FormattingEnabled = true;
+            this.sortCB.Location = new System.Drawing.Point(626, 5);
+            this.sortCB.Name = "sortCB";
+            this.sortCB.Size = new System.Drawing.Size(206, 36);
+            this.sortCB.TabIndex = 10;
+            this.sortCB.SelectedIndexChanged += new System.EventHandler(this.sortCB_SelectedIndexChanged);
             // 
-            // searchButton
+            // label1
             // 
-            this.searchButton.BackColor = System.Drawing.Color.White;
-            this.searchButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.searchButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.searchButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.searchButton.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.searchButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
-            this.searchButton.Location = new System.Drawing.Point(519, 5);
-            this.searchButton.Margin = new System.Windows.Forms.Padding(4);
-            this.searchButton.Name = "searchButton";
-            this.searchButton.Size = new System.Drawing.Size(107, 41);
-            this.searchButton.TabIndex = 9;
-            this.searchButton.Text = "Искать";
-            this.searchButton.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.searchButton.UseVisualStyleBackColor = false;
-            this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
-            // 
-            // addToCartButton
-            // 
-            this.addToCartButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.addToCartButton.BackColor = System.Drawing.Color.White;
-            this.addToCartButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.addToCartButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.addToCartButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addToCartButton.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.addToCartButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
-            this.addToCartButton.Location = new System.Drawing.Point(819, 5);
-            this.addToCartButton.Margin = new System.Windows.Forms.Padding(4);
-            this.addToCartButton.Name = "addToCartButton";
-            this.addToCartButton.Size = new System.Drawing.Size(243, 41);
-            this.addToCartButton.TabIndex = 8;
-            this.addToCartButton.Text = "Добавить в корзину";
-            this.addToCartButton.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.addToCartButton.UseVisualStyleBackColor = false;
-            this.addToCartButton.Click += new System.EventHandler(this.addToCartButton_Click);
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(467, 5);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(152, 33);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "Сортировка:";
             // 
             // refreshButton
             // 
@@ -125,11 +103,12 @@
             // 
             this.searchTB.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.searchTB.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
-            this.searchTB.Location = new System.Drawing.Point(337, 5);
+            this.searchTB.Location = new System.Drawing.Point(287, 5);
             this.searchTB.Margin = new System.Windows.Forms.Padding(4);
             this.searchTB.Name = "searchTB";
             this.searchTB.Size = new System.Drawing.Size(172, 35);
             this.searchTB.TabIndex = 3;
+            this.searchTB.TextChanged += new System.EventHandler(this.searchTB_TextChanged);
             this.searchTB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.searchTB_KeyPress);
             // 
             // searchCB
@@ -148,11 +127,12 @@
             "Год",
             "Цена",
             "Количество"});
-            this.searchCB.Location = new System.Drawing.Point(156, 5);
+            this.searchCB.Location = new System.Drawing.Point(107, 5);
             this.searchCB.Margin = new System.Windows.Forms.Padding(4);
             this.searchCB.Name = "searchCB";
             this.searchCB.Size = new System.Drawing.Size(172, 36);
             this.searchCB.TabIndex = 2;
+            this.searchCB.TextChanged += new System.EventHandler(this.searchCB_TextChanged);
             // 
             // searchLabel
             // 
@@ -162,9 +142,9 @@
             this.searchLabel.Location = new System.Drawing.Point(4, 5);
             this.searchLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.searchLabel.Name = "searchLabel";
-            this.searchLabel.Size = new System.Drawing.Size(136, 33);
+            this.searchLabel.Size = new System.Drawing.Size(97, 33);
             this.searchLabel.TabIndex = 1;
-            this.searchLabel.Text = "Искать по:";
+            this.searchLabel.Text = "Поиск:";
             // 
             // flowCatalogPanel
             // 
@@ -185,7 +165,6 @@
             this.Name = "UCCatalog";
             this.Size = new System.Drawing.Size(1123, 702);
             this.Load += new System.EventHandler(this.UCCatalog_Load);
-            this.SizeChanged += new System.EventHandler(this.UCCatalog_SizeChanged);
             this.panelSearch.ResumeLayout(false);
             this.panelSearch.PerformLayout();
             this.ResumeLayout(false);
@@ -199,9 +178,8 @@
         private System.Windows.Forms.Button refreshButton;
         private System.Windows.Forms.TextBox searchTB;
         private System.Windows.Forms.ComboBox searchCB;
-        private System.Windows.Forms.Button addToCartButton;
-        private System.Windows.Forms.Button searchButton;
         private System.Windows.Forms.FlowLayoutPanel flowCatalogPanel;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox sortCB;
     }
 }

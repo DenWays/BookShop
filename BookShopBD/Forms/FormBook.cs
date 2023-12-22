@@ -18,7 +18,7 @@ namespace BookShopBD
         public static extern bool ReleaseCapture();
         [DllImport("User32.dll")]
         public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
-        Book book = new Book();
+        public static Book book = new Book();
         int id;
 
         public FormBook(int id)
@@ -82,6 +82,13 @@ namespace BookShopBD
             descriptionBook.Text = book.Description;
             priceBook.Text = priceBook.Text + ": " + book.Price;
             amountBook.Text = amountBook.Text + ": " + book.Amount;
+        }
+        private void addToCartButton_Click(object sender, EventArgs e)
+        {
+            DBConnection.ConnectionDB();
+            Form newForm = new FormAddToCart();
+            newForm.ShowDialog();
+            this.Hide();
         }
     }
 }

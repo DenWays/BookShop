@@ -34,20 +34,22 @@
             this.nameLabel = new System.Windows.Forms.Label();
             this.icon = new System.Windows.Forms.PictureBox();
             this.panelMain = new System.Windows.Forms.Panel();
+            this.addToCartButton = new System.Windows.Forms.Button();
+            this.panelDescr = new System.Windows.Forms.Panel();
+            this.descriptionBook = new System.Windows.Forms.TextBox();
             this.yearBook = new System.Windows.Forms.Label();
             this.amountBook = new System.Windows.Forms.Label();
             this.priceBook = new System.Windows.Forms.Label();
-            this.panelBorder = new System.Windows.Forms.Panel();
             this.publisherBook = new System.Windows.Forms.Label();
             this.genreBook = new System.Windows.Forms.Label();
             this.authorBook = new System.Windows.Forms.Label();
             this.nameBook = new System.Windows.Forms.Label();
             this.panelPB = new System.Windows.Forms.Panel();
             this.imageBook = new System.Windows.Forms.PictureBox();
-            this.descriptionBook = new System.Windows.Forms.TextBox();
             this.panelTools.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.icon)).BeginInit();
             this.panelMain.SuspendLayout();
+            this.panelDescr.SuspendLayout();
             this.panelPB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imageBook)).BeginInit();
             this.SuspendLayout();
@@ -108,11 +110,11 @@
             // panelMain
             // 
             this.panelMain.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
-            this.panelMain.Controls.Add(this.descriptionBook);
+            this.panelMain.Controls.Add(this.addToCartButton);
+            this.panelMain.Controls.Add(this.panelDescr);
             this.panelMain.Controls.Add(this.yearBook);
             this.panelMain.Controls.Add(this.amountBook);
             this.panelMain.Controls.Add(this.priceBook);
-            this.panelMain.Controls.Add(this.panelBorder);
             this.panelMain.Controls.Add(this.publisherBook);
             this.panelMain.Controls.Add(this.genreBook);
             this.panelMain.Controls.Add(this.authorBook);
@@ -122,6 +124,49 @@
             this.panelMain.Name = "panelMain";
             this.panelMain.Size = new System.Drawing.Size(1000, 763);
             this.panelMain.TabIndex = 2;
+            // 
+            // addToCartButton
+            // 
+            this.addToCartButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.addToCartButton.BackColor = System.Drawing.Color.White;
+            this.addToCartButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.addToCartButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.addToCartButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.addToCartButton.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.addToCartButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
+            this.addToCartButton.Location = new System.Drawing.Point(4, 459);
+            this.addToCartButton.Margin = new System.Windows.Forms.Padding(4);
+            this.addToCartButton.Name = "addToCartButton";
+            this.addToCartButton.Size = new System.Drawing.Size(243, 41);
+            this.addToCartButton.TabIndex = 12;
+            this.addToCartButton.Text = "Добавить в корзину";
+            this.addToCartButton.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.addToCartButton.UseVisualStyleBackColor = false;
+            this.addToCartButton.Click += new System.EventHandler(this.addToCartButton_Click);
+            // 
+            // panelDescr
+            // 
+            this.panelDescr.BackColor = System.Drawing.Color.White;
+            this.panelDescr.Controls.Add(this.descriptionBook);
+            this.panelDescr.Location = new System.Drawing.Point(252, 69);
+            this.panelDescr.Name = "panelDescr";
+            this.panelDescr.Size = new System.Drawing.Size(748, 443);
+            this.panelDescr.TabIndex = 11;
+            // 
+            // descriptionBook
+            // 
+            this.descriptionBook.BackColor = System.Drawing.Color.White;
+            this.descriptionBook.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.descriptionBook.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.descriptionBook.Font = new System.Drawing.Font("Comic Sans MS", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.descriptionBook.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
+            this.descriptionBook.Location = new System.Drawing.Point(0, 0);
+            this.descriptionBook.Multiline = true;
+            this.descriptionBook.Name = "descriptionBook";
+            this.descriptionBook.ReadOnly = true;
+            this.descriptionBook.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.descriptionBook.Size = new System.Drawing.Size(748, 443);
+            this.descriptionBook.TabIndex = 10;
             // 
             // yearBook
             // 
@@ -158,14 +203,6 @@
             this.priceBook.Size = new System.Drawing.Size(70, 31);
             this.priceBook.TabIndex = 7;
             this.priceBook.Text = "Цена";
-            // 
-            // panelBorder
-            // 
-            this.panelBorder.BackColor = System.Drawing.Color.White;
-            this.panelBorder.Location = new System.Drawing.Point(252, 70);
-            this.panelBorder.Name = "panelBorder";
-            this.panelBorder.Size = new System.Drawing.Size(748, 4);
-            this.panelBorder.TabIndex = 6;
             // 
             // publisherBook
             // 
@@ -229,24 +266,10 @@
             this.imageBook.BackColor = System.Drawing.Color.White;
             this.imageBook.Location = new System.Drawing.Point(0, 0);
             this.imageBook.Name = "imageBook";
-            this.imageBook.Size = new System.Drawing.Size(250, 350);
+            this.imageBook.Size = new System.Drawing.Size(252, 352);
             this.imageBook.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imageBook.TabIndex = 0;
             this.imageBook.TabStop = false;
-            // 
-            // descriptionBook
-            // 
-            this.descriptionBook.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
-            this.descriptionBook.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.descriptionBook.Font = new System.Drawing.Font("Comic Sans MS", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.descriptionBook.ForeColor = System.Drawing.Color.White;
-            this.descriptionBook.Location = new System.Drawing.Point(256, 80);
-            this.descriptionBook.Multiline = true;
-            this.descriptionBook.Name = "descriptionBook";
-            this.descriptionBook.ReadOnly = true;
-            this.descriptionBook.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.descriptionBook.Size = new System.Drawing.Size(732, 421);
-            this.descriptionBook.TabIndex = 10;
             // 
             // FormBook
             // 
@@ -269,6 +292,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.icon)).EndInit();
             this.panelMain.ResumeLayout(false);
             this.panelMain.PerformLayout();
+            this.panelDescr.ResumeLayout(false);
+            this.panelDescr.PerformLayout();
             this.panelPB.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.imageBook)).EndInit();
             this.ResumeLayout(false);
@@ -288,10 +313,11 @@
         private System.Windows.Forms.Label yearBook;
         private System.Windows.Forms.Label amountBook;
         private System.Windows.Forms.Label priceBook;
-        private System.Windows.Forms.Panel panelBorder;
         private System.Windows.Forms.Label publisherBook;
         private System.Windows.Forms.Label genreBook;
         private System.Windows.Forms.TextBox descriptionBook;
+        private System.Windows.Forms.Panel panelDescr;
+        private System.Windows.Forms.Button addToCartButton;
     }
 }
 

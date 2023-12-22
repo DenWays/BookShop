@@ -40,9 +40,9 @@ namespace BookShopBD
                 return;
             }
 
-            if(int.Parse(choiseAmountTB.Text) > int.Parse(UCCatalog.books.SelectedRows[0].Cells[6].Value.ToString()))
+            if(int.Parse(choiseAmountTB.Text) > int.Parse(FormBook.book.Amount))
             {
-                MessageBox.Show($"На складе сейчас {int.Parse(UCCatalog.books.SelectedRows[0].Cells[6].Value.ToString())} книг.", "Ошибка при выборе количества", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"На складе сейчас {int.Parse(FormBook.book.Amount)} книг.", "Ошибка при выборе количества", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -73,20 +73,20 @@ namespace BookShopBD
 
             DBConnection.msCommand.CommandText = $"UPDATE book JOIN author USING(id_author) " +
                 $"SET Amount = Amount - {int.Parse(choiseAmountTB.Text)} " +
-                $"WHERE Book_name = '{UCCatalog.books.SelectedRows[0].Cells[0].Value}' " +
-                $"AND Author_name = '{UCCatalog.books.SelectedRows[0].Cells[1].Value}';";
+                $"WHERE Book_name = '{FormBook.book.BookName}' " +
+                $"AND Author_name = '{FormBook.book.AuthorName}';";
             DBConnection.msCommand.ExecuteNonQuery();
 
             DBConnection.msCommand.CommandText = $"SELECT id_order_book FROM order_ JOIN order_book USING(id_order) " +
                 $"JOIN book USING(id_book) JOIN author USING(id_author) " +
-                $"WHERE Book_name = '{UCCatalog.books.SelectedRows[0].Cells[0].Value}' " +
-                $"AND Author_name = '{UCCatalog.books.SelectedRows[0].Cells[1].Value}' " +
+                $"WHERE Book_name = '{FormBook.book.BookName}' " +
+                $"AND Author_name = '{FormBook.book.AuthorName}' " +
                 $"AND id_order = {int.Parse(id_order.ToString())}";
             if (DBConnection.msCommand.ExecuteScalar() == null)
             {
                 DBConnection.msCommand.CommandText = $"CALL AddToCart(" +
-                $"'{UCCatalog.books.SelectedRows[0].Cells[0].Value}', '{UCCatalog.books.SelectedRows[0].Cells[1].Value}', " +
-                $"{double.Parse(UCCatalog.books.SelectedRows[0].Cells[5].Value.ToString())}, {int.Parse(choiseAmountTB.Text)}, " +
+                $"'{FormBook.book.BookName}', '{FormBook.book.AuthorName}', " +
+                $"{double.Parse(FormBook.book.Price)}, {int.Parse(choiseAmountTB.Text)}, " +
                 $"{int.Parse(id_order.ToString())});";
                 DBConnection.msCommand.ExecuteNonQuery();
                 MessageBox.Show("Книга успешно добавлена в корзину.", "Успешно");
@@ -97,8 +97,8 @@ namespace BookShopBD
                 DBConnection.msCommand.CommandText = $"UPDATE order_book JOIN book USING(id_book) " +
                     $"JOIN author USING(id_author) " +
                     $"SET order_book.Amount = order_book.Amount + {int.Parse(choiseAmountTB.Text)} " +
-                    $"WHERE id_order = {int.Parse(id_order.ToString())} AND Book_name = '{UCCatalog.books.SelectedRows[0].Cells[0].Value}' " +
-                    $"AND Author_name = '{UCCatalog.books.SelectedRows[0].Cells[1].Value}';";
+                    $"WHERE id_order = {int.Parse(id_order.ToString())} AND Book_name = '{FormBook.book.BookName}' " +
+                    $"AND Author_name = '{FormBook.book.AuthorName}';";
                 DBConnection.msCommand.ExecuteNonQuery();
                 MessageBox.Show("Книга успешно добавлена в корзину.", "Успешно");
                 this.Hide();

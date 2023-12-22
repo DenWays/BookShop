@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
@@ -18,26 +19,33 @@ namespace BookShopBD
         static bool selectFlag = false;
         DataTable catalog = new DataTable();
         List<Book> catalogbooks = new List<Book>(1);
+        Dictionary<string, string> dict = new Dictionary<string, string>();
         public UCCatalog()
         {
             InitializeComponent();
+            dict.Add("По умолчанию", "ORDER BY id_book");
+            dict.Add("Название ↑", "ORDER BY Book_name");
+            dict.Add("Название ↓", "ORDER BY Book_name DESC");
+            dict.Add("Цена ↑", "ORDER BY Price");
+            dict.Add("Цена ↓", "ORDER BY Price DESC");
+            dict.Add("Количество ↑", "ORDER BY Amount");
+            dict.Add("Количество ↓", "ORDER BY Amount DESC");
+            sortCB.DataSource = dict.Keys.ToList();
         }
 
         private void UCCatalog_Load(object sender, EventArgs e)
         {
-            if(CurrentUser.Role == "Покупатель")
+            if (searchCB.Text == "")
             {
-                addToCartButton.Visible = true;
+                searchTB.Enabled = false;
             }
             else
             {
-                addToCartButton.Visible = false;
+                searchTB.Enabled = true;
             }
-
-            if(flowCatalogPanel.Controls.Count != 0)
-            {
-                flowCatalogPanel.Controls.Clear();
-            }
+        
+            sortCB.SelectedIndex = 0;
+            flowCatalogPanel.Controls.Clear();
             DataTable dt = new DataTable();
 
             DBConnection.ConnectionDB();
@@ -64,64 +72,20 @@ namespace BookShopBD
 
             for (int i = 0; i < dt.Rows.Count; i++)
             {
-                Panel panel = new Panel();
-                panel.Size = new Size(130, 270);
+                UCBook uCBook = new UCBook();
+                uCBook.Namebook = catalogbooks[i].BookName;
+                uCBook.PriceBook = catalogbooks[i].Price;
+                uCBook.ImageBook = catalogbooks[i].Image;
+                uCBook.Id = catalogbooks[i].Id;
 
-                PictureBox pictureBox = new PictureBox();
-                pictureBox.Size = new Size(130, 220);
-                pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
-                pictureBox.LoadAsync(catalogbooks[i].Image);
-                pictureBox.Dock = DockStyle.Top;
-                panel.Controls.Add(pictureBox);
-
-                Label label = new Label();
-                label.Text = catalogbooks[i].BookName;
-                label.Dock = DockStyle.Bottom;
-                label.AutoEllipsis = true;
-                label.Font = new Font("Comic Sans MS", 10);
-                panel.Controls.Add(label);
-
-                Label label2 = new Label();
-                label2.Text = "Цена: " + catalogbooks[i].Price;
-                label2.Dock = DockStyle.Bottom;
-                label2.Font = new Font("Comic Sans MS", 10);
-                panel.Controls.Add(label2);
-
-                panel.Name = catalogbooks[i].Id;
-
-                pictureBox.Click += infoPanel_Click;
-                panel.Click += infoPanel_Click;
-                flowCatalogPanel.Controls.Add(panel);
+                flowCatalogPanel.Controls.Add(uCBook);
             }
-        }
-
-        private void infoPanel_Click(object sender, EventArgs e)
-        {
-            Panel panel = (Panel)((PictureBox)sender).Parent;
-            FormBook newFrom = new FormBook(int.Parse(panel.Name));
-            newFrom.ShowDialog();
-        }
-
-        private void addToCartButton_Click(object sender, EventArgs e)
-        {
-            DBConnection.ConnectionDB();
-            Form newForm = new FormAddToCart();
-            newForm.ShowDialog();
-            refreshButton_Click("↻", e);
-        }
-
-        private void UCCatalog_SizeChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void booksDGV_SelectionChanged(object sender, EventArgs e)
-        {
-             
         }
 
         private void refreshButton_Click(object sender, EventArgs e)
         {
+            searchTB.Text = "";
+            searchCB.Text = "";
             UCCatalog_Load("asd", e);
         }
 
@@ -154,53 +118,120 @@ namespace BookShopBD
                     e.Handled = true;
                 }
             }
+
+
         }
 
         private void searchMethod(string command)
         {
-            DataTable dataTable = new DataTable();
-            dataTable.Clear();
+            DataTable dt = new DataTable();
+
+            DBConnection.ConnectionDB();
             DBConnection.msCommand.CommandText = command;
             DBConnection.msDataAddapter.SelectCommand = DBConnection.msCommand;
-            DBConnection.msDataAddapter.Fill(dataTable);
+            DBConnection.msDataAddapter.Fill(dt);
 
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                catalogbooks.Add(new Book());
+                catalogbooks[i].Id = dt.Rows[i][0].ToString();
+                catalogbooks[i].BookName = dt.Rows[i][1].ToString();
+                catalogbooks[i].Image = dt.Rows[i][2].ToString();
+                catalogbooks[i].Description = dt.Rows[i][3].ToString();
+                catalogbooks[i].AuthorName = dt.Rows[i][4].ToString();
+                catalogbooks[i].GenreName = dt.Rows[i][5].ToString();
+                catalogbooks[i].PublisherName = dt.Rows[i][6].ToString();
+                catalogbooks[i].Year = dt.Rows[i][7].ToString();
+                catalogbooks[i].Price = dt.Rows[i][8].ToString();
+                catalogbooks[i].Amount = dt.Rows[i][9].ToString();
+            }
+
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                UCBook uCBook = new UCBook();
+                uCBook.Namebook = catalogbooks[i].BookName;
+                uCBook.PriceBook = catalogbooks[i].Price;
+                uCBook.ImageBook = catalogbooks[i].Image;
+                uCBook.Id = catalogbooks[i].Id;
+
+                flowCatalogPanel.Controls.Add(uCBook);
+            }
         }
 
-        private void searchButton_Click(object sender, EventArgs e)
+        private void searchTB_TextChanged(object sender, EventArgs e)
         {
+            if(searchCB.Text == "")
+            {
+                searchTB.Enabled = false;
+            }
+            else
+            {
+                searchTB.Enabled = true;
+            }
+            flowCatalogPanel.Controls.Clear();
             if (searchCB.Text == "Название")
             {
-                searchMethod($"SELECT * FROM catalog WHERE Название LIKE '%{searchTB.Text}%'");
+                searchMethod($"SELECT id_book, Book_name, Image, Descr, Author_name, Genre_name, Publisher_name, YEAR(Publication_Year), " +
+                    $"Price, Amount FROM author JOIN book USING(id_author) JOIN genre USING(id_genre) JOIN publisher " +
+                    $"ON book.id_publisher = publisher.id_publisher WHERE Book_name LIKE '%{searchTB.Text}%' " + dict[sortCB.Text]);
             }
             else if (searchCB.Text == "Автор")
             {
-                searchMethod($"SELECT * FROM catalog WHERE Автор LIKE '%{searchTB.Text}%'");
+                searchMethod($"SELECT id_book, Book_name, Image, Descr, Author_name, Genre_name, Publisher_name, YEAR(Publication_Year), " +
+                    $"Price, Amount FROM author JOIN book USING(id_author) JOIN genre USING(id_genre) JOIN publisher " +
+                    $"ON book.id_publisher = publisher.id_publisher WHERE Author_name LIKE '%{searchTB.Text}%' " + dict[sortCB.Text]);
             }
-            else if(searchCB.Text == "Жанр")
+            else if (searchCB.Text == "Жанр")
             {
-                searchMethod($"SELECT * FROM catalog WHERE Жанр LIKE '%{searchTB.Text}%'");
+                searchMethod($"SELECT id_book, Book_name, Image, Descr, Author_name, Genre_name, Publisher_name, YEAR(Publication_Year), " +
+                    $"Price, Amount FROM author JOIN book USING(id_author) JOIN genre USING(id_genre) JOIN publisher " +
+                    $"ON book.id_publisher = publisher.id_publisher WHERE Genre_name LIKE '%{searchTB.Text}%' " + dict[sortCB.Text]);
             }
-            else if(searchCB.Text == "Издательство")
+            else if (searchCB.Text == "Издательство")
             {
-                searchMethod($"SELECT * FROM catalog WHERE Издательство LIKE '%{searchTB.Text}%'");
+                searchMethod($"SELECT id_book, Book_name, Image, Descr, Author_name, Genre_name, Publisher_name, YEAR(Publication_Year), " +
+                    $"Price, Amount FROM author JOIN book USING(id_author) JOIN genre USING(id_genre) JOIN publisher " +
+                    $"ON book.id_publisher = publisher.id_publisher WHERE Publisher_name LIKE '%{searchTB.Text}%' " + dict[sortCB.Text]);
             }
             else if (searchCB.Text == "Год")
             {
-                searchMethod($"SELECT * FROM catalog WHERE Год = {int.Parse(searchTB.Text)}");
+                searchMethod($"SELECT id_book, Book_name, Image, Descr, Author_name, Genre_name, Publisher_name, YEAR(Publication_Year), " +
+                    $"Price, Amount FROM author JOIN book USING(id_author) JOIN genre USING(id_genre) JOIN publisher " +
+                    $"ON book.id_publisher = publisher.id_publisher WHERE YEAR(Publication_Year) LIKE '{searchTB.Text}%' " + dict[sortCB.Text]);
             }
-            else if(searchCB.Text == "Цена")
+            else if (searchCB.Text == "Цена")
             {
-                searchMethod($"SELECT * FROM catalog WHERE Цена = {double.Parse(searchTB.Text)}");
-            }    
-            else if(searchCB.Text == "Количество")
+                searchMethod($"SELECT id_book, Book_name, Image, Descr, Author_name, Genre_name, Publisher_name, YEAR(Publication_Year), " +
+                    $"Price, Amount FROM author JOIN book USING(id_author) JOIN genre USING(id_genre) JOIN publisher " +
+                    $"ON book.id_publisher = publisher.id_publisher WHERE Price LIKE '{searchTB.Text}%' " + dict[sortCB.Text]);
+            }
+            else if (searchCB.Text == "Количество")
             {
-                searchMethod($"SELECT * FROM catalog WHERE Количество = {int.Parse(searchTB.Text)}");
+                searchMethod($"SELECT id_book, Book_name, Image, Descr, Author_name, Genre_name, Publisher_name, YEAR(Publication_Year), " +
+                    $"Price, Amount FROM author JOIN book USING(id_author) JOIN genre USING(id_genre) JOIN publisher " +
+                    $"ON book.id_publisher = publisher.id_publisher WHERE Amount LIKE '{searchTB.Text}%' " + dict[sortCB.Text]);
             }
         }
 
-        private void booksDGV_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void searchCB_TextChanged(object sender, EventArgs e)
         {
-            addToCartButton_Click("Добавить", e);
+            if (searchCB.Text == "")
+            {
+                searchTB.Enabled = false;
+            }
+            else
+            {
+                searchTB.Enabled = true;
+            }
+            searchTB.Text = "";
+        }
+
+        private void sortCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            flowCatalogPanel.Controls.Clear();
+            searchMethod($"SELECT id_book, Book_name, Image, Descr, Author_name, Genre_name, Publisher_name, YEAR(Publication_Year), " +
+                    $"Price, Amount FROM author JOIN book USING(id_author) JOIN genre USING(id_genre) JOIN publisher " +
+                    $"ON book.id_publisher = publisher.id_publisher WHERE Book_name LIKE '%{searchTB.Text}%' " + dict[sortCB.Text]);
         }
     }
 }
