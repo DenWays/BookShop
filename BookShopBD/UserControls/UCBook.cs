@@ -55,6 +55,8 @@ namespace BookShopBD.UserControls
             nameBookLbl.BackColor = Color.FromArgb(47, 60, 69);
             priceBookLbl.ForeColor = Color.White;
             priceBookLbl.BackColor = Color.FromArgb(47, 60, 69);
+            addToCartButton.BackColor = Color.White;
+            addToCartButton.ForeColor = Color.FromArgb(47, 60, 69);
         }
 
         private void mainPanel_MouseLeave(object sender, EventArgs e)
@@ -64,7 +66,16 @@ namespace BookShopBD.UserControls
             nameBookLbl.BackColor = Color.White;
             priceBookLbl.ForeColor = Color.FromArgb(47, 60, 69);
             priceBookLbl.BackColor = Color.White;
+            addToCartButton.BackColor = Color.FromArgb(47, 60, 69);
+            addToCartButton.ForeColor = Color.White;
         }
 
+        private void addToCartButton_Click(object sender, EventArgs e)
+        {
+            DBConnection.ConnectionDB();
+            Form bookForm = new FormBook(int.Parse(mainPanel.Name));
+            Form newForm = new FormAddToCart();
+            newForm.ShowDialog();
+        }
     }
 }

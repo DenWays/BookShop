@@ -32,6 +32,7 @@
             this.priceBookLbl = new System.Windows.Forms.Label();
             this.nameBookLbl = new System.Windows.Forms.Label();
             this.imageBookPB = new System.Windows.Forms.PictureBox();
+            this.addToCartButton = new System.Windows.Forms.Button();
             this.mainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imageBookPB)).BeginInit();
             this.SuspendLayout();
@@ -39,12 +40,13 @@
             // mainPanel
             // 
             this.mainPanel.BackColor = System.Drawing.Color.White;
+            this.mainPanel.Controls.Add(this.addToCartButton);
             this.mainPanel.Controls.Add(this.priceBookLbl);
             this.mainPanel.Controls.Add(this.nameBookLbl);
             this.mainPanel.Controls.Add(this.imageBookPB);
             this.mainPanel.Location = new System.Drawing.Point(2, 2);
             this.mainPanel.Name = "mainPanel";
-            this.mainPanel.Size = new System.Drawing.Size(172, 300);
+            this.mainPanel.Size = new System.Drawing.Size(172, 343);
             this.mainPanel.TabIndex = 0;
             this.mainPanel.MouseEnter += new System.EventHandler(this.mainPanel_MouseEnter);
             this.mainPanel.MouseLeave += new System.EventHandler(this.mainPanel_MouseLeave);
@@ -94,6 +96,24 @@
             this.imageBookPB.MouseEnter += new System.EventHandler(this.mainPanel_MouseEnter);
             this.imageBookPB.MouseLeave += new System.EventHandler(this.mainPanel_MouseLeave);
             // 
+            // addToCartButton
+            // 
+            this.addToCartButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
+            this.addToCartButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.addToCartButton.FlatAppearance.BorderSize = 0;
+            this.addToCartButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.addToCartButton.Font = new System.Drawing.Font("Comic Sans MS", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.addToCartButton.ForeColor = System.Drawing.Color.White;
+            this.addToCartButton.Location = new System.Drawing.Point(3, 305);
+            this.addToCartButton.Name = "addToCartButton";
+            this.addToCartButton.Size = new System.Drawing.Size(166, 35);
+            this.addToCartButton.TabIndex = 1;
+            this.addToCartButton.Text = "В корзину";
+            this.addToCartButton.UseVisualStyleBackColor = false;
+            this.addToCartButton.Click += new System.EventHandler(this.addToCartButton_Click);
+            this.addToCartButton.MouseEnter += new System.EventHandler(this.mainPanel_MouseEnter);
+            this.addToCartButton.MouseLeave += new System.EventHandler(this.mainPanel_MouseLeave);
+            // 
             // UCBook
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -101,7 +121,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(69)))));
             this.Controls.Add(this.mainPanel);
             this.Name = "UCBook";
-            this.Size = new System.Drawing.Size(177, 305);
+            this.Size = new System.Drawing.Size(177, 348);
             this.mainPanel.ResumeLayout(false);
             this.mainPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imageBookPB)).EndInit();
@@ -115,5 +135,6 @@
         private System.Windows.Forms.PictureBox imageBookPB;
         private System.Windows.Forms.Label priceBookLbl;
         private System.Windows.Forms.Label nameBookLbl;
+        private System.Windows.Forms.Button addToCartButton;
     }
 }
