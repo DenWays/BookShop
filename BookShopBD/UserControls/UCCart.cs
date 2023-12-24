@@ -1,4 +1,5 @@
 ﻿using BookShopBD.Forms;
+using BookShopBD.UserControls;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -13,6 +14,7 @@ namespace BookShopBD
         public static List<int> ids_order = new List<int>();
         public static object id_order;
         public static List<string> itemsSelected = new List<string>();
+        List<Book> cartbooks = new List<Book>(1);
         public UCCart()
         {
             InitializeComponent();
@@ -22,25 +24,54 @@ namespace BookShopBD
         {
             DBConnection.ConnectionDB();
 
-            DataTable dataTable = new DataTable();
-            dataTable.Clear();
+            DataTable dt = new DataTable();
+            dt.Clear();
+            flowLayoutCart.Controls.Clear();
 
             DBConnection.msCommand.CommandText = $"CALL GetUserId({CurrentUser.Id_account}, 'Покупатель');";
             object id_customer = DBConnection.msCommand.ExecuteScalar();
 
-            DBConnection.msCommand.CommandText = $"SELECT Book_name AS Название, Author_name AS Автор, " +
-                $"order_book.Price AS Цена, order_book.Amount AS Количество " +
+            DBConnection.msCommand.CommandText = $"SELECT id_book, Book_name AS Название, Author_name AS Автор, " +
+                $"Image AS Фото, order_book.Price AS Цена, order_book.Amount AS Количество " +
                 $"FROM order_ JOIN order_book USING(id_order) JOIN book USING(id_book) " +
                 $"JOIN author USING(id_author) WHERE id_customer = {(int)id_customer} AND Status = 'Ожидает заказа';";
             DBConnection.msDataAddapter.SelectCommand = DBConnection.msCommand;
-            DBConnection.msDataAddapter.Fill(dataTable);
-            cartDGV.DataSource = dataTable;
-            sumAll_ = 0.00;
-            for (int i = 0; i < cartDGV.RowCount; i++)
+            DBConnection.msDataAddapter.Fill(dt);
+
+            cartbooks.Clear();
+            for (int i = 0; i < dt.Rows.Count; i++)
             {
-                sumAll_ += (double.Parse(cartDGV.Rows[i].Cells[2].Value.ToString()) * int.Parse(cartDGV.Rows[i].Cells[3].Value.ToString()));
+                cartbooks.Add(new Book());
+                cartbooks[i].Id = dt.Rows[i][0].ToString();
+                cartbooks[i].BookName = dt.Rows[i][1].ToString();
+                cartbooks[i].AuthorName = dt.Rows[i][2].ToString();
+                cartbooks[i].Image = dt.Rows[i][3].ToString();
+                cartbooks[i].Price = dt.Rows[i][4].ToString();
+                cartbooks[i].Amount = dt.Rows[i][5].ToString();
             }
-            sumAll.Text = sumAll_.ToString();
+
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                UCCartBook uCBook = new UCCartBook();
+                uCBook.Namebook = cartbooks[i].BookName;
+                uCBook.PriceBook = cartbooks[i].Price;
+                uCBook.ImageBook = cartbooks[i].Image;
+                uCBook.Id = cartbooks[i].Id;
+                uCBook.Amount = cartbooks[i].Amount;
+                uCBook.Controls[0].Controls[0].TextChanged += ChecksSum;
+                uCBook.Controls[0].Controls[1].Click += deleteBtn_Click;
+                uCBook.Controls[0].Controls[3].Click += ChangeAmount;
+                flowLayoutCart.Controls.Add(uCBook);
+            }
+
+            sumAll_ = 0.00;
+            for (int i = 0; i < cartbooks.Count; i++)
+            {
+                sumAll_ += (double.Parse(cartbooks[i].Price) * int.Parse(cartbooks[i].Amount));
+            }
+            sumAll.Text = sumAll_.ToString() + ".00";
+            sumSelected_ = sumAll_;
+            sumSelected.Text = sumAll.Text;
 
             DBConnection.msCommand.CommandText = $"SELECT order_book.id_order FROM order_book " +
                 $"JOIN order_ USING(id_order) WHERE id_customer = {(int)id_customer} AND Status = 'Ожидает заказа' " +
@@ -54,16 +85,6 @@ namespace BookShopBD
             DBConnection.CloseDB();
         }
 
-        private void cartDGV_SelectionChanged(object sender, EventArgs e)
-        {
-            sumSelected_ = 0;
-            for (int i = 0; i < cartDGV.SelectedRows.Count ; i++)
-            {
-                sumSelected_ += (double.Parse(cartDGV.SelectedRows[i].Cells[2].Value.ToString()) * int.Parse(cartDGV.SelectedRows[i].Cells[3].Value.ToString()));
-            }
-            sumSelected.Text = sumSelected_.ToString();
-        }
-
         private void refreshButton_Click(object sender, EventArgs e)
         {
             UCCart_Load("asd", e);
@@ -71,7 +92,7 @@ namespace BookShopBD
 
         private void orderAllBtn_Click(object sender, EventArgs e)
         {
-            if(cartDGV.Rows.Count == 0)
+            if (flowLayoutCart.Controls.Count == 0)
             {
                 MessageBox.Show("Корзина пуста", "Пустая корзина", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -94,7 +115,7 @@ namespace BookShopBD
 
         private void orderSelectedBtn_Click(object sender, EventArgs e)
         {
-            if (cartDGV.Rows.Count == 0)
+            if (flowLayoutCart.Controls.Count == 0)
             {
                 MessageBox.Show("Корзина пуста", "Пустая корзина", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -112,14 +133,15 @@ namespace BookShopBD
             DBConnection.msCommand.CommandText = $"SELECT LAST_INSERT_ID()";
             id_order = DBConnection.msCommand.ExecuteScalar();
 
-            for (int i = 0; i < cartDGV.SelectedRows.Count; i++)
+            for (int i = 0; i < flowLayoutCart.Controls.Count; i++)
             {
-                DBConnection.msCommand.CommandText = $"UPDATE order_book JOIN book USING(id_book) " +
-                        $"JOIN author USING(id_author) SET order_book.id_order = {int.Parse(id_order.ToString())} " +
-                        $"WHERE order_book.id_order = {(ids_order[0])} " +
-                        $"AND Book_name = '{cartDGV.SelectedRows[i].Cells[0].Value}' " +
-                        $"AND Author_name = '{cartDGV.SelectedRows[i].Cells[1].Value}';";
-                DBConnection.msCommand.ExecuteNonQuery();
+                if (flowLayoutCart.Controls[i].Controls[0].Controls[0].Text == "✓")
+                {
+                    DBConnection.msCommand.CommandText = $"UPDATE order_book JOIN book USING(id_book) JOIN author USING(id_author) " +
+                        $"SET order_book.id_order = {int.Parse(id_order.ToString())} WHERE order_book.id_order = {ids_order[0]} " +
+                        $"AND id_book = {flowLayoutCart.Controls[i].Controls[0].Name};";
+                    DBConnection.msCommand.ExecuteNonQuery();
+                }
             }
 
             DBConnection.msCommand.CommandText = $"SELECT id_order FROM order_ WHERE id_order " +
@@ -139,30 +161,22 @@ namespace BookShopBD
 
         private void deleteBtn_Click(object sender, EventArgs e)
         {
-            if(cartDGV.Rows.Count == 0) 
+            if (flowLayoutCart.Controls.Count == 0)
             {
                 MessageBox.Show("Корзина пуста.", "Ошибка удаления", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return; 
+                return;
             }
-            DBConnection.ConnectionDB();
-            for (int i = 0; i < cartDGV.SelectedRows.Count; i++)
-            {
-                DBConnection.msCommand.CommandText = $"DELETE order_book FROM order_ JOIN order_book USING(id_order) " +
-                    $"JOIN book USING(id_book) " +
-                    $"JOIN author USING(id_author) WHERE Book_name = '{cartDGV.SelectedRows[i].Cells[0].Value}' " +
-                    $"AND Author_name = '{cartDGV.SelectedRows[i].Cells[1].Value}' AND order_book.id_order = {ids_order[0]} " +
-                    $"AND order_book.Amount = {int.Parse(cartDGV.SelectedRows[i].Cells[3].Value.ToString())} " +
-                    $"AND order_book.Price = {double.Parse(cartDGV.SelectedRows[i].Cells[2].Value.ToString())} " +
-                    $"AND Status = 'Ожидает заказа';";
 
-                if (DBConnection.msCommand.ExecuteNonQuery() > 0)
-                {
-                    DBConnection.msCommand.CommandText = $"UPDATE book JOIN author USING(id_author) " +
-                        $"SET Amount = Amount + {int.Parse(cartDGV.Rows[i].Cells[3].Value.ToString())} " +
-                        $"WHERE Book_name = '{cartDGV.SelectedRows[i].Cells[0].Value}' " +
-                        $"AND Author_name = '{cartDGV.SelectedRows[i].Cells[1].Value}';";
-                    DBConnection.msCommand.ExecuteNonQuery();
-                }
+            DBConnection.ConnectionDB();
+
+            DBConnection.msCommand.CommandText = $"DELETE order_book FROM order_ JOIN order_book USING(id_order) " +
+                    $"WHERE order_book.id_order = {ids_order[0]} AND id_book = {((Button)sender).Parent.Name};";
+            if (DBConnection.msCommand.ExecuteNonQuery() > 0)
+            {
+                DBConnection.msCommand.CommandText = $"UPDATE book JOIN author USING(id_author)" +
+                    $"SET Amount = Amount + {((Button)sender).Parent.Controls[2].Text} " +
+                    $"WHERE id_book = {((Button)sender).Parent.Name};";
+                DBConnection.msCommand.ExecuteNonQuery();
             }
 
             DBConnection.msCommand.CommandText = $"SELECT id_order FROM order_ WHERE id_order " +
@@ -176,32 +190,27 @@ namespace BookShopBD
             }
 
             refreshButton_Click("↻", e);
-            MessageBox.Show("Книги успешно удалены из корзины.", "Успех");
         }
 
         private void deleteAllBtn_Click(object sender, EventArgs e)
         {
-            if (cartDGV.Rows.Count == 0) 
+            if (flowLayoutCart.Controls.Count == 0)
             {
                 MessageBox.Show("Корзина пуста.", "Ошибка удаления", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return; 
+                return;
             }
+
             DBConnection.ConnectionDB();
-            for (int i = 0; i < cartDGV.Rows.Count; i++)
+
+            for (int i = 0; i < flowLayoutCart.Controls.Count; i++)
             {
                 DBConnection.msCommand.CommandText = $"DELETE order_book FROM order_ JOIN order_book USING(id_order) " +
-                    $"JOIN book USING(id_book) " +
-                    $"JOIN author USING(id_author) WHERE Book_name = '{cartDGV.Rows[i].Cells[0].Value}' " +
-                    $"AND Author_name = '{cartDGV.Rows[i].Cells[1].Value}' AND order_book.id_order = {ids_order[0]} " +
-                    $"AND order_book.Amount = {int.Parse(cartDGV.Rows[i].Cells[3].Value.ToString())} " +
-                    $"AND order_book.Price = {double.Parse(cartDGV.Rows[i].Cells[2].Value.ToString())} " +
-                    $"AND Status = 'Ожидает заказа';";
-                if (DBConnection.msCommand.ExecuteNonQuery() > 0)
+                    $"WHERE id_order = {ids_order[0]};";
+                if(DBConnection.msCommand.ExecuteNonQuery() > 0)
                 {
-                    DBConnection.msCommand.CommandText = $"UPDATE book JOIN author USING(id_author) " +
-                        $"SET Amount = Amount + {int.Parse(cartDGV.Rows[i].Cells[3].Value.ToString())} " +
-                        $"WHERE Book_name = '{cartDGV.Rows[i].Cells[0].Value}' " +
-                        $"AND Author_name = '{cartDGV.Rows[i].Cells[1].Value}';";
+                    DBConnection.msCommand.CommandText = $"UPDATE book JOIN author USING(id_author)" +
+                        $"SET Amount = Amount + {int.Parse(flowLayoutCart.Controls[i].Controls[0].Controls[2].Text)} " +
+                        $"WHERE id_book = {flowLayoutCart.Controls[i].Controls[0].Name};";
                     DBConnection.msCommand.ExecuteNonQuery();
                 }
             }
@@ -214,17 +223,35 @@ namespace BookShopBD
             MessageBox.Show("Книги успешно удалены из корзины.", "Успех");
         }
 
-        private void cartDGV_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        public void ChecksSum(object sender, EventArgs e)
         {
-            if (cartDGV.CurrentCell.ColumnIndex != 3) { return; }
-            itemsSelected.Clear();
-            for (int i = 0; i < cartDGV.ColumnCount; i++)
+            if(((Button)sender).Text == "✓")
             {
-                itemsSelected.Add(cartDGV.SelectedRows[0].Cells[i].Value.ToString());
+                sumSelected_ += (double.Parse(((Button)sender).Parent.Controls[4].Text) *
+                    int.Parse(((Button)sender).Parent.Controls[2].Text));
+                sumSelected.Text = sumSelected_.ToString() + ".00";
             }
-            Form newForm = new FormChangeAmount();
+            else
+            {
+                sumSelected_ -= (double.Parse(((Button)sender).Parent.Controls[4].Text) * 
+                    int.Parse(((Button)sender).Parent.Controls[2].Text));
+                sumSelected.Text = sumSelected_.ToString() + ".00";
+            }
+        }
+
+        private void checkAllButton_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < flowLayoutCart.Controls.Count; i++)
+            {
+                flowLayoutCart.Controls[i].Controls[0].Controls[0].Text = "✓";
+            }
+        }
+
+        private void ChangeAmount(object sender, EventArgs e)
+        {
+            Form newForm = new FormChangeAmount(int.Parse(((Button)sender).Parent.Name));
             newForm.ShowDialog();
-            refreshButton_Click("↻", e);
+            refreshButton_Click("asd", e);
         }
     }
 }

@@ -19,10 +19,15 @@ namespace BookShopBD.Forms
         public static extern bool ReleaseCapture();
         [DllImport("User32.dll")]
         public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
-        public FormChangeAmount()
+        int id;
+        public FormChangeAmount(int id)
         {
             InitializeComponent();
             DBConnection.ConnectionDB();
+            this.id = id;
+        }
+        private void FormChangeAmount_Load(object sender, EventArgs e)
+        {
         }
 
         private void newAmountTB_KeyPress(object sender, KeyPressEventArgs e)
@@ -48,8 +53,7 @@ namespace BookShopBD.Forms
                 return;
             }
 
-            DBConnection.msCommand.CommandText = $"SELECT Amount FROM book JOIN author USING(id_author) " +
-                $"WHERE Book_name = '{UCCart.itemsSelected[0]}' AND Author_name = '{UCCart.itemsSelected[1]}';";
+            DBConnection.msCommand.CommandText = $"SELECT Amount FROM book WHERE id_book = {id};";
             object amount = DBConnection.msCommand.ExecuteScalar();
 
             if(int.Parse(newAmountTB.Text) > (int)amount)
@@ -63,33 +67,33 @@ namespace BookShopBD.Forms
 
             DBConnection.msCommand.CommandText = $"SELECT id_order FROM order_ JOIN order_book USING(id_order) JOIN book USING(id_book) " +
                     $"JOIN author USING(id_author) WHERE id_customer = {(int)id_customer} " +
-                    $"AND Book_name = '{UCCart.itemsSelected[0]}' AND Author_name = '{UCCart.itemsSelected[1]}' " +
-                    $"AND order_book.Amount = {int.Parse(UCCart.itemsSelected[3])} " +
-                    $"AND order_book.Price = {double.Parse(UCCart.itemsSelected[2])} " +
+                    $"AND id_book = {id} " +
                     $"AND Status = 'Ожидает заказа';";
             object cur_id_order = DBConnection.msCommand.ExecuteScalar();
 
             DBConnection.msCommand.CommandText = $"SELECT id_order_book FROM order_ JOIN order_book USING(id_order) JOIN book USING(id_book) JOIN author USING(id_author) " +
-                $"WHERE id_order = {(int)cur_id_order} AND Book_name = '{UCCart.itemsSelected[0]}' " +
-                $"AND Author_name = '{UCCart.itemsSelected[1]}' AND order_book.Amount = {int.Parse(UCCart.itemsSelected[3])} " +
-                $"AND order_book.Price = {double.Parse(UCCart.itemsSelected[2])} AND Status = 'Ожидает заказа'";
+                $"WHERE id_order = {(int)cur_id_order} AND id_book = {id} AND Status = 'Ожидает заказа'";
             object id_order_book = DBConnection.msCommand.ExecuteScalar();
+
+            DBConnection.msCommand.CommandText = $"SELECT order_book.Amount FROM order_ JOIN order_book USING(id_order)" +
+                $"WHERE id_order = {(int)cur_id_order} AND Status = 'Ожидает заказа';";
+            object cur_amount = DBConnection.msCommand.ExecuteScalar();
 
             DBConnection.msCommand.CommandText = $"UPDATE order_book " +
                 $"SET Amount = {int.Parse(newAmountTB.Text)} " +
                 $"WHERE id_order_book = {(int)id_order_book}";
             DBConnection.msCommand.ExecuteNonQuery();
 
-            if(int.Parse(newAmountTB.Text) > int.Parse(UCCart.itemsSelected[3]))
+            if(int.Parse(newAmountTB.Text) > (int)cur_amount)
             {
                 DBConnection.msCommand.CommandText = $"UPDATE book JOIN author USING(id_author) " +
-                $"SET Amount = Amount - ({int.Parse(newAmountTB.Text)} - {int.Parse(UCCart.itemsSelected[3])});";
+                $"SET Amount = Amount - ({int.Parse(newAmountTB.Text)} - {(int)cur_amount});";
                 DBConnection.msCommand.ExecuteNonQuery();
             }
             else
             {
                 DBConnection.msCommand.CommandText = $"UPDATE book JOIN author USING(id_author) " +
-                $"SET Amount = Amount + ({int.Parse(UCCart.itemsSelected[3])} - {int.Parse(newAmountTB.Text)});";
+                $"SET Amount = Amount + ({(int)cur_amount} - {int.Parse(newAmountTB.Text)});";
                 DBConnection.msCommand.ExecuteNonQuery();
             }           
 
